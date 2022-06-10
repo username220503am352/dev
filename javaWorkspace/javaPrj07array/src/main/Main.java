@@ -18,9 +18,12 @@ public class Main {
 //		int[] a;				//배열 변수 선언
 //		a = new int[3];			//배열 생성하여, a에 할당
 		
-		int[] a = new int[3];	//배열 변수 초기화
+		int[] a = new int[5];	//배열 변수 초기화
 		
 //		int[] a = new int[] {10,27,33};
+//		int[] a = {10,27,33};
+		
+		System.out.println("배열의 길이 ::: " + a.length);
 		
 		
 		
