@@ -14,6 +14,9 @@ public class BattleManager {
 			calcDamage(enemy, user);
 			//판단
 			isFinish = checkDead(enemy);
+			if(isFinish) {
+				break;
+			}
 			
 			//공격하기
 			enemy.attack();
@@ -28,8 +31,11 @@ public class BattleManager {
 	
 	//데미지 계산
 	public void calcDamage(Pokemon defender, Pokemon attacker) {
-		int result = defender.getHp() - attacker.getAtk();; 
+		int result = defender.getHp() - attacker.getAtk();
 		defender.setHp(result);
+		System.out.println("데미지 : " + attacker.getAtk());
+		System.out.println(defender.getName() + " 의 남은 체력 : " +  defender.getHp());
+		System.out.println("----------------------");
 	}
 	
 	//체력 0 이하 인지 판단

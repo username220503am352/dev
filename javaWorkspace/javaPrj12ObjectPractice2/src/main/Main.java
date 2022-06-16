@@ -8,15 +8,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Pokemon p1 = new Pokemon();
-		p1.setName("피카츄");
-		p1.setHp(100);
-		p1.setAtk(30);
 		
-		Pokemon p2 = new Pokemon();
-		p2.setName("파이리");
-		p2.setHp(100);
-		p2.setAtk(25);
+		
+		Pokemon p1 = new Pokemon("피카츄", 100, 30);
+		
+		Pokemon p2 = new Pokemon("파이리", 100, 25);
 		
 		//게임 시작
 		GameManager gm = new GameManager();
