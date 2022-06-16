@@ -28,7 +28,7 @@ public class BattleManager {
 	
 	//데미지 계산
 	public void calcDamage(Pokemon defender, Pokemon attacker) {
-		int result = defender.getHp() - attacker.getAtk();
+		int result = defender.getHp() - attacker.getAtk();; 
 		defender.setHp(result);
 	}
 	
