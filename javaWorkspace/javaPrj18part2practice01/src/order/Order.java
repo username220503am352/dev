@@ -54,14 +54,14 @@ public class Order {
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void addPrice(int price) {
+		this.price += price;
 	}
 	public int getTime() {
 		return time;
 	}
-	public void setTime(int time) {
-		this.time = time;
+	public void addTime(int time) {
+		this.time += time;
 	}
 	
 	@Override

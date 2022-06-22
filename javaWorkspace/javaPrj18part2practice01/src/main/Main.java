@@ -18,6 +18,7 @@ public class Main {
 		//키오스크 사용하여, 주문 내용 얻기
 		Kiosk kiosk = new Kiosk();
 		Order order = kiosk.useKiosk();
+		kiosk.calc(order);
 		
 		
 		
