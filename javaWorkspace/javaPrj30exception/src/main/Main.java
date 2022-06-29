@@ -8,9 +8,12 @@ public class Main {
 		
 		TestException te = new TestException();
 		
-		te.test01();
-		te.test02();
-		te.test03();
+		try {
+			te.test01();
+		}catch(Exception e) {
+			String s = e.getMessage();
+			System.out.println(s);
+		}
 		
 	}//main
 
