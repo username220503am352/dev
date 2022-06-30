@@ -58,10 +58,7 @@ public class TestIoException {
 			System.out.println("예외 메세지 ::: " + e.getMessage());
 		}finally {
 			//스트림 정리
-			try {
-				br.close();
-			} catch (IOException e) {
-			}
+			try {if(br != null) br.close();} catch (IOException e) {}
 		}
 		
 		
