@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("===== api test =====");
 		
-		new ApiTest().test03();
+		new ApiTest().test04();
 		
 	}//main
 
