@@ -56,11 +56,17 @@ public class MemberLogin {
 		try (BufferedReader br = new BufferedReader(new FileReader(f));)
 		{
 			//스트림 사용
-			String data = br.readLine();
-			String[] idPwdArr = data.split(" ");
-			String idData = idPwdArr[0];
-			String pwdData = idPwdArr[1];
-			result =  id.equals(idData) && pwd.equals(pwdData);
+			while(true) {
+				String data = br.readLine();
+				if(data == null) break;
+				if(data.length() < 2) continue; //공백 처리
+				String[] idPwdArr = data.split(" ");
+				String idData = idPwdArr[0];
+				String pwdData = idPwdArr[1];
+				result =  id.equals(idData) && pwd.equals(pwdData);
+				if(result) break;
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
