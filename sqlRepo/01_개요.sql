@@ -1,0 +1,27 @@
+-- 테이블 생성
+CREATE TABLE MEMBER(
+    USER_ID VARCHAR2(100)
+    , USER_PWD VARCHAR2(100)
+    , BIRTH TIMESTAMP
+    , GENDER CHAR(1)
+);
+
+--테이블에 데이터 넣기
+INSERT INTO MEMBER(USER_ID, USER_PWD, BIRTH, GENDER) 
+VALUES('SWY', '1234', SYSDATE, 'M');
+
+--테이블 조회
+SELECT * FROM MEMBER;
+
+--테이블 데이터 변경
+UPDATE MEMBER SET USER_PWD = '7777';
+
+--테이블 데이터 삭제
+DELETE MEMBER;
+
+--테이블 삭제
+DROP TABLE MEMBER;
+
+
+
+

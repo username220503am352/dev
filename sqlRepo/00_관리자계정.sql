@@ -1,0 +1,13 @@
+select sysdate from dual;
+
+--사용자 계정 생성
+CREATE USER C##KH IDENTIFIED BY KH;
+--권한 부여
+GRANT CONNECT, RESOURCE TO C##KH;
+
+--테이블스페이스 users 권한부여
+ALTER USER C##KH DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+
+
+
+
