@@ -374,6 +374,170 @@ SELECT ENAME, COMM, NVL2(COMM, 100, 0) ,SAL+NVL2(COMM, 0, 100) 급여조회
 FROM EMP;
 
 
+SELECT NULLIF(123, 123)FROM DUAL;
+SELECT NULLIF(123, 456)FROM DUAL;
+
+-- EMP 테이블에서 사원명, (SAL+COMM) AS 급여 조회 (COMM 이 NULL 이거나 0이면 0으로 처리, 그게아니라면 100으로 처리)
+SELECT ENAME, SAL, COMM, SAL+NVL2(NULLIF(COMM,0), 100, 0) 급여조회
+FROM EMP;
+
+
+/*
+    선택함수
+        여러가지 경우에 따라 선택을 할 수 있는 기능을 제공하는 함수
+        
+    DECODE(칼럼|계산식, 조건값1, 결과값1, 조건값2, 결과값2 .....)    
+        비교하고자 하는 값이 조건값 과 일치하는 경우, 그에 해당하는 결과값을 반환
+*/
+
+--  EMP 테이블에서 사번, 사원명, JOB 조회 
+-- (단, JOB이 MANAGER인 경우 매니저 라고 출력, JOB이 SALESMAN 인 경우 영업 이라고 출력)
+SELECT EMPNO, ENAME, JOB, DECODE(JOB , 'MANAGER', '매니저', 'SALESMAN', '영업' ,'PRESIDENT', '프레지던트')
+FROM EMP;
+
+
+/*
+    CASE
+        [문법]
+        CASE WHEN 조건식1 THEN 결과값1
+             WHEN 조건식2 THEN 결과값2
+             WHEN 조건식3 THEN 결과값3
+             ...
+             ELSE 결과값
+        END     
+*/
+
+-- EMP 테이블에서 사원명, 급여, 구분 조회 (구분? SAL 1000 아래면 초급, 1000~3000 사이면 중급, 나머지는 고급)
+SELECT 
+    ENAME
+    , SAL
+    , CASE
+        WHEN SAL < 1000 THEN '초급'
+        WHEN SAL < 3000 THEN '중급'
+        ELSE '고급'
+      END AS 구분
+FROM EMP;
+
+---------------------------------------------------------------------------
+-------------- 그룹함수 ----------------
+
+/*
+    대량의 데이터들로 집계나 통계 같은 작업을 처리하는 경우 사용
+    모든 그룹 함수는 NULL 값을 자동으로 제외하고 값이 있는 것들만 계산
+    위의 이유로 인해, AVG 함수 사용 시 반드시 NVL() 함수를 사용하는것을 권장
+*/
+
+/*
+    1) SUM
+        [문법]
+            SUM(NUMBER)
+        - 해당 칼럼 값들의 총 합계를 반환    
+*/
+
+SELECT SUM(COMM)
+FROM EMP;
+
+-- EMP 테이블에서 부서코드가 30인 사원들의 급여 합계 조회
+SELECT SUM(SAL)
+FROM EMP
+WHERE DEPTNO = 30
+;
+
+--COMM 가 NULL 이 아닌 사원들의 COMM 합계 조회
+SELECT SUM(COMM)
+FROM EMP
+--WHERE COMM IS NOT NULL
+;
+
+--EMP 테이블에서 사원명이 S로 시작하는 사원의 SAL 합계 조회
+SELECT SUM(SAL)
+FROM EMP
+WHERE ENAME LIKE 'S%'
+;
+
+/*
+    2) AVG
+        [문법]
+            AVG(NUMBER)
+*/
+
+-- EMP 테이블의 전 사원의 급여 평균을 조회
+SELECT AVG(SAL)
+FROM EMP
+;
+
+
+-- EMP 테이블에서 부서코드가 30인 사원의 급여 평균을 조회
+SELECT AVG(COMM)
+FROM EMP
+WHERE DEPTNO = 30
+;
+
+-- EMP 테이블에서 입사일자가 81년도 이후인 사원의 급여 평균 조회
+SELECT AVG(SAL)
+FROM EMP
+--WHERE EXTRACT(YEAR FROM HIREDATE) >= 1981
+WHERE HIREDATE > '81/01/01'
+;
+
+/*
+    3) MIN / MAX
+*/
+
+-- EMP 테이블에서 가장 높은 급여 조회
+SELECT MAX(SAL)
+FROM EMP;
+
+-- EMP 테이블에서 가장 낮은 급여 조회
+SELECT MIN(SAL)
+FROM EMP;
+
+/*
+    4) COUNT
+        COUNT(..)
+    - 행의 갯수 반환
+    - COUNT(칼럼) : 칼럼이 NULL 이 아닌 행의 갯수를 반환
+    - COUNT(DISTINCT 칼럼)
+*/
+
+SELECT 
+--    *
+    COUNT(*)
+FROM EMP
+WHERE DEPTNO = 30
+;
+
+
+SELECT 
+--    COMM
+    COUNT(COMM)
+FROM EMP
+;
+
+
+SELECT 
+--    DISTINCT DEPTNO
+    COUNT(DISTINCT DEPTNO)
+FROM EMP
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
