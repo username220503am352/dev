@@ -337,8 +337,41 @@ SELECT TO_DATE('2022.07.06') FROM DUAL;
 
 SELECT TO_NUMBER('123456789') FROM DUAL;
 SELECT '111' + '222' FROM DUAL; -- 자동으로 숫자 타입으로 형변환 후 연산처리
+--SELECT '123' + '456A' FROM DUAL; -- 에러(숫자만 있어야 계산 가능)
+--SELECT '10,000' + '20,000' FROM DUAL; --에러
+SELECT TO_NUMBER('10,000', '99,999,999') + TO_NUMBER('20,000','99,999') FROM DUAL;
 
+-----------------------------------------------------------------------
 
+/*
+    NULL 처리 함수
+        [문법]
+            NVL(칼럼, NULL대체값)
+        - NULL 로 되어있는 칼럼의 값을 인자로 지정한 값으로 변경하여 반환
+        
+            NVL2(칼럼, 대체값1, 대체값2)
+        - 칼럼 값이 NULL이 아니면 대체값1, 칼럼값이 NULL이면 대체값2 로 반환한다.
+        
+            NULL IF(비교대상1, 비교대상2)
+        - 두개의 값이 동일하면 NULL 반환
+        - 두개의 값이 동일하지 않으면 비교대상1 반환
+*/
+
+-- EMP 테이블에서 사원명,COMM 조회(COMM이 NULL 이면 0 을 출력)
+SELECT ENAME, NVL(COMM, 0)
+FROM EMP;
+
+-- EMP 테이블에서 사원명, (급여+COMM)*12 조회 (NULL 값은 0으로 처리하여 계산)
+SELECT ENAME, (SAL+NVL(COMM, 0))*12
+FROM EMP;
+
+-- EMP 테이블에서 사원명, JOB, MGR 조회 (MGR NULL인 경우, 0 으로 조회)
+SELECT ENAME, JOB, NVL(MGR, 0)
+FROM EMP;
+
+-- EMP 테이블에서 사원명, (SAL+COMM) AS 급여 조회 (COMM 이 NULL 이면 0으로 처리, 그게아니라면 100으로 처리)
+SELECT ENAME, COMM, NVL2(COMM, 100, 0) ,SAL+NVL2(COMM, 0, 100) 급여조회
+FROM EMP;
 
 
 
