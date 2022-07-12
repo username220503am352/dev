@@ -64,17 +64,74 @@ GROUP BY DEPTNO
 ;
 
 
+/*
+    <집계 함수>
+        그룹별 산출한 결과 값의 중간 집계를 계산 해주는 함수
+        - CUBE
+        - ROLLUP
+        - GROUPING SETS
+        
+        - GROUPING
+*/
+
+SELECT DEPTNO, JOB, SUM(SAL)
+FROM EMP
+GROUP BY CUBE(DEPTNO, JOB)
+ORDER BY DEPTNO
+;
+
+SELECT DEPTNO, JOB, SUM(SAL)
+FROM EMP
+GROUP BY GROUPING SETS(DEPTNO, JOB)
+;
 
 
+SELECT DEPTNO, JOB, SUM(SAL) , GROUPING(JOB), GROUPING(DEPTNO)
+FROM EMP
+GROUP BY GROUPING SETS(DEPTNO, JOB)
+;
 
 
+SELECT
+    DEPTNO 부서구분
+    , CASE
+        WHEN DEPTNO = 10 THEN '영업1팀'
+        WHEN DEPTNO = 20 THEN '개발본부'
+        WHEN DEPTNO = 30 THEN '경영지원'
+        ELSE '사장님'
+      END 부서
+--    , JOB
+    , CASE
+        WHEN GROUPING(JOB) = 1 THEN '모든직업'
+        ELSE JOB
+      END 직업구분
+    , SUM(SAL)
+FROM EMP
+GROUP BY ROLLUP(DEPTNO, JOB)
+ORDER BY DEPTNO
+;
+    
 
+/*
+    <집합 연산자>
+        여러 개의 쿼리문을 가지고 하나의 쿼리문으로 만드는 연산자이다.
+        
+        UNION       : 합집합 : 두 쿼리문의 수행 결과를 합친 후, 중복 제거
+        UNION ALL   : 합집합 : 두 쿼리문의 수행 결과를 합칩 (중복허용)
+        INTERSECT   : 교집합 : 두 쿼리문 수행 결과 중복된 결과만 추출
+        MINUS       : 차집합 : 선행 쿼리의 결과 중 후행 쿼리의 결과값을 뺀 나머지
+*/
 
+SELECT EMPNO, ENAME, DEPTNO, SAL
+FROM EMP
+WHERE SAL > 2000
 
+MINUS
 
-
-
-
+SELECT EMPNO, ENAME, DEPTNO, SAL
+FROM EMP
+WHERE SAL > 3000
+;
 
 
 
