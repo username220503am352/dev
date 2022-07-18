@@ -3,6 +3,7 @@ package main;
 import java.util.Scanner;
 
 import member.MemberController;
+import member.MemberDto;
 
 public class Main {
 
@@ -21,7 +22,8 @@ public class Main {
 		
 		switch(input) {
 		case "1" : 
-			mc.login(); 
+			MemberDto dto = mc.login(); 
+			mc.loginCheck(dto);
 			break;
 		case "2" : 
 			int result = mc.join();
