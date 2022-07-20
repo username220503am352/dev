@@ -81,6 +81,14 @@ public class MemberController {
 		
 	}
 
+	/*
+	 * 0. 로그인 여부 체크
+	 * 1. 현재 회원 정보 보여주기
+	 * 2. 변경할건지 물어보기
+	 * 3. 변경할 데이터 입력받기
+	 * 4. SQL 실행
+	 * 5. 실행 결과에 따라, 서비스 로직 실행
+	 */
 	public void edit() {
 		// TODO Auto-generated method stub
 		

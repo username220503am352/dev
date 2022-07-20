@@ -6,6 +6,8 @@ import member.MemberController;
 import member.MemberDto;
 
 public class Main {
+	
+	public static MemberDto loginUser = null;
 
 	public static void main(String[] args) {
 		
@@ -22,8 +24,7 @@ public class Main {
 		
 		switch(input) {
 		case "1" : 
-			MemberDto dto = mc.login(); 
-			mc.loginCheck(dto);
+			mc.login();
 			break;
 		case "2" : 
 			int result = mc.join();

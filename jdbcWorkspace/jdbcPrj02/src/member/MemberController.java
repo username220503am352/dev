@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Scanner;
 
+import main.Main;
+import util.InputUtil;
 import util.JDBCTemplate;
 
 public class MemberController {
@@ -92,11 +94,10 @@ public class MemberController {
 	 * 
 	 * 회원정보 리턴
 	 */
-	public MemberDto login() {
+	public MemberDto login(MemberDto data) {
 		
-		MemberDto result = showLoginView();
-		String id = result.getId();
-		String pwd = result.getPwd();
+		String id = data.getId();
+		String pwd = data.getPwd();
 		
 		//디비와 연결, 아이디 패스워드로 조회
 		
@@ -139,11 +140,21 @@ public class MemberController {
 			JDBCTemplate.close(rs);
 		}
 		
+		//로그인 처리
+		Main.loginUser = loginMember;
+		
+		//로그인 성공 여부 출력
+		if(Main.loginUser != null) {
+			System.out.println("로그인 성공!");
+		}else {
+			System.out.println("로그인 실패...");
+		}
+		
 		return loginMember;
 		
 	}//login
 	
-	public MemberDto showLoginView() {
+	public void login() {
 		Scanner sc = new Scanner(System.in);
 		String id = sc.nextLine();
 		String pwd = sc.nextLine();
@@ -154,14 +165,119 @@ public class MemberController {
 		dto.setId(id);
 		dto.setPwd(pwd);
 		
-		return dto;
+		login(dto);
 	}
 
+	/*
+	 * 0. 로그인 여부 체크
+	 * 1. 현재 회원 정보 보여주기
+	 * 2. 변경할건지 물어보기
+	 * 3. 변경할 데이터 입력받기
+	 * 4. SQL 실행
+	 * 5. 실행 결과에 따라, 서비스 로직 실행
+	 */
 	public void edit() {
+		
+		//로그인 여부 체크
+		if(Main.loginUser == null) {
+			System.out.println("로그인을 먼저 해주세요");
+			return;
+		}
+		
+		//현재 회원 정보 보여주기
+		System.out.println("===== 마이페이지(회원정보) =====");
+		System.out.println(Main.loginUser);
+		
+		//변경할건지 물어보기
+		System.out.println("회원 정보를 수정 하시겠습니까?(Y/N)");
+		
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		
+		if(input.equals("Y")) {
+			//수정함
+			memberUpdate();
+		}else {
+			//수정안함
+			return;
+		}
+		
+		
+		
+	}//edit
+	
+	private void memberUpdate() {
+		//변경할 데이터 입력받기
+		//비번, 닉네임
+		System.out.println("변경하실 항목을 선택하세요");
+		System.out.println("1. 비밀번호 변경");
+		System.out.println("2. 닉네임 변경");
+		System.out.println("3. 처음으로 돌아가기");
+		
+//		int input = InputUtil.sc.nextInt();
+//		InputUtil.sc.nextLine();
+		
+		int n = InputUtil.getInt();
+		switch(n) {
+		case 1 : 
+			updatePwd(); 
+			break;
+		case 2 : 
+			updateNick(); 
+			break;
+		case 3 : return;
+		default : 
+			System.out.println("잘못입력하셨습니다. 처음으로 돌아갑니다.");
+			return;
+		}
+		
+	}//method
+	
+	private void updateNick() {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	private void updatePwd() {
+		// 비밀번호 변경
+		
+		// 현재비밀번호 확인
+		System.out.print("현재 비밀번호 : ");
+		String pwd = InputUtil.sc.nextLine();
+		
+		// 변경할 비밀번호 입력
+		System.out.print("변경할 비밀번호 : ");
+		String newPwd = InputUtil.sc.nextLine();
+		
+		// 변경할 비밀번호 재입력
+		System.out.print("변경할 비밀번호 재입력 : ");
+		String newPwd2 = InputUtil.sc.nextLine();
+		
+		//비번 맞는지 체크,
+		MemberDto dto = new MemberDto();
+		dto.setId(Main.loginUser.getId());
+		dto.setPwd(pwd);
+		
+		MemberDto pwdCheckResult = login(dto);
+		if(pwdCheckResult == null) {
+			//비번 틀림
+			System.out.println("기존 비밀번호 일치하지 않음!!!");
+			return;
+		}
+		
+		//신규 비번 2개가 일치하는지
+		if(!newPwd.equals(newPwd2)) {
+			System.out.println("신규 비밀번호가 일치하지 않음");
+			return;
+		}
+		//현재비번과 신규비번이 같은지
+		if(pwd.equals(newPwd)) {
+			System.out.println("기존 비밀번호와 신규 비밀번호가 같습니다.");
+			return;
+		}
+		
+	}
+
 	public void loginCheck(MemberDto dto) {
 		if(dto != null) {
 			System.out.println("----- 로그인유저정보 -----");
