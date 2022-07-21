@@ -143,20 +143,15 @@ public class MemberController {
 		//로그인 처리
 		Main.loginUser = loginMember;
 		
-		//로그인 성공 여부 출력
-		if(Main.loginUser != null) {
-			System.out.println("로그인 성공!");
-		}else {
-			System.out.println("로그인 실패...");
-		}
-		
 		return loginMember;
 		
 	}//login
 	
 	public void login() {
 		Scanner sc = new Scanner(System.in);
+		System.out.print("아이디 : ");
 		String id = sc.nextLine();
+		System.out.print("비밀번호 : ");
 		String pwd = sc.nextLine();
 		
 //		String[] strArr = {id, pwd};
@@ -165,7 +160,17 @@ public class MemberController {
 		dto.setId(id);
 		dto.setPwd(pwd);
 		
+		//실제 로그인 처리
 		login(dto);
+		
+		//로그인 성공 여부 판단
+		if(Main.loginUser != null) {
+			System.out.println("로그인 성공!");
+		}else {
+			System.out.println("로그인 실패...");
+		}
+		
+		
 	}
 
 	/*
@@ -276,6 +281,41 @@ public class MemberController {
 			return;
 		}
 		
+		//입력받은 정보로 update 진행
+		updatePwd(Main.loginUser.getId() , newPwd);
+		
+	}//method
+	
+	private void updatePwd(String id, String newPwd) {
+		//커넥션 객체 준비
+		Connection conn = JDBCTemplate.getConnection();
+		//SQL 작성
+		String sql = "UPDATE MEMBER SET PWD = ? WHERE ID = ?";
+		//SQL 객체에 담기 (+SQL 완성)
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPwd);
+			pstmt.setString(2, id);
+			//SQL 실행 (실행결과 저장)
+			int result = pstmt.executeUpdate();
+			//실행 결과에 따른 로직 처리
+			if(result == 1) {
+				//성공
+				System.out.println("비밀번호 변경 성공!");
+				conn.commit();
+			}else {
+				//실패
+				System.out.println("비밀번호 변경 실패 ...");
+				conn.rollback();
+			}
+		} catch (SQLException e) {
+			JDBCTemplate.rollback(conn);
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+			JDBCTemplate.close(pstmt);
+		}
 	}
 
 	public void loginCheck(MemberDto dto) {
