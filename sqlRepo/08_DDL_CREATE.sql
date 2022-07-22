@@ -114,10 +114,89 @@ SELECT * FROM STUDENT;
 
 -- 기본키
 
+/*
+    <기본키>
+        테이블에서 한 행의 정보를 식별하기 위해 사용할 컬럼에 부여하는 제약조건
+        각 행들을 구분할 수 있는 식별자
+        기본 키 제약조건 설정 시, 자동으로 NOT NULL + UNIQUE 조건이 설정됨
+        한 테이블에 한개만 설정할 수 있다. (여러개의 칼럼을 묶어서 기본키로 지정 가능)
+        컬럼 레벨, 테이블레벨 설정 모두 가능
+*/
+
+DROP TABLE TB_MEMBER;
+
+CREATE TABLE TB_MEMBER(
+    ID VARCHAR2(100) PRIMARY KEY
+    , PWD VARCHAR2(100)
+    , NICK VARCHAR2(100)
+);
+
+INSERT INTO TB_MEMBER VALUES(NULL, '1234', 'NICK01');
 
 
+DROP TABLE TB_MEMBER;
+
+CREATE TABLE TB_MEMBER(
+    ID VARCHAR2(100)
+    , PWD VARCHAR2(100)
+    , NICK VARCHAR2(100)
+    , CONSTRAINT MEMBER_PK_ID_PWD PRIMARY KEY(ID,PWD) --복합키
+);
+
+INSERT INTO TB_MEMBER VALUES(NULL, '1234', 'NICK01');
+INSERT INTO TB_MEMBER VALUES('USER01', NULL, 'NICK01');
+
+INSERT INTO TB_MEMBER VALUES('USER01', '4321', 'NICK01');
 
 
+/*
+    <외래키>
+        다른 테이블에 존재하는 값만을 가져와야 하는칼럼에 부여 (NULL 가능)
+        
+        [문법]
+            1) 칼럼 레벨
+                칼럼명 자료형(크기) [CONSTRAINT 제약조견명] REFERENCES 참조테이블명 [(기본키)] [삭제롤]
+                
+            2) 테이블 레벨
+                [CONSTRAINT 제약조건명] FOREIGN KEY(칼럼명) REFERENCES 참조테이블명 [(기본키)] [삭제롤]
+                
+        [삭제롤]
+            부모테이블의 데이터가 삭제됐을 때 옵션
+            1) ON DELETE RESTRICT   : 
+                자식 테이블의 참조 키가 부모 테이블의 키 값을 참조하는 경우,
+                부모 테이블의행을 삭제할 수 없다. (기본옵션)
+            2) ON DELETE SET NULL   :
+                부모테이블의 데이터 삭제 시, 참조하고 있는 자식 테이블의 칼럼 값이 NULL 로 변경
+            3) ON DELETE CASCADE    :
+                부모테이블의 데이터 삭제 시, 참조하고 있는 자식 테이블의 칼럼 값이 존재하는 행 전체 삭제
+*/
+
+
+DROP TABLE STUDENT;
+CREATE TABLE STUDENT(
+    NO NUMBER PRIMARY KEY
+    , NAME VARCHAR2(100) NOT NULL
+);
+
+DROP TABLE SCORE;
+CREATE TABLE SCORE(
+    STD_NO NUMBER REFERENCES STUDENT--(NO) --ON DELETE CASCADE
+    , SCORE NUMBER NOT NULL
+);
+
+INSERT INTO STUDENT(NO, NAME) VALUES(1, '일번학생');
+INSERT INTO STUDENT(NO, NAME) VALUES(2, '이번학생');
+INSERT INTO STUDENT(NO, NAME) VALUES(3, '삼번학생');
+SELECT * FROM STUDENT;
+
+INSERT INTO SCORE(STD_NO, SCORE) VALUES(1, 100);
+INSERT INTO SCORE(STD_NO, SCORE) VALUES(2, 90);
+INSERT INTO SCORE(STD_NO, SCORE) VALUES(3, 80);
+SELECT * FROM SCORE;
+
+INSERT INTO SCORE(STD_NO, SCORE) VALUES(5, 99);
+
+DELETE STUDENT WHERE NO = 1;
 
 
 
