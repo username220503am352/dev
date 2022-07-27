@@ -1,0 +1,64 @@
+-- MINI SCRIPT
+
+-------------------------------------------------------
+-- MEMBER 
+-------------------------------------------------------
+DROP TABLE MEMBER;
+CREATE TABLE MEMBER(
+    NO NUMBER PRIMARY KEY
+    , ID VARCHAR2(100) NOT NULL UNIQUE
+    , PWD VARCHAR2(100) NOT NULL
+    , NICK VARCHAR2(100) NOT NULL
+    , ENROLL_DATE TIMESTAMP DEFAULT SYSDATE
+    , MODIFY_DATE TIMESTAMP DEFAULT SYSDATE
+    , QUIT_YN CHAR(1) DEFAULT 'N' CHECK( QUIT_YN IN('Y','N') ) NOT NULL
+);
+
+DROP SEQUENCE SEQ_MEMBER_NO;
+CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE NOCYCLE;
+
+INSERT INTO MEMBER (NO, ID, PWD, NICK) VALUES(SEQ_MEMBER_NO.NEXTVAL , 'ADMIN', '1234', '관리자');
+COMMIT;
+
+
+
+
+
+
+
+
+--TEST 목적. 사용 후 지우기----------------
+SELECT 
+    NO
+    , ID
+    , NICK
+FROM MEMBER
+WHERE ID = 'ADMIN'
+AND PWD = '1234'
+AND QUIT_YN = 'N'
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
