@@ -3,6 +3,7 @@ package com.kh.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.kh.common.JDBCTemplate;
 
@@ -40,6 +41,35 @@ public class MemberDao {
 		
 		return vo;
 	}
+
+	
+	public int join(MemberVo vo, Connection conn) throws Exception {
+		//DB insert
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			//SQL 준비
+			String sql = "INSERT INTO MEMBER(NO, ID, PWD, NICK) VALUES(SEQ_MEMBER_NO.NEXTVAL , ?, ?, ?)";
+			
+			//SQL 담을 객체 만들기
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPwd());
+			pstmt.setString(3, vo.getNick());
+			
+			//SQL 실행 및 결과 저장
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}//method
 
 }//class
 

@@ -42,6 +42,46 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+	}//login
+	
+	
+	/*
+	 * 회원가입
+	 * 
+	 * 데이터 입력받기
+	 * - 아이디 유효성 검사
+	 * - 비밀번호 유효성 검사
+	 * - 아이디 중복 검사
+	 * 
+	 * DB 에 insert 
+	 * 
+	 * insert 결과에 따라 다음 작업 진행
+	 */
+	public void join() {
+		System.out.println("----- 회원가입 -----");
+		System.out.print("아이디 : ");
+		String id = InputUtil.sc.nextLine();
+		System.out.print("비밀번호 : ");
+		String pwd = InputUtil.sc.nextLine();
+		System.out.print("비밀번호 확인 : ");
+		String pwd2 = InputUtil.sc.nextLine();
+		System.out.print("닉네임 : ");
+		String nick = InputUtil.sc.nextLine();
+		
+		MemberVo vo = new MemberVo();
+		vo.setId(id);
+		vo.setNick(nick);
+		vo.setPwd(pwd);
+		vo.setPwd2(pwd2);
+		
+		int result = new MemberService().join(vo);
+		
+		//실행 결과에 따른 응답
+		if(result == 1) {
+			System.out.println("회원가입 성공 !");
+		}else {
+			System.out.println("[ERROR:" + result + "] 회원가입 실패 ...");
+		}
 	}
 
 }//class

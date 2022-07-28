@@ -30,7 +30,7 @@ public class Main {
 				new MemberController().login(); 
 				break;
 			case 2: 
-				/*회원가입*/ 
+				new MemberController().join();
 				break;
 			case 3:
 				/* 게시판 */ 
