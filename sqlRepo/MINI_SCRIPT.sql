@@ -3,7 +3,7 @@
 -------------------------------------------------------
 -- MEMBER 
 -------------------------------------------------------
-DROP TABLE MEMBER;
+DROP TABLE MEMBER CASCADE CONSTRAINTS;
 CREATE TABLE MEMBER(
     NO NUMBER PRIMARY KEY
     , ID VARCHAR2(100) NOT NULL UNIQUE
@@ -22,22 +22,34 @@ COMMIT;
 
 
 
+-------------------------------------------------------
+-- BOARD 
+-------------------------------------------------------
 
+-- 글 번호, 제목, 내용, 작성자회원번호, 작성일시, 수정일시, 상태
+DROP TABLE BOARD CASCADE CONSTRAINTS;
+CREATE TABLE BOARD(
+    NO NUMBER PRIMARY KEY
+    , TITLE VARCHAR2(100) NOT NULL
+    , CONTENT VARCHAR2(4000) NOT NULL
+    , WRITER_NO NUMBER NOT NULL
+    , ENROLL_DATE TIMESTAMP DEFAULT SYSDATE
+    , MODIFY_DATE TIMESTAMP DEFAULT SYSDATE
+    , STATUS CHAR(1) DEFAULT 'Y' CHECK( STATUS IN('Y','N') )
+);
 
+DROP SEQUENCE SEQ_BOARD_NO;
+CREATE SEQUENCE SEQ_BOARD_NO NOCACHE NOCYCLE;
 
+--외래키
+ALTER TABLE BOARD ADD CONSTRAINT BOARD_MEMBER_FK FOREIGN KEY(WRITER_NO) REFERENCES MEMBER;
 
+--더미 데이터
+INSERT INTO BOARD(NO, TITLE, CONTENT, WRITER_NO)
+VALUES(SEQ_BOARD_NO.NEXTVAL, '이건제목ㅋㅋ', '안녕하세요 ㅎㅎ 여기는 내용 ~~~' , 1);
+COMMIT;
 
 --TEST 목적. 사용 후 지우기----------------
-SELECT 
-    NO
-    , ID
-    , NICK
-FROM MEMBER
-WHERE ID = 'ADMIN'
-AND PWD = '1234'
-AND QUIT_YN = 'N'
-;
-
 
 
 

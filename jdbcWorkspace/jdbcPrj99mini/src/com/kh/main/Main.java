@@ -1,5 +1,6 @@
 package com.kh.main;
 
+import com.kh.board.BoardController;
 import com.kh.member.MemberController;
 import com.kh.member.MemberVo;
 import com.kh.menu.Menu;
@@ -33,7 +34,11 @@ public class Main {
 				new MemberController().join();
 				break;
 			case 3:
-				/* 게시판 */ 
+				/* 게시판 글 작성 */ 
+				new BoardController().write();
+				break;
+			case 4:
+				/* 게시판 리스트 조회*/ 
 				break;
 			}//switch
 		}//while
