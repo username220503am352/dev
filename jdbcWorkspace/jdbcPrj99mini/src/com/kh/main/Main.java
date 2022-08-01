@@ -39,7 +39,12 @@ public class Main {
 				break;
 			case 4:
 				/* 게시판 리스트 조회*/ 
+				new BoardController().showList();
 				break;
+			case 9:
+				/* 프로그램 종료 */
+				System.out.println("프로그램을 종료합니다.");
+				return ;
 			}//switch
 		}//while
 		

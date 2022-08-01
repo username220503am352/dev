@@ -27,9 +27,6 @@ public class BoardVo {
 		this.status = status;
 	}
 
-
-
-
 	private int no;
 	private String title;
 	private String content;

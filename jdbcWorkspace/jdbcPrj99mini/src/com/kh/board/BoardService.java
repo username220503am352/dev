@@ -1,6 +1,9 @@
 package com.kh.board;
 
 import java.sql.Connection;
+import java.util.List;
+
+import com.kh.common.JDBCTemplate;
 
 import static com.kh.common.JDBCTemplate.*;
 
@@ -50,7 +53,26 @@ public class BoardService {
 		}
 		
 		return result;
+	}//method
+	
+	
+	public List<BoardVo> showList() {
+		
+		Connection conn = null;
+		List<BoardVo> boardVoList = null;
+		try {
+			conn = JDBCTemplate.getConnection();
+			
+			boardVoList = new BoardDao().showList(conn);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return boardVoList;
 	}
+	
 
 }//class
 
