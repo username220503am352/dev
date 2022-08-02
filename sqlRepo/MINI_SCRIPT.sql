@@ -49,8 +49,9 @@ INSERT INTO BOARD(NO, TITLE, CONTENT, WRITER_NO)
 VALUES(SEQ_BOARD_NO.NEXTVAL, '이건제목ㅋㅋ', '안녕하세요 ㅎㅎ 여기는 내용 ~~~' , 1);
 COMMIT;
 
---TEST 목적. 사용 후 지우기----------------
 
+
+--TEST 목적. 사용 후 지우기----------------
 
 
 

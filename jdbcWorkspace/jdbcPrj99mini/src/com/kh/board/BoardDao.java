@@ -5,10 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import com.kh.common.JDBCTemplate;
+import static com.kh.common.JDBCTemplate.*;
 
 public class BoardDao {
 	
@@ -41,7 +40,7 @@ public class BoardDao {
 			//SQL 실행 및 결과 저장
 			result = pstmt.executeUpdate();
 		}finally {
-			JDBCTemplate.close(pstmt);
+			close(pstmt);
 		}
 		
 		return result;
@@ -84,14 +83,66 @@ public class BoardDao {
 			}
 			
 		}finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(pstmt);
+			close(rs);
+			close(pstmt);
 		}
 		
 		//SQL 실행 결과 리턴
 		return boardVoList;
 		
 	}//method
+
+	
+	/*
+	 * 게시글 상세 조회
+	 */
+	public BoardVo showDetailByNo(Connection conn, int num) throws Exception {
+		//connection 준비
+		
+		//SQL 준비
+		String sql = "SELECT B.NO , B.TITLE , B.CONTENT , B.WRITER_NO , B.ENROLL_DATE , B.MODIFY_DATE , M.NICK FROM BOARD B JOIN MEMBER M ON B.WRITER_NO = M.NO WHERE B.NO = ? AND B.STATUS = 'Y'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardVo vo = null;
+		
+		try {
+			//SQL 객체에 담기 및 쿼리 완성하기
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			//SQL 실행 및 결과 저장
+			rs = pstmt.executeQuery();
+			
+			//ResultSet -> 자바객체
+			if(rs.next()) {
+				int no = rs.getInt("NO");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				String writerNo = rs.getString("WRITER_NO");
+				Timestamp enrollDate = rs.getTimestamp("ENROLL_DATE");
+				Timestamp modifyDate = rs.getTimestamp("MODIFY_DATE");
+				String nick = rs.getString("NICK");
+				
+				vo = new BoardVo();
+				vo.setNo(no);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setWriter(nick);
+				vo.setEnrollDate(enrollDate);
+				vo.setModifyDate(modifyDate);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		//실행결과(자바객체) 리턴
+		return vo;
+	}
 	
 	
 

@@ -89,16 +89,24 @@ public class BoardController {
 		
 		//상세조회 할건지 물어보기
 		//출력문, 입력받기
-		int no = new Menu().showBoardDetailMenu();
+		int num = new Menu().showBoardDetailMenu();
 		
 		//0번 입력받으면 ? -> 메인메뉴로 // return
-		if(no == 0) {
+		if(num == 0) {
 			System.out.println("메인메뉴로 돌아갑니다.");
 			return;
 		}
 		
 		//글번호 받으면 ? -> 해당 글 상세조회 //새로운 service 호출
-		//BoardVo x = new BoardService().showBoardDetail();
+		BoardVo vo = new BoardService().showDetailByNo(num);
+		
+		//실행결과(게시글 객체) 화면에 보여주기
+		System.out.println("\n----- 게시글 상세조회 -----");
+		System.out.print("제목 : " + vo.getTitle() + " | ");
+		System.out.print("작성자 : " + vo.getWriter() + " | ");
+		System.out.print("작성일 : " + vo.getEnrollDate());
+		System.out.println();//줄바꿈
+		System.out.println("내용 : " + vo.getContent());
 		
 		
 	}//method

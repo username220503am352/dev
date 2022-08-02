@@ -72,6 +72,28 @@ public class BoardService {
 		
 		return boardVoList;
 	}
+
+
+	/*
+	 * 게시글 상세조회
+	 */
+	public BoardVo showDetailByNo(int num) {
+		
+		Connection conn = null;
+		BoardVo vo = null;
+		
+		try {
+			conn = getConnection();
+			vo = new BoardDao().showDetailByNo(conn, num);
+		}catch(Exception e) {
+			System.out.println("[ERROR] 게시글 상세조회 중 예외 발생 !!!");
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return vo;
+	}
 	
 
 }//class
