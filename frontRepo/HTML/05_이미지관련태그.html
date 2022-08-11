@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 관련 태그</title>
+</head>
+<body>
+
+    <h1>이미지 관련 태그</h1>
+
+    <h2>img 태그</h2>
+    <h3>src 속성과 alt 속성</h3>
+    <!-- 
+        src 속성 : 이미지 경로 설정 
+        alt 속성 : (경로가 잘못된 경우 || 이미지를 제대로 표현할 수 없는 경우) 대체 텍스트
+     -->
+    <img src="../resources/imgs/IU.jpg" alt="아이유사진ㅋㅋ">
+
+    <hr>
+
+    <h3>width 속성과 height 속성</h3>
+
+    <!-- 
+        width ,height 속성을이용하여 너비와 높이 지정 가능
+        px || % 로 크기 지정 가능
+     -->
+    <img width="300px" height="300px" src="../resources/imgs/IU.jpg" alt="아이유사진ㅋㅋ">
+    <br>
+    <img width="50%" height="300px" src="../resources/imgs/IU.jpg" alt="아이유사진ㅋㅋ">
+    <br>
+    <img width="50%" height="50%" src="../resources/imgs/IU.jpg" alt="아이유사진ㅋㅋ">
+
+    <hr>
+
+    <h4>이미지 구역을 나누어 각각 링크 설정</h4>
+
+    <img src="../resources/imgs/IU.jpg" alt="아이유사진ㅋㅋ" usemap="#map">
+
+    <map name="map">
+        <area shape="rect" href="http://www.daum.net" alt="아이유사진ㅋㅋ" target="_self" coords="0,0,100,400">
+        <area shape="rect" href="http://www.google.com" alt="아이유사진ㅋㅋ" target="_self" coords="300,0,600,400">
+    </map>
+     
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
