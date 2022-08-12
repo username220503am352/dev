@@ -89,15 +89,186 @@
             <option value="red">빨간색</option>
         </datalist>
 
-        <!-- type="password" : 비밀번호 -->
-        여기는 ... 내일....
+        <br><br>
 
+        <!-- type="password" : 비밀번호 -->
+        <label>비밀번호 : </label>
+        <input type="password" name="userPwd" size="10" maxlength="15" placeholder="비밀번호를 입력하세요" required>
+
+        <br><br>
+
+        <label>검색 : </label>
+        <input type="search" name="s" placeholder="검색할 내용을 입력하세요">
+
+        <br><br>
+
+        <label>홈페이지 : </label>
+        <input type="url" name="myHomePage" value="https://~~~">
+
+        <br><br>
+
+        <label for="">이메일</label>
+        <input type="email" name="userEmail" placeholder="이메일을 입력하세요">
+
+        <br><br>
+
+        <label for="">전화번호</label>
+        <input type="tel" name="userPhone" placeholder="전화번호를 입력하세요">
 
         <br><br>
 
         <input type="submit" value="회원가입">
+        <input type="reset" value="취소하기">
 
     </form>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+
+    <h3>숫자와 관련된 input 태그들</h3>
+    <form action="">
+
+        <label for="">수량 : </label>
+        <input type="number" name="amount" value="0" min="0" max="1000" step="10">
+
+        <br><br>
+
+        <input type="range" name="price" max="1000" value="300" step="200">
+
+    </form>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+
+    <h3>날짜/시간 관련 input 태그</h3>
+    <form action="">
+        <label for="dateInput">date : </label>
+        <input type="date" name="dday" value="2022-09-23" id="dateInput">
+
+        <br><br>
+
+        <label for="">month : </label>
+        <input type="month" name="dday" value="2022-09">
+
+        <br><br>
+
+        <label for="">week : </label>
+        <input type="week" name="dday">
+
+        <br><br>
+
+        <label for="">time : </label>
+        <input type="time" name="dday">
+
+        <br><br>
+
+        <label for="">datetime : </label>
+        <input type="datetime-local" name="dday">
+
+        <br><br>
+
+    </form>
+
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <h3>라디오 버튼과 체크박스</h3>
+    <form action="">
+
+        <!-- 
+            radio : 여러 항목 중 하나만 선택하는 경우 사용
+            name 속성값을 같게 줘야 함
+        -->
+
+        <input type="radio" name="mbti" id="r01" value="yyyes"> <label for="r01">매우 그렇다</label>
+        <input type="radio" name="mbti" id="r02" value="yes"> <label for="r02">그렇다</label>
+        <input type="radio" name="mbti" id="r03" value="ok"> <label for="r03">보통이다</label>
+        <input type="radio" name="mbti" id="r04" value="no"> <label for="r04">그렇지 않다</label>
+        <input type="radio" name="mbti" id="r05" value="nnnoooo"> <label for="r05">전혀 그렇지 않다</label>
+
+        <!-- 
+            checkbox : 여러항목 중 여러가지 선택 할 경우
+            name 속성값을 같게 줘야 함
+        -->
+
+        <br><br>
+
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" name="hobby" value="game" id="h01"> <label for="h01">게임</label> 
+            <input type="checkbox" name="hobby" value="workout" id="h02"> <label for="h02">운동</label>
+            <input type="checkbox" name="hobby" value="sleep" id="h03"> <label for="h03">눕기</label>
+            <input type="checkbox" name="hobby" value="book" id="h04"> <label for="h04">독서</label>
+            <input type="checkbox" name="hobby" value="breath" id="h05"> <label for="h05">끝장나게 숨쉬기</label>
+        </fieldset>
+
+        <input type="submit">
+        <input type="reset">
+
+    </form>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <h3>기타 input 태그들</h3>
+    <form action="test">
+
+        <label for="">색상 : </label><input type="color" name="myColor">
+
+        <br><br>
+
+        <label for="">파일선택 : </label><input type="file" name="f">
+
+        <br><br>
+
+        <input type="hidden" name="userNo" value="777">
+
+        <input type="button" value="버튼ㅋㅋ">
+        <button type="button">그냥버튼태그ㅋㅋ</button>
+
+        <input type="submit">
+
+    </form>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <h3>여러 값 표현 태그</h3>
+    <form action="">
+
+        <!-- 
+            select , option
+            사용자가 입력하는것이 아닌, 옵션 중에서 선택하게 하고싶을 때 사용
+        -->
+        <label for="">음식</label>
+        <select name="food">
+            <option value="chicken">치킨</option>
+            <option value="pizza">하와이안피자</option>
+            <option value="1gkfajsl">보쌈</option>
+            <option value="ice">민트초코맛 팥빙수</option>
+            <option value="tako">타코야끼</option>
+            <option value="mara">마라샹궈</option>
+            <option value="ssam" selected>월남쌈</option>
+        </select>
+
+        <br><br>
+
+        <textarea name="content" cols="30" rows="5" style="resize: none;" placeholder="내용을 입력하세요"></textarea>
+
+        <input type="submit">
+
+
+
+    </form>
+
 
 
 
