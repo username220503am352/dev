@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문관리</title>
+</head>
+<body>
+    <h1>주문관리</h1>
+    <form>
+        <fieldset>
+            <legend>주문자 정보</legend>
+            <ol>
+                <li><label>주문자명 : <input type="text" placeholder="name"></label></li>
+                <br>
+                <li><label>email : <input type="email" placeholder="1dragon@yaho.com"></label></li>
+                <br>
+                <li><label>홈페이지 : <input type="url" placeholder="http://"></label></li>
+            </ol>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>주문정보</legend>
+            <ul>
+                <li><label>상품명 : <input type="text"></label></li>
+                <br>
+                <li><label>주문수량 : <input type="number" min="100" placeholder="최소 100"></label></li>
+                <br>
+                <li><label>할인율 : <input type="range"></label></li>
+                <br>
+                <li><label>요청사항 : <textarea type="text"></textarea></label></li>
+            </ul>
+        </fieldset>
+
+        <br>
+
+        <button type="submit">주문하기</button>
+
+    </form>
+</body>
+</html>
