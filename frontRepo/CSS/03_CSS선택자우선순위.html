@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+    <style>
+
+        h1{
+            color:yellow;
+        }
+
+        h1{
+            color: green;
+        }
+
+        #test1{
+            background-color: pink;
+        }
+
+        .test1{
+            background-color: red;
+            color: blue;
+        }
+
+        div{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+
+        #test2{
+            width:300px;
+            height: 300px;
+            background-color: blue;
+        }
+
+        .test2{
+            background-color: red;
+        }
+
+        p{
+            background-color: pink !important;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <p>
+        기본적으로 CSS 속성은 위에서 아래로 적용
+        같은 요소에 다양한 선택자로 CSS 속성이 설정된 경우,
+        우선순위에 따라 스타일 적용
+        <br>
+        태그선택자 &lt; 클래스 선택자 &lt; 아이디 선택자 &lt; 인라인 스타일 &lt; !important
+    </p>
+
+    <hr>
+
+    <h2>선택자 우선순위 테스트</h2>
+
+    <div id="test1" class="test1" style="background-color: red;">우선순위 테스트1</div>
+
+    <p id="test2" class="test2">우선순위 테스트2</p>
+
+</body>
+</html>

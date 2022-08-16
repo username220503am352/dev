@@ -1,0 +1,230 @@
+/* 속성 선택자 테스트 */
+
+/* div 중에 name 속성을 가지고 있는 태그 */
+/* div[name]{
+    background-color: red;
+} */
+
+/* div 중에 name 속성값 이 name1 인 태그 */
+div[name=name1]{
+    background-color: red;
+}
+
+/* div 중에 name 속성값에 name1 이 포함되어있는 태그 */
+/* 속성값 은 띄어쓰기로 구분 */
+div[name~=name1]{
+    background-color: blue;
+}
+
+/* div 중에 class 속성값이 class로 시작되는 태그 */
+/* 속성값은 - 으로 구분된 단어 기준 */
+div[class|=class]{
+    background-color: green;
+}
+
+/* div 중에 name 속성이 name 으로 시작되는 태그 */
+div[name^=name]{
+    background-color: pink;
+}
+
+/* div 중에 class 속성이 class 로 끝나는 태그 */
+/* 문자열로 가능 */
+div[class$=ss]{
+    background-color: violet;
+}
+
+/* div 중에 class 속성에 d 를 포함하는 태그 */
+div[class*=d]{
+    background-color: darkgreen;
+}
+
+/* 클래스 div-class 인 요소 중, name 속성값에 name3 가 포함된 요소 */
+.div-class[name~=name1]{
+    background-color: deeppink;
+}
+
+/* ---------------------------------------------- */
+/* 자식선택자 와 자손선택자 */
+
+/* 자식 선택자 */
+#test1>h4{
+    background-color: red;
+}
+
+/* 자식의 자식 선택 */
+#test1>ul>h4{
+    background-color: blue;
+}
+
+/* 자손 선택자 */
+#test1 li{
+    background-color: violet;
+}
+
+/* --------------------------------------------- */
+/* 동위 선택자 */
+
+#div-test{
+    background-color: red;
+}
+
+/* 바로 뒤 한개만 선택 */
+#div-test + div{
+    background-color: blue;
+}
+
+/* 선택자 뒤 모든 요소 선택 */
+#div-test ~ div{
+    /* background-color: green; */
+}
+
+/* ----------------------------------- */
+/* 반응 선택자 테스트 */
+
+#active-test, #hover-test{
+    background-color: gray;
+    width: 300px;
+    height: 300px;
+}
+
+#active-test:active{
+    background-color: red;
+    color: blue;
+}
+
+#hover-test:hover{
+    background-color: blue;
+    color:red;
+}
+
+#hover-test:active{
+    background-color: black;
+    color:white;
+}
+
+/* -------------------------------------------------------------------- */
+/* 상태 선택자 */
+
+/* checked */
+input[type=checkbox]:checked{
+    width: 30px;
+    height: 30px;
+}
+
+input:checked+label{
+    font-size: 2rem;
+}
+
+/* focus */
+#userId:focus , #userPwd:focus{
+    background-color: skyblue;
+    color: red;
+}
+
+/* enabled , disabled*/
+option:enabled{
+    background-color: pink;
+}
+option:disabled{
+    background-color: gray;
+}
+
+button:enabled{
+    color: green;
+}
+button:disabled{
+    color: white;
+}
+
+/* ---------------------------------------------------- */
+/* 일반 구조 선택자 */
+
+/* 형제 관계 태그 중 첫번째 */
+#test2 p:first-child{
+    background-color: red;
+    color: blue;
+}
+
+/* 형제 관계 태그 중 마지막 */
+#test2 p:last-child{
+    background-color: blue;
+    color: red;
+}
+
+/* n번째 태그 선택 */
+/* odd, even, 2n, 3n ... */
+#test2 p:nth-child(even){
+    background-color: green;
+    color: white;
+}
+
+/* 뒤에서 n번째 태그 선택 */
+#test2 p:nth-last-child(even){
+    background-color: pink;
+    color: white;
+}
+
+/* -------------------------------------- */
+/* 형태 구조 선택자 */
+
+/* 형제 관계 태그 중 첫번째 */
+#test3 p:first-of-type{
+    background-color: red;
+    color: blue;
+}
+
+/* 형제 관계 태그 중 마지막 */
+#test3 p:last-of-type{
+    background-color: blue;
+    color: red;
+}
+
+/* n번째 태그 선택 */
+#test3 p:nth-of-type(2){
+    background-color: green;
+    color: red;
+}
+
+/* 뒤에서 n번째 태그 선택 */
+#test3 p:nth-last-of-type(2){
+    background-color: pink;
+    color: red;
+}
+
+/* --------------------------------------------- */
+/* 문자 선택자 */
+
+/* 첫번째 글자를 선택 */
+#test4 p::first-letter{
+    font-size: 2rem;
+}
+
+/* 첫번째 라인을 선택 */
+#test4 p::first-line{
+    background-color: beige;
+}
+
+/* 태그 앞 공간 선택 */
+#test4 p::before{
+    content: "여기는 비포 영역ㅋㅋ";
+}
+
+/* 태그 뒤 공간 선택 */
+#test4 p::after{
+    content: "여기는 애프터 영역ㅋㅋ";
+}
+
+/* 드래그한 영역 선택 */
+#test4 p::selection{
+    background-color: yellowgreen;
+}
+
+/* 부정 선택자 테스트 */
+#test5 p:not(.p){
+    background-color: green;
+}
+
+
+
+
+

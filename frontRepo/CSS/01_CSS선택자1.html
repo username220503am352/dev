@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS선택자1</title>
+    <!-- 
+        내부 스타일 시트 
+        현재 문서에 style 태그 내부에 스타일 정보를 작성 (==같은 문서 내 스타일 존재)
+    -->
+    <style>
+        /* CSS 주석 */
+
+        /* 모든 요소 선택자 */
+        *{
+            color: black;
+        }
+
+        /* 태그 선택자 */
+        p{
+            color: orange;
+        }
+
+        /* 아이디 선택자 */
+        #t1{
+            background-color: yellow;
+        }
+
+        #t2{
+            background-color: blue;
+        }
+
+        /* 클래스 선택자 */
+        .c1{
+            background-color: red;
+        }
+
+        .c2{
+            background-color: blue;
+        }
+
+        .test{
+            font-size: 1.5rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <h1>CSS선택자1</h1>
+
+    <!-- 
+        선택자란?
+        특정 HTML 요소를 선택할 때 사용하는 기능
+        요소를 선택하여 원하는 스타일과 기능을 적용할 수 있다.
+     -->
+
+     <hr>
+
+     <h2>1. 모든 선택자(*)</h2>
+     <!-- 
+        HTML 문서 내 모든 태그를 선택
+      -->
+
+      <pre>
+        * {
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+      </pre>
+
+      <hr>
+
+      <h2>2. 태그 선택자(태그명)</h2>
+      <p>HTML 문서 내 같은 태그를 가진 모든 태그 선택</p>
+      <pre>
+        태그명 {
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+      </pre>
+
+      <hr>
+
+      <h2>3. 아이디 선택자(#아이디명)</h2>
+      <!-- 
+        HTML 문서 내 , 해당 아이디를 가진 태그만 선택할 때 사용
+       -->
+       <pre>
+        #아이디 {
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+      </pre>
+      <!-- ol>(li#t${아이디 선택자 테스트 $})*4 -->
+      <ol>
+        <li id="t1">아이디 선택자 테스트 1</li>
+        <li id="t2">아이디 선택자 테스트 2</li>
+        <li id="t3">아이디 선택자 테스트 3</li>
+        <li id="t4">아이디 선택자 테스트 4</li>
+      </ol>
+
+      <hr>
+
+      <h2>4. 클래스 선택자 (.클래스명)</h2>
+      <!-- 
+        HTML 문서 내, 여러 태그를 동일한 클래스명으로 지정하여 선택
+       -->
+       <pre>
+        .클래스명 {
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+      </pre>
+      
+      <!-- ul>(li.c1{클래스 선택자 테스트$})*5 -->
+      <ul>
+        <li class="c1">클래스 선택자 테스트1</li>
+        <li class="c2 test">클래스 선택자 테스트2</li>
+        <li class="c1 test">클래스 선택자 테스트3</li>
+        <li class="c2">클래스 선택자 테스트4</li>
+        <li class="c1">클래스 선택자 테스트5</li>
+      </ul>
+
+</body>
+</html>

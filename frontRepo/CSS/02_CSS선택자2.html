@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS선택자2</title>
+    <!-- 
+        외부 스타일 시트
+        스타일만 따로 작성하는 .css 확장자를 가진 외부 문서를 연결하는 방법
+     -->
+     <link rel="stylesheet" href="./02_CSS선택자2.css">
+</head>
+<body>
+    
+    <h1>CSS선택자2</h1>
+    
+
+    <hr>
+
+    <h2>1. 기본 속성 선택자</h2>
+    <!-- 
+        기본 선택자 뒤에 []를 사용하여 속성과 속성값을 사용
+     -->
+     <pre>
+        선택자[속성=속성값]{
+            속성 : 값;
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+     </pre>
+
+     <!-- (.div-class[name="name$"]{div$})*4 -->
+     <div class="div-class" name="name1">div1</div>
+     <div class="div-class" name="name2">div2</div>
+     <div class="div-class" name="name3 name1">div3</div>
+     <div class="class-div" name="name4">div4</div>
+
+
+     <hr>
+
+
+     <h2>2. 자식 선택자와 자손(후손) 선택자</h2>
+     <!-- 
+        자식 : 바로 하위 요소
+        자손(후손) : 하위 요소 전부
+      -->
+      <pre>
+        1) 자식 선택자
+        a>b{
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+
+        2) 자손 선택자
+        a b{
+            속성 : 값;
+            속성 : 값;
+            ...
+        }
+      </pre>
+
+      <div id="test1">
+        <h4>첫째</h4>
+        <h4>둘째</h4>
+        <h5>셋째(h5)</h5>
+        <ul>
+            <h4>ul의 자식 이면서 div의 자손</h4>
+            <li>ul의 자식 이면서 div의 자손</li>
+            <li>ul의 자식 이면서 div의 자손</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <h2>3. 동위 선택자</h2>
+      <!-- 
+        동위 관계에서 뒤에 위치한 태그를 선택할 때 사용
+       -->
+       <pre>
+        1) a 선택자 뒤에 있는 b 요소 한개 선택
+            a+b{
+                속성: 값;
+                속성: 값;
+                ...
+            }
+
+        2) a 선택자 뒤에 있는 모든 요소 b 선택
+            a~b{
+                속성: 값;
+                속성: 값;
+                ...
+            }
+       </pre>
+
+       <!-- div#div-test{div$}*5 -->
+       <div id="div-test">div1</div>
+       <div>div2</div>
+       <div>div3</div>
+       <div>div4</div>
+       <div>div5</div>
+
+
+       <hr>
+
+
+       <h2>4. 반응 선택자</h2>
+       <!-- 
+            사용자의 동작에 반응하는 선택자
+        -->
+        <pre>
+            1) 클릭에 반응
+            선택자:active{
+                속성: 값;
+                속성: 값;
+                ...
+            }
+
+            2) 마우스에 반응
+            선택자:hover{
+                속성: 값;
+                속성: 값;
+                ...
+            }
+        </pre>
+
+        <div id="active-test">액티브 테스트</div>
+        <br>
+        <div id="hover-test">호버 테스트</div>
+
+        <hr>
+
+        <h2>5. 상태 선택자</h2>
+        <!-- 
+            입력 양식의 상태에 따라 선택
+         -->
+         <pre>
+            1) 체크된 상태의 태그
+            선택자:checked{
+
+            }
+         </pre>
+
+         <input type="checkbox" name="game" id="maple"> 
+         <label for="maple">메이플</label>
+         <input type="checkbox" name="game" id="overwatch"> 
+         <label for="overwatch">오버워치</label>
+         <input type="checkbox" name="game" id="overcooked2"> 
+         <label for="overcooked2">오버쿡2</label>
+
+
+         <br><br>
+
+
+         <pre>
+            2) 초점이 맞춰진 태그 선택
+                선택자:focus{
+
+                }
+         </pre>
+
+         <input type="text" id="userId" placeholder="아이디를 입력하세요">
+         <br>
+         <input type="password" id="userPwd" placeholder="비밀번호를 입력하세요">
+
+
+         <br><br>
+
+
+         <pre>
+            3) 사용 가능한 태그 선택
+            선택자:enabled{
+
+            }
+
+            4) 사용 불가능한 태그 선택
+            선택자:disabled{
+                
+            }
+         </pre>
+
+         <h3>당신의 나이는?</h3>
+         <select name="" id="">
+            <option disabled>10대</option>
+            <option>20대</option>
+            <option>30대</option>
+            <option>40대</option>
+            <option>50대</option>
+            <option>60대</option>
+         </select>
+
+         <br>
+
+         <button disabled>버튼1</button>
+         <button>버튼2</button>
+
+         <hr>
+
+         <h2>6. 일반 구조 선택자</h2>
+         <!-- 
+            특정 위치에 있는 태그 선택
+          -->
+          <div id="test2">
+            <!-- <pre>테스트0</pre> -->
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <!-- <pre>테스트6</pre> -->
+          </div>
+
+          <hr>
+
+          <h2>7. 형태 구조 선택자 </h2>
+          <!-- 
+            특정한 위치에 있는 태그 선택 (태그별 구분)
+           -->
+
+           <div id="test3">
+            <pre>테스트0</pre>
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <pre>테스트99</pre>
+          </div>
+        
+
+          <hr>
+
+          <h2>8. 문자 선택자</h2>
+          <!-- 
+            태그 내부에서 특정 조건의 문자를 선택
+           -->
+           <div id="test4">
+            <p>
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Cumque, 
+                totam quis aut adipisci ipsum 
+                facilis porro veniam enim repellat, 
+                tempora voluptatibus rerum architecto modi aspernatur provident, 
+                molestias praesentium expedita laboriosam?
+            </p>
+           </div>
+
+           <hr>
+
+           <h2>9. 부정 선택자</h2>
+           <!-- 
+            지금까지 선택자에 대해 반대로 적용
+            -->
+            
+            <div id="test5">
+                <p class="p">테스트1</p>
+                <p>테스트2</p>
+                <p>테스트3</p>
+                <p>테스트4</p>
+                <p class="p">테스트5</p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
