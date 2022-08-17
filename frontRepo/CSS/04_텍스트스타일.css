@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+#ff1{
+    font-family: '궁서체';
+}
+
+#ff2{
+    font-family: '굴림체';
+}
+
+#ff3{
+    font-family: 'Noto Sans KR', sans-serif,'궁서체';
+}
+
+
+/* font-size 테스트 */
+#size1{
+    font-size: 50px;
+}
+
+#size2{
+    font-size: 2em;
+}
+
+#size3{
+    font-size: 300%;
+}
+
+
+
+/* font-weight 테스트 */
+#fw1 {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#fw2 {
+    font-weight: lighter;
+    font-size: 2em;
+}
+
+#fw3 {
+    font-weight: 900;
+    font-size: 2em;
+}
+
+
+/* font-style 테스트 */
+#fs1{
+    font-style: italic;
+    font-size: 3em;
+}
+
+#fs2{
+    font-style: oblique;
+    font-size: 3em;
+}
+
+
+/* color 테스트 */
+
+#c-name{
+    color:red;
+}
+
+#c-16{
+    color: #064e96;
+}
+
+#c-rgb{
+    color: rgb(250, 100, 255);
+}
+
+#c-rgba{
+    color: rgba(250, 100, 255, 0.3);
+}
