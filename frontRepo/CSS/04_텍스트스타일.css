@@ -74,3 +74,96 @@
 #c-rgba{
     color: rgba(250, 100, 255, 0.3);
 }
+
+
+/* text-decoration */
+#td1{
+    text-decoration: underline;
+}
+
+#td2{
+    text-decoration: line-through;
+}
+
+#td3{
+    text-decoration: overline;
+}
+
+#td4 a{
+    text-decoration: none;
+}
+
+/* text-transform */
+#tt1{
+    text-transform: none;
+}
+
+#tt2{
+    text-transform: capitalize;
+}
+
+#tt3{
+    text-transform: uppercase;
+}
+
+#tt4{
+    text-transform: lowercase;
+}
+
+/* text-shadow */
+#bg{
+    background-color: black;
+    margin: 30px;
+    padding: 50px;
+}
+
+#ts{
+    font-size: 100px;
+    font-weight: 900;
+    text-shadow: 0px 0px 4px #ccc,
+                0px -5px 4px #ff3,
+                2px -10px 6px #fd3,
+                -2px -15px 11px #f80,
+                2px -19px 18px #f20;
+}
+
+/* letter-spacing */
+#ls{
+    letter-spacing: 10px;
+}
+
+/* word-spacing */
+#ws{
+    word-spacing: 30px;
+}
+
+/* text-align */
+#ta1{
+    text-align: left;
+    text-align: right;
+    text-align: center;
+    text-align: justify;
+}
+
+/* text-indenet */
+#ti{
+    text-indent: 30px;
+}
+
+/* line-height */
+#lh{
+    line-height: 50px;
+}
+
+/* text-overflow */
+.over-class{
+    background-color: lightgray;
+    width: 100px;
+    height: 100px;
+}
+
+#to{
+    white-space: nowrap;
+    overflow: scroll;
+    text-overflow: clip;
+}
