@@ -97,3 +97,158 @@
     border-style: solid;
     border-width: 10px;
 }
+
+
+/* 여백 */
+.space{
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    border : 5px solid black;
+}
+
+#padding1{
+    padding: 50px;
+}
+
+#padding2{
+    --padding-top: 50px;
+    --padding-left: 100px;
+    padding: 0px 50px 100px 150px;
+}
+
+#margin1{
+    margin: 50px;
+}
+
+#margin2{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+/* 포지셔닝 */
+.outer{
+    position: relative;
+    background-color: lightgray;
+}
+
+#first{
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+
+#second{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+#third{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+#fixed-area{
+    width: 100px;
+    height: 100px;
+    background-color: purple;
+    /* position: fixed; */
+    /* position: sticky; */
+    top: 50px;
+    left: 50px;
+}
+
+.visibility{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+#v-test1{
+    background-color: red;
+}
+
+#v-test2{
+    background-color: blue;
+    /* visibility: hidden; */
+    display: none;
+}
+
+#v-test3{
+    background-color: green;
+}
+
+/* z-index */
+#z-wrap{
+    height: 210px;
+    position: relative;
+}
+
+.z-test{
+    width: 150px;
+    height: 100px;
+    border: 1px dashed pink;
+    position: absolute;
+}
+
+#z1{
+    background-color: red;
+    top: 100px;
+    left: 100px;
+    z-index: 2000;
+}
+
+#z2{
+    background-color: blue;
+    top: 50px;
+    left: 50px;
+    z-index: 9;
+}
+
+#z3{
+    background-color: green;
+    height: 200px;
+    z-index: 1;
+}
+
+.float-test{
+    border: 5px dashed violet;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    float: right;
+}
+
+
+/* 테이블 스타일 */
+table{
+    caption-side: bottom;
+    width: 300px;
+    height: 400px;
+    border: 5px solid green;
+    border-spacing: 50px 100px;
+    empty-cells: hide;
+    /* border-collapse: collapse; */
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+td{
+    border: 1px solid blue;
+    width: 50px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
