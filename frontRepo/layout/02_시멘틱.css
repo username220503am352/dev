@@ -1,0 +1,20 @@
+body *:not(h1){
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+
+/* 전체를 감싸는 div */
+.wrap{
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+
+header{height: 20%;}
+main{height: 60%;}
+footer{height: 20%;}
+
+#logo{width: 20%; height: 100%; float: left;}
+#login{width: 80%; height: 100%; float: left;}
+#content1{width: 40%; height: 100%; float: left;}
+#content2{width: 60%; height: 100%; float: left;} 

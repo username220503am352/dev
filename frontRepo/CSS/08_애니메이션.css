@@ -1,0 +1,51 @@
+.box{
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: gray;
+    width: 100px;
+    height: 100px;
+    margin: 50px;
+}
+
+#t1:hover{
+    background-color: red;
+    transform: translateX(500px);
+    transition-duration: 3s;
+    transition-delay: 1ms;
+    transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+}
+
+@keyframes jjin{
+    0% {
+        background-color: blue;
+        width: 50px;
+        height: 50px;
+    }
+    10%{
+        background-color: red;
+        border: 10px dashed black;
+    }
+    100%{
+        background-color: green;
+        width: 500px;
+        height: 500px;
+    }
+}
+
+#ani01{
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    animation-name: jjin;
+    animation-duration: 3s;
+    animation-timing-function: cubic-bezier(0, 0.25 , 0.75, 1);
+    animation-delay: 500ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+#stop:hover + div{
+    animation-play-state: paused;
+}
+
+

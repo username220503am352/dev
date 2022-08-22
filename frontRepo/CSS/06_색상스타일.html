@@ -5,8 +5,125 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>색상스타일</title>
+    <style>
+        body{
+            /* 
+            background-color: green;
+            background-color: #399031;
+            background-color: rgb(50, 100, 123);
+            background-color: rgba(50, 100, 123, .5);
+             */
+            background-color: lightgray;
+        }
+
+        .clip-test{
+            background-color: white;
+            margin: 50px;
+            padding: 25px;
+            width: 30%;
+            border: 15px dashed rgba(119, 210, 66, 0.657);
+        }
+
+        #clip1{
+            background-clip: border-box;
+        }
+
+        #clip2{
+            background-clip: padding-box;
+        }
+
+        #clip3{
+            background-clip: content-box;
+        }
+
+        #bg-img{
+            border: 30px dashed rgba(11, 52, 93, 0.684);
+            width: 70%;
+            height: 900px;
+            padding: 50px;
+            background-image: url(../resources/imgs/IU.jpg);
+
+            /* 이미지 반복 설정 */
+            --background-repeat: repeat; /*기본값*/
+            --background-repeat: repeat-x;
+            --background-repeat: repeat-y;
+            background-repeat: no-repeat;
+
+            /* 이미지 크기 설정 */
+            --background-size: auto; /*기본값*/
+            --background-size: contain;
+            --background-size: cover;
+            --background-size: 300px 450px;
+            --background-size: 100% 100%;
+
+            /* 이미지 위치 설정 */
+            --background-position: left top; /*기본값*/
+            --background-position: right top;
+            --background-position: center top;
+            --background-position: left center;
+            --background-position: center center;
+            --background-position: center;
+            --background-position: center bottom;
+            --background-position: 100px 200px;
+            --background-position: 50% 50%;
+
+            /* 이미지 배치 기준 설정 */
+            background-origin: border-box; /*기본값*/
+            background-origin: padding-box;
+            background-origin: content-box;
+
+            /* 이미지 고정 */
+            background-attachment: scroll; /*기본값*/
+            background-attachment: fixed;
+
+        }
+
+    </style>
 </head>
 <body>
     <h1>색상스타일</h1>
+
+    <hr>
+
+    <h2>배경 스타일</h2>
+    <h3>background-clip</h3>
+    <div id="clip1" class="clip-test">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        Nulla, explicabo consequuntur necessitatibus doloremque aspernatur optio 
+        quibusdam in nostrum vitae dolor neque veniam recusandae illo asperiores 
+        similique iste dolore. Quae, quibusdam.
+    </div>
+
+    <div id="clip2" class="clip-test">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        Nulla, explicabo consequuntur necessitatibus doloremque aspernatur optio 
+        quibusdam in nostrum vitae dolor neque veniam recusandae illo asperiores 
+        similique iste dolore. Quae, quibusdam.
+    </div>
+
+    <div id="clip3" class="clip-test">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        Nulla, explicabo consequuntur necessitatibus doloremque aspernatur optio 
+        quibusdam in nostrum vitae dolor neque veniam recusandae illo asperiores 
+        similique iste dolore. Quae, quibusdam.
+    </div>
+
+    <hr>
+
+    <h2>배경 이미지</h2>
+
+    <div id="bg-img">
+        컨텐츠 영역 ㅋㅋㅋ
+    </div>
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+
 </body>
 </html>

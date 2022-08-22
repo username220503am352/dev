@@ -1,0 +1,63 @@
+/* 웹 문서 구조 */
+
+/* 영역 관련 */
+
+.test{
+    /* content 영역 */
+    width: 200px;
+    height: 100px;
+
+    /* padding 영역 */
+    padding: 10px;
+
+    /* border 영역 */
+    border: 10px dashed green;
+
+    /* margin 영역 */
+    margin: 50px;
+
+    /* 
+        컨텐츠 영역 + 패딩 + 테두리 == width, height
+     */
+
+     box-sizing: border-box;
+}
+
+/* div > div */
+.inner{
+    border: 10px dotted red;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.wrap{
+    border: 5px solid black;
+    width: 500px;
+    height: 500px;
+}
+
+/* 상/하 */
+.test1, .test2{
+    border: 5px dashed skyblue;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.test1{height: 30%;}
+.test2{height: 70%;}
+
+/* 좌/우 */
+.test3, .test4{
+    border: 5px dashed blue;
+    height: 100%;
+    box-sizing: border-box;
+    /* display: inline-block; */
+    float: left;
+}
+
+.test3{width: 60%;}
+.test4{width: 40%;}
+
+
+
