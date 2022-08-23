@@ -1,0 +1,64 @@
+div {
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+
+#wrap {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+
+#header {
+    height: 25%;
+}
+
+#header_contents {
+    height: 80%;
+}
+
+#header_contents>div {
+    height: 100%;
+    float: left;
+}
+
+#h_content1 {
+    width: 15%;
+}
+
+#h_content2 {
+    width: 65%;
+}
+
+#h_content3 {
+    width: 20%;
+}
+
+#menu {
+    height: 20%;
+}
+
+#contents {
+    height: 55%;
+}
+
+#contents>div {
+    height: 100%;
+    float: left;
+}
+
+#sidebar {
+    width: 20%;
+}
+
+#content1 {
+    width: 40%;
+}
+
+#content2 {
+    width: 40%;
+}
+
+#footer {
+    height: 20%;
+}

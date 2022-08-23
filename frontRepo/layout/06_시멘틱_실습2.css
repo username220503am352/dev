@@ -1,0 +1,64 @@
+body *:not(h1) {
+    border: 1px solid blue;
+    box-sizing: border-box;
+}
+
+#wrap {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+
+header {
+    height: 25%;
+}
+
+#header_contents {
+    height: 80%;
+}
+
+#header_contents>div {
+    height: 100%;
+    float: left;
+}
+
+#header_1 {
+    width: 15%;
+}
+
+#header_2 {
+    width: 65%;
+}
+
+#header_3 {
+    width: 20%;
+}
+
+nav {
+    height: 20%;
+}
+
+section {
+    height: 55%;
+}
+
+section>article,section>aside {
+    height: 100%;
+    float: left;
+}
+
+section>aside {
+    width: 20%;
+}
+
+#content_1 {
+    width: 40%;
+}
+
+#content_2 {
+    width: 40%;
+}
+
+footer {
+    height: 20%;
+}

@@ -1,0 +1,41 @@
+div {
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+
+#wrap {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+
+#header {
+    height: 20%;
+    padding: 10px;
+}
+
+#contents {
+    height: 60%;
+}
+
+#contents>div {
+    height: 100%;
+    float: left;
+}
+
+#content_1 {
+    width: 15%;
+}
+
+#content_2 {
+    width: 65%;
+}
+
+#content_3 {
+    width: 20%;
+}
+
+#footer {
+    height: 20%;
+    padding: 15px;
+}

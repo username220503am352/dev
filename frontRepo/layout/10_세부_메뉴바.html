@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴바</title>
+    <style>
+
+        div{
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+
+        #menu{
+            width: 1000px;
+            height: 40px;
+        }
+
+        /* 위에있는 CSS는 가져가지 말 것. 테스트용.  */
+
+        #navi{
+            list-style-type: none;
+            padding: 0px;   /* 리스트가 가진 기본 속성 제거 */
+            margin: 0px;    /* 리스트가 가진 기본 속성 제거 */
+            height: 100%;
+        }
+
+        #navi>li{
+            float: left;
+            border: 1px solid blue; /* 확인용 */
+            width: 15%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #navi a{
+            border: 1px dashed green; /* 확인용 */
+            text-decoration: none;
+            color: rgb(188, 45, 69);
+            font-size: 18px;
+            font-weight: 900;
+            width: 100%;
+            height: 100%;
+            display: block; /* 가로,세로 사이즈 지정을 위해 display 변경 */
+            /* vertical-align: middle; */ /* 버티칼얼라인 : inline 요소에만 가능 */
+            line-height: 36px;
+        }
+
+        #navi a:hover{
+            color: dodgerblue;
+        }
+
+        #navi>li>ul{
+            list-style-type: none;
+            padding: 0px;
+        }
+
+        #navi>li>ul a{
+            font-size: 12px;
+        }
+
+        #navi>li>ul{
+            display: none;
+        }
+
+        #navi>li>a:hover + ul{
+            display: block;
+        }
+
+        #navi>li>ul:hover{
+            display: block;
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="menu">
+
+        <ul id="navi">
+            <li><a href="">JAVA</a></li>
+            <li><a href="">SQL</a></li>
+            <li>
+                <a href="">FrontEnd</a>
+                <ul>
+                    <li><a href="">HTML</a></li>
+                    <li><a href="">CSS</a></li>
+                    <li><a href="">JavaScript</a></li>
+                    <li><a href="">jQuery</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">BackEnd</a>
+                <ul>
+                    <li><a href="">JDBC</a></li>
+                    <li><a href="">Servlet</a></li>
+                    <li><a href="">JSP</a></li>
+                    <li><a href="">AJAX</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Framework</a>
+                <ul>
+                    <li><a href="">MyBatis</a></li>
+                    <li><a href="">SPRING</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
