@@ -1,0 +1,97 @@
+div{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+body{
+    height: 800px;
+}
+
+.outer{
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    border: 3px dashed red;
+
+    /* flex */
+    display: flex;
+
+    flex-direction: row; /* row (기본값) , column[-reverse] */
+
+
+    justify-content: space-between;
+    /*
+        <justify-content> : 메인축 을 기준으로 정렬 (컨텐츠 정렬)
+        flex-start (기본값)
+        flex-end
+        center
+
+        space-between
+        space-evenly
+        space-around
+    */
+
+    align-items: center;
+    /*
+        <align-items> : 교차축 을 기준으로 정렬
+        flex-start (기본값)
+        flex-end
+        center
+    */
+
+    flex-wrap: wrap;
+    /* 
+        - 아이템들의 사이즈가 container 를 넘어갈 때, 어떻게 처리할지
+     */
+
+     
+     align-content: space-evenly;
+     /*
+        - flex-wrap 속성 == warp 일 때,
+            꼬챙이 사이의 간격 조정
+
+        stretch (기본값)
+        flex-start
+        flex-end
+        center
+
+        space-between
+        space-evenly
+        space-around
+     */
+    
+
+
+
+
+
+}
+
+.inner{
+    width: 100px;
+    height: 100px;
+}
+
+#t3{
+    background-color: red;
+    align-self: auto;
+    /*
+        auto (기본값) //align-items 의 영향을 받음
+        stretch
+        flex-start
+        flex-end
+        center
+    */
+
+    order: -3;
+    /*
+        기본값 : 0
+        숫자가 작을수록 앞에 배치 (음수 가능)
+    */
+}
+
+#t7{
+    background-color: blue;
+    order: -1;
+}
+
