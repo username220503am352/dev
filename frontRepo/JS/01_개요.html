@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개요</title>
+    <script src="./01_개요.js"></script>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JS 개요</h1>
+
+    <hr>
+
+    <h2>자바스크립트</h2>
+
+    <h3>1. 사용법</h3>
+
+
+
+    <h4>inline(인라인)</h4>
+    <!-- 태그 내에 직접 작성 -->
+
+    <button onclick="console.log('버튼클림됨ㅋㅋ');">콘솔창에 출력하는 버튼</button>
+
+
+
+
+    <h4>internal(내부)</h4>
+    <!-- script 태그 영역에 작성 -->
+
+    <script>
+        console.log('내부 스크립트 테스트');
+    </script>
+
+
+    <h4>external(외부)</h4>
+    <!-- 별도의 .js 파일로 작성하여 연결 -->
+
+    <hr>
+
+    <h3>2. 입출력</h3>
+
+    <script>
+        // alert('이건알람ㅎㅎ'); //한 줄 주석
+        /*
+            여러줄
+            주석도
+            가
+            능
+            ㅋㅋㅋ
+        */
+
+        /*
+        result = confirm("차단하시겠습니까?");
+        
+        if(result == true){
+            alert("차단 ㅇㅋ");
+        }else{
+            alert("차단 ㄴㄴ");
+        }
+        */
+
+
+        // nick = prompt('당신의 닉네임은?');
+        // alert(nick + '님 환영합니다');
+
+
+        //document.write('<h1>zzz</h1>');
+        
+    </script>
+
+    <h3>3. 요소 가져오기</h3>
+
+    <div id="t1" class="area">타겟DIV</div>
+
+    <script>
+        
+        //a = document.getElementById('t1'); //ID 를 이용해서 요소 가져오기
+        //b = document.getElementsByClassName('area');
+        //c = document.getElementsByTagName('div');
+
+        // console.log(a);
+        // console.log(b);
+        // console.log(c);
+        
+        x = document.querySelector('#t1');
+        console.log(x);
+
+    </script>
+
+    
+</body>
+</html>
