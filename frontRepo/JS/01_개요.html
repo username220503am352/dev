@@ -51,6 +51,8 @@
     <h3>2. 입출력</h3>
 
     <script>
+
+        
         // alert('이건알람ㅎㅎ'); //한 줄 주석
         /*
             여러줄
@@ -82,21 +84,83 @@
     <h3>3. 요소 가져오기</h3>
 
     <div id="t1" class="area">타겟DIV</div>
+    <div id="t1" class="area">타겟DIV</div>
+    <div id="t1" class="area">타겟DIV</div>
+    <div id="t1" class="area">타겟DIV</div>
+    <div id="t1" class="area">타겟DIV</div>
 
     <script>
         
-        //a = document.getElementById('t1'); //ID 를 이용해서 요소 가져오기
-        //b = document.getElementsByClassName('area');
-        //c = document.getElementsByTagName('div');
+        a = document.getElementById('t1');              //ID 를 이용해서 요소 가져오기
+        b = document.getElementsByClassName('area');    //클래스 를 이용해서 요소 가져오기
+        c = document.getElementsByTagName('div');       //태그명 을 이용해서 요소 가져오기
 
-        // console.log(a);
-        // console.log(b);
-        // console.log(c);
+        console.log(a);
+        console.log(b);
+        console.log(c);
         
         x = document.querySelector('#t1');
+        y = document.querySelectorAll('.area');
+        z = document.querySelectorAll('div');
+
         console.log(x);
+        console.log(y);
+        console.log(z);
 
     </script>
+
+    <h3>4. 요소 다루기</h3>
+
+    <button onclick="f01();">클릭ㅋㅋ</button>
+
+    <div id="cd" class="area">얖</div> <!-- cd : controll div 라는 뜻 -->
+
+    <script>
+
+        // function 함수명([파라미터..]){실행블록}
+        function f01(){
+            //x = document.getElementById('cd');
+            x = document.querySelector('#cd');
+            console.log(x);
+
+            x.innerText = '바꿈ㅋㅋ';
+            x.style.backgroundColor = 'red';
+        }
+
+    </script>
+
+
+    <hr>
+
+    <button onclick="f02();">클릭ㅎㅎ</button>
+    <br>
+    <input type="text" name="userId" value="swy">
+
+    <script>
+        function f02(){
+
+            x = document.querySelector('input[name=userId]');
+            //console.log(x);
+
+            str = prompt("아이디를 입력하세요");
+
+            x.value = str;
+
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     
 </body>

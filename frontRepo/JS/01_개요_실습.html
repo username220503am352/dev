@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개요 실습 문제</title>
+    <style>
+        .box{
+            border: 1px solid black;
+            box-sizing: border-box;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>개요 실습 문제</h1>
+
+    <hr>
+
+    <h2>문제1. 색상 조절하기</h2>
+    <p>
+        색상 선택 후, 변경 버튼 클릭하면 색상이 변경되도록 만들기
+    </p>
+
+    <div id="d1" class="box"></div>
+    <input type="color">
+    <button onclick="changeColor();">색상변경</button>
+
+    <script>
+        function changeColor(){
+            //d1 = document.getElementById('d1');
+            d1 = document.querySelector('#d1');
+            c = document.querySelector('input[type=color]');
+
+            //console.log(d1);
+            //console.log(c.value);
+
+            d1.style.backgroundColor = c.value;
+
+        }
+    </script>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <h2>문제2. 크기 변경하기</h2>
+
+    <p>버튼에 따라 크기 조절이 가능하도록 만들기</p>
+    <button onclick="changeSize(50, 50);">50</button>
+    <button onclick="changeSize(100, 100);">100</button>
+    <button onclick="changeSize(200, 200);">200</button>
+    <div id="d2" class="box"></div>
+
+    <script>
+
+        function changeSize(w , h){
+
+            d2 = document.querySelector('#d2');
+            //console.log(d2);
+
+            //s = prompt("사이즈 몇으로 바꿀까요 ? ");
+
+            d2.style.width = w + 'px';
+            d2.style.height = h + 'px';
+
+        }
+
+    </script>
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <h2>문제3. HTML 태그 접근</h2>
+    <p>
+        텍스트 박스로 입력받은 데이터를 가져와서 출력하기
+    </p>
+
+    구매자 : <input type="text" id="in1" placeholder="구매자 이름을 입력하세요">
+    <br><br>
+    상품명 : <input type="text" id="in2" placeholder="상품명을 입력하세요">
+    <br><br>
+    수량 : <input type="text" id="in3" placeholder="구매 수량을 입력하세요">
+    <br><br>
+    <button onclick="printOrder();">구매정보 출력</button>
+    <br>
+    <div id="result" class="box"></div>
+
+    <script>
+
+        function printOrder(){
+            x1 = document.querySelector('#in1');
+            x2 = document.querySelector('#in2');
+            x3 = document.querySelector('#in3');
+
+            console.log(x1.value);
+            console.log(x2.value);
+            console.log(x3.value);
+
+            resultDiv = document.querySelector("#result");
+            console.log(resultDiv);
+
+            //resultDiv.innerHTML = '구매자 : ' + x1.value + '<br>' + '상품명 : ' + x2.value + '<br>' + '수량   : ' + x3.value;
+            resultDiv.innerHTML = `구매자 : ${x1.value} <br> 상품 : ${x2.value} <br> 가격: ${x3.value}`;
+        }
+
+        
+    </script>
+
+    <h2>문제4. 테이블 만들기</h2>
+    <p>
+        prompt 로 사용자로부터 행, 열 값을 입력받아서 table 만들기
+    </p>
+
+    <button onclick="generateTable();">테이블 만들기</button>
+
+    <div id="table-area"></div>
+
+    <script>
+        function generateTable(){
+
+            ta = document.querySelector('#table-area');
+
+            row = prompt('행 갯수');
+            col = prompt('열 갯수');
+
+            str = '<table border="1">';
+            for(i = 0; i < row; ++i){
+                str += '<tr>';
+                for(j = 0; j < col; ++j){
+                    str += '<td>0</td>'
+                }
+                str += '</tr>';
+            }
+            str += '</table>'
+
+            ta.innerHTML = str;
+
+        }
+    </script>
+
+    
+    
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
