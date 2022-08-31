@@ -65,6 +65,7 @@ window.onload = function(){
     //3) 스코프 (유효범위)
 
     // 함수 안에서 var 로 선언된 변수는 , "함수 유효 범위"
+
     if(true){
         var s = 10;
         console.log(s);
@@ -72,20 +73,112 @@ window.onload = function(){
     console.log(s);
 
 
+
     console.log("===========");
+
 
     // 함수 안에서 let, const 로 선언된 변수는 "블록 유효 범위"
     if(true){
-        const s2 = 10;
+        var s2 = 10; //let, const 는 에러 발생
         console.log(s2);
     }
     console.log(s2);
 
 
 
-    //자료형 테스트 ... 는 내일...
 
 
+    //자료형 테스트
+    console.log("=====자료형테스트=====");
+    
+    nick = '1dragon';
+    age = 20;
+    height = 183.7;
+    weight = 88.8;
+    isAdult = true;
+    //games = new Array();
+    //games = [];
+    games = ['오버쿡2' , '마리오카트' , '테트리스'];
+    //pet = new Object();
+    //pet = {};
+    pet = {name:'아구몬' , age:3 , gender:'male'};
+    var food;
+    sayHello = function f01(){alert('hello~~~!');}
+    n = null;
+
+    console.log(typeof nick);
+    console.log(typeof age);
+    console.log(typeof height);
+    console.log(typeof weight);
+    console.log(typeof isAdult);
+    console.log(typeof games);
+    console.log(typeof pet);
+    console.log(typeof food);
+    console.log(typeof sayHello);
+    console.log(typeof n);
+
+
+
+
+
+    //2. 데이터 형변환
+
+    console.log("=====데이터 형변환=====");
+
+    //1) 더하기 연산
+    var result = 1+1;           //2
+    var result = '1' + 7;       //17
+    var result = 1 + '7';       //17
+    var result = 1 + 1 + '7';   //27
+    var result = 1 + '1' + 7;   //117
+
+    var result = 1 * 3;         //3
+    var result = 1 * '3';       //3
+    var result = 1 * 'a';       //NaN //Not a Number
+    var result = 'a' * 3;       //NaN
+    var result = '3' * 3;       //9
+    var result = '3' * '3';     //9
+
+    console.log(result);
+
+
+
+    
+
+
+    //2) 강제 형변환
+    //Number , parseInt() , parseFloat() 
+    //console.log(typeof String(3));
+
+
+
+    //3. 연산자
+
+    console.log(3 == '3');  //true
+    console.log(3 === '3'); //false
+    console.log(3 === 3);   //true
+
+
+    //4. 제어문
+
+    console.log('=====제어문=====');
+
+    var arr = [10,20,30,40,50];
+
+    // for(var i = 0; i < arr.length; ++i){
+    //     console.log(arr[i]);
+    // }
+
+    // for(var i in arr){
+    //     console.log(arr[i]);
+    // }
+
+    for(var i of arr){
+        console.log(i);
+    }
+
+
+    
 
 
 
