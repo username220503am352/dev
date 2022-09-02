@@ -38,14 +38,44 @@ window.onload = function(){
     //반복 타이머
     const btn4 = document.querySelector('#btn4');
     btn4.addEventListener('click', function(){
-        window.setInterval(function(){
+        y = window.setInterval(function(){
             console.log("반복 타이머~~~");
         } , 2000);
     });
 
 
-    //clearInterval 할건데, ... 내일.. 하겠습니다 ,,, 화면에 버튼 추가해서...
-    
+    const btn5 = document.querySelector('#btn5');
+    btn5.addEventListener('click', function(){
+        clearInterval(y);
+    });
+
+
+    // --------------------------
+    //location
+    console.log(location);
+
+    const btn6 = document.querySelector('#btn6');
+    btn6.addEventListener('click', function(){
+        location.href = 'https://www.naver.com';
+    });
+
+    const btn7 = document.querySelector('#btn7');
+    btn7.addEventListener('click', function(){
+        location.reload();
+    });
+
+
+    //navigator
+    const btn8 = document.querySelector('#btn8');
+    btn8.addEventListener('click', function(){
+        console.log(navigator);
+    });
+
+    //screen
+    const btn9 = document.querySelector('#btn9');
+    btn9.addEventListener('click', function(){
+        console.log(screen);
+    });
 
     
 

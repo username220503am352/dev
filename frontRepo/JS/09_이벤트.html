@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script defer src="./09_이벤트.js"></script>
+    <style>
+        div{
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+        }
+        #outer{
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        #d1{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        #d2{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+        #d3{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>이벤트</h1>
+
+    <hr>
+
+    <h2>1. 이벤트 모델의 종류</h2>
+
+
+    <h3>1) 고전 이벤트 모델</h3>
+    <button id="btn1">고전</button>
+    <pre>
+        이벤트 속성에 핸들러 연결
+        (삭제하려면 null 할당)
+    </pre>
+
+    <h3>2) 인라인 이벤트 모델</h3>
+    <button id="btn2" onclick="alert('인라인~~~!');alert('zzz');">인라인</button>
+    <pre>
+        태그 요소 내부에 작성
+        - 동작할 내용을 직접 작성
+        - 선언된 함수를 호출
+    </pre>
+
+
+    <h3>3) 표준 이벤트 모델</h3>
+    <button id="btn3">표준</button>
+    <pre>
+        w3 에서 공식적으로 지정한 이벤트 모델
+        한번에 여러개의 핸들러 설정 가능
+    </pre>
+
+
+    <hr>
+
+    <h2>2. 이벤트가 발생한 요소 객체에 접근</h2>
+    <pre>
+        이벤트가 발생한 요소 객체는
+        내부적으로 이벤트 발생 정보를 담고 있는 객체를 매개변수로 전달
+
+        이벤트 객체를 통해서 요소에 접근 가능
+
+        콜백함수의 종류에 따라 this 로 접근 가능
+    </pre>
+
+    <div id="outer">
+
+        <div id="d1">11111111
+            <div id="d2">22222
+                <div id="d3">333333
+    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <hr>
+
+    <h2>3. 기본 이벤트 제거</h2>
+    <pre>
+        
+    </pre>
+
+
+
+
+
+
+    <h3>1) 기본 이벤트 제거 1</h3>
+
+    <h3>1) 기본 이벤트 제거 2</h3>
+
+
+
+
+    
+
+
+
+</body>
+</html>
