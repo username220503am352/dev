@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>정규 표현식 회원가입 폼</title>
+    <style>
+        .hint {
+            color: gray;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>정규 표현식 회원가입 폼</h1>
+
+    <hr>
+
+    <form>
+        <label>
+            * 아이디 : 
+            <input type="text" name="userId" id="userId" required><br>
+            <label class="hint">영문자, 숫자 포함하여 총 4~12자로 입력하시오. 단, 첫 글자는 반드시 영문자로</label>
+        </label>
+        <br><br>
+
+        <label>
+            * 비밀번호 : 
+            <input type="password" name="userPwd1" id="userPwd1" required><br>
+            <label class="hint">영문자, 숫자, 특수문자 포함하여 총 8~15자로 입력하시오.</label>
+        </label>
+        <br><br>
+
+        <label>
+            * 비밀번호 확인 : 
+            <input type="password" name="userPwd2" id="userPwd2" required><br>
+            <label class="hint">위의 비밀번호와 일치하게 입력하시오.</label>
+        </label>
+        <br><br>
+
+        <label>
+            * 이름 : 
+            <input type="text" name="userName" id="userName" required><br>
+            <label class="hint">한글로만 이루어져야 되며 2글자 이상으로 입력하시오.</label>
+        </label>
+        <br><br>
+
+        <label>
+            * 이메일 : 
+            <input type="email" name="email" id="email" required><br>
+            <label class="hint">이메일 형식에 맞춰서 입력하시오.</label>
+        </label>
+        <br><br>
+
+        <label>
+            * 취미 : 
+            <input type="text" list="hobbyList" name="hobby" id="hobby" placeholder="축구, 농구, 야구, 독서 등"><br>
+            <datalist id="hobbyList">
+                <option value="soccer">축구</option>
+                <option value="basketball">농구</option>
+                <option value="baseball">야구</option>
+                <option value="reading">독서</option>
+            </datalist>
+        </label>
+        <br><br>
+
+        <label>
+            * 거주지 : 
+            <select name="address" id="address">
+                <option value="seoul">서울</option>
+                <option value="incheon">인천</option>
+                <option value="busan">부산</option>
+            </select>
+        </label>
+        <br><br>
+
+        <input type="submit" value="회원가입" onclick="return validate();">
+        <input type="reset">
+    </form>    
+
+    <script>
+        function validate() {
+            
+        }
+    </script>
+</body>
+</html>

@@ -48,3 +48,49 @@ d3.addEventListener('click',function(e){
     //e.stopPropagation();
 },{capture:true});
 
+
+
+// -----------------------------------
+
+function checkPwd(e){
+    
+    //기본이벤트 제거 1 (비밀번호 길이 체크)
+    /*
+    const pwd = document.querySelector('input[name=userPwd]');
+
+    //비밀번호가 4글자 이상이면 ㅇㅋ
+    if(pwd.value.length >= 4){
+        alert('비밀번호 4글자 이상 ㅇㅋ');
+        return true;
+    }else{
+        alert('비밀번호 4글자 이상 ㄴㄴ');
+        return false;
+    }
+    */
+
+    
+
+}
+
+
+const join = document.querySelector('#join');
+
+join.addEventListener('click', checkId);
+
+function checkId(e){
+    //기본이벤트 제거 2 (정규표현식)
+
+    const userId = document.querySelector('input[name=userId]').value;
+    const reg = /^[a-zA-Z0-9]{5,10}$/;
+    const result = reg.test(userId);
+
+    if(result == false){
+        alert('아이디 다시 쓰세요');
+        //return false;
+        e.preventDefault();
+    }
+}
+
+
+
+

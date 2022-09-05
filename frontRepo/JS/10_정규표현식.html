@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <script defer src="./10_정규표현식.js"></script>
+</head>
+<body>
+    
+    <h1>정규표현식</h1>
+    <pre>
+        정규표현식 (Regular Expression)
+        특정 규칙을 가진 문자열 검색에 사용
+    </pre>
+
+    <hr>
+
+    <h2>1. 정규표현식 객체 생성</h2>
+    <pre>
+        생성자 함수 : RegExp 
+        리터럴      : /정규표현식/플래그
+    </pre>
+
+    <button id="btn1">테스트</button>
+
+    <hr>
+
+    <h2>2. 플래그 문자</h2>
+    <pre>
+        정규표현식 검색 방식을 설정하기위해 사용
+        여러개 동시에 사용 가능 (순서 상관 X)
+    </pre>
+    <ul>
+        <li>i : 대소문자 무시하고 검색</li>
+        <li>g : 전역으로 비교</li>
+        <li>m : 여러 줄</li>
+    </ul>
+
+    <button id="btn2">테스트</button>
+
+    <hr>
+
+    <h2>3. 메타문자</h2>
+    <pre>
+        메타문자로 특정 패턴을 제시할 수 있음
+    </pre>
+
+    <button id="btn3">테스트</button>
+    
+
+</body>
+</html>

@@ -106,8 +106,17 @@
 
     <h2>3. 기본 이벤트 제거</h2>
     <pre>
-        
+        기본 이벤트를 가지고 있는 요소
+        a : 클릭 시, href 속성의 값으로 요청을 보냄
+        form : 클릭 시, action 속성의 값으로 요청을 보냄
+
+        기본이벤트는 onclick 이벤트 보다 나중에 처리됨
+
+        기본이벤트를 제거하려면, 이전에 실행되는 이벤트핸들러를 통해
+        false 를 리턴하면 됨
     </pre>
+
+    <a href="https://www.naver.com" onclick="return confirm('이동하실래요?');">네이버</a>
 
 
 
@@ -115,6 +124,14 @@
 
 
     <h3>1) 기본 이벤트 제거 1</h3>
+    <form action="" onsubmit="return checkPwd();">
+        아이디 : <input type="text" name="userId">
+        <br>
+        패스워드 : <input type="password" name="userPwd">
+        <br>
+        <input type="submit" value="회원가입" id="join">
+    </form>
+
 
     <h3>1) 기본 이벤트 제거 2</h3>
 
@@ -122,7 +139,7 @@
 
 
     
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 </body>
