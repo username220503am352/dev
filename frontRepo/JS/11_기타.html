@@ -6,28 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .red{background-color: red;}
-        .blue{background-color: blue;}
-        .green{background-color: green;}
+        .color-red{background-color: red;}
+        .color-blue{background-color: blue;}
+        .color-green{background-color: green;}
     </style>
 </head>
 <body>
 
 
     <div id="t" class="zzz zzz2 zzz3">얖</div>
-    <button onclick="f01();">빨강</button>
-    <button>파랑</button>
-    <button>초록</button>
+    <button onclick="f01('color-red');">빨강</button>
+    <button onclick="f01('color-blue');">파랑</button>
+    <button onclick="f01('color-green');">초록</button>
 
 
     <script>
-        function f01(){
+        function f01(x){//색상에 대해서만 작업
             const t = document.querySelector('#t');
             //t.classList.add('red');
             //t.classList.remove('red');
-            t.classList.toggle('red');
+            //t.classList.toggle('red');
+            //t.className = '';
+
+            for(let i = 0; i < t.classList.length; ++i){
+                console.log(t.classList[i]);// 만약, 이친구가, color- 로 시작한다면? 삭제
+                if(t.classList[i].startsWith('color-')){
+                    t.classList.remove(t.classList[i]);
+                }
+            }
+
+            t.classList.add(x);
+
         }
     </script>
+
+
+    <br><br><br>
+    <hr>
+    <br><br><br>
+
+    <h2>새 창</h2>
+
+    아이디 : <input type="text" name="userId">
+    <button onclick="f02();">중복확인</button>
+    <br>
+    <div id="result"></div>
+
+    <script>
+
+        function f02(){
+            window.open("./11_기타_팝업창.html" , "child" , "width=500, height=500, top=50, left=50");
+        }
+
+
+
+
+    </script>
+    
+
+
+    
+
+
+
     
 
 

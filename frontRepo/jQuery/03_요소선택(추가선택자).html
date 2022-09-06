@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추가선택자</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        .big{
+            width:100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>추가선택자</h1>
+
+    <h2>자식 , 후손</h2>
+
+    <div>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <ul>
+            <li>li1</li>
+            <li>li2</li>
+            <li class="li-c">li3</li>
+            <li class="li-c">li4</li>
+            <li class="li-c">li5</li>
+            <li><h3>li>h3</h3></li>
+        </ul>
+    </div>
+
+    <script>
+        $(function(){
+
+            $('div>h3').css('color', 'red');
+
+            //$('div .li-c').css('backgroundColor', 'gray');
+            //$('div .li-c').css('color', 'purple');
+
+            //체이닝
+            //$('div .li-c').css('backgroundColor', 'gray').css('color', 'purple');
+
+            $('div .li-c').css({backgroundColor:'red',color:'blue'});
+        });
+    </script>
+
+
+    <br>
+    <hr>
+    <br>
+
+    <h2>속성 선택자</h2>
+    <pre>
+        선택자[속성]     : 해당 속성 가진 모든 요소 선택
+        선택자[속성=값]  : 속성 === 값 선택
+        선택자[속성~=값] : 값 에 해당하는 속성 있으면 선택
+        선택자[속성^=값] : 시작이 값 
+        선택자[속성$=값] : 끝 
+        선택자[속성*=값] : 포함
+    </pre>
+
+    아이디 : <input type="text" name="userId" value="초기값ㅋㅋ">
+    <br>
+    성별 : 
+    남 <input type="radio" value="male" name="gender"> 
+    여 <input type="radio" value="female" name="gender" checked="true">
+
+    <script>
+
+        $(function(){
+            //val([arg01])
+            // 인자값 O : value의 값을 변경
+            // 인자값 X : value의 값을 반환
+            $('input[name=userId]').val('바꾼값ㅋㅋ');
+
+            $('input[value=male]').attr('checked', true);
+
+            
+            console.log($(':radio').eq(1));
+        });
+
+    </script>
+
+
+    <br>
+    <hr>
+    <br>
+
+    <h2>상태 선택자(checked, selected, disabled, enabled)</h2>
+
+    <input type="checkbox" name="food">
+
+    <button id="btn1">커져라</button>
+    <button id="btn2">원래대로</button>
+
+    <script>
+
+        $(function(){
+
+            $('#btn1').click(function(){
+                //$('input:checked').css({width:'100px',height:'100px'});
+                $('input:checked').addClass('big');
+            });
+
+            $('#btn2').click(function(){
+                $('input:checked').removeClass('big');
+            });
+
+        });
+
+    </script>
+
+
+    <br><br><br>
+
+    <select name="my-color">
+        <option value="red">빨강</option>
+        <option value="blue">파랑</option>
+        <option value="green">초록</option>
+    </select>
+
+    <button id="btn3">내가좋아하는색은?</button>
+
+    <script>
+        $(function(){
+            
+            $('#btn3').click(function(){
+                console.log($('option:selected').text());
+            });
+
+
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

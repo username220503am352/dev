@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    아이디 : <input type="text" name="userId">
+    <br>
+    패스워드 : <input type="password" name="userPwd">
+    <br>
+    <input type="submit" value="회원가입">
+
+    <script>
+
+        const userId = document.querySelector('input[name=userId]');
+        userId.addEventListener('focus', function(){
+            //alert('아이디는 두글자 이상으로 만들어주세요 ~');
+            this.style.border = '3px solid red';
+        });
+
+        const userPwd = document.querySelector('input[name=userPwd]');
+        userPwd.addEventListener('blur' , function(){
+            //console.log(this.value);
+            if(this.value.length < 4){
+                alert('비밀번호가 너무 짧음');
+                this.value = '';
+            }
+        });
+
+    </script>
+
+</body>
+</html>
