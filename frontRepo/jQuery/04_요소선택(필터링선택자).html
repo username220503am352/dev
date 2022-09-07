@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필터링 선택자</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>필터링 선택자</h1>
+
+    <!-- ul>li{$번째 목록}*5 -->
+    <ul>
+        <li>1번째 목록</li>
+        <li>2번째 목록</li>
+        <li>3번째 목록</li>
+        <li class="test">4번째 목록</li>
+        <li>5번째 목록</li>
+    </ul>
+    
+    <script>
+
+        $(function(){
+            $('li').css('color','gray');
+            $('li:first').css('color','blue');
+            $('li:last').css('color','red');
+            $('li:odd').css('color','green');
+
+            $('li').css('backgroundColor', 'lightgray');
+            $('li').first().css('backgroundColor', 'red');
+            $('li').last().css('backgroundColor', 'blue');
+
+            //인덱스가 2 인 요소 선택
+            $('li').eq(2).css('backgroundColor', 'purple');
+
+            //filter
+            $('li').filter('.test').css('backgroundColor', 'aqua');
+
+            //not
+            $('li').not('.test').css('fontSize', '2rem');
+        });
+
+
+
+
+
+    </script>
+
+</body>
+</html>
