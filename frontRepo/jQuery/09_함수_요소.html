@@ -134,9 +134,6 @@
                 //result 에 넣기
                 $('#clone-result').append(copy1);
             });
-
-
-
         })
     </script>
 
@@ -147,18 +144,64 @@
 
     <script>
         //이벤트 붙여놓기
-        $('#temp').click(function(){
+        $('.red').click(function(){
             alert('클릭됨ㅋㅋ');
         });
 
         //복제 해서 화면에 추가
         const x = $('#temp').clone(true);
         $('#temp').after(x);
+    </script>
 
-        
+    <hr>
 
-        
-        
+    <h2>제거 / 잘라내기</h2>
+    <pre>
+        empty() : 하위 요소 제거
+
+        remove() , detach() : 해당 요소 제거 (해당 요소 리턴)
+
+        remove vs detach : 이벤트 유지 여부 (detach == 이벤트 O)
+    </pre>
+
+    <div id="del-div" style="background-color:gray; width:200px; height:100px;">
+        삭제 테스트 div
+        <span>!!!얖 안의 네무!!!</span>
+    </div>
+
+    <button id="empty">empty</button>
+    <button id="remove">remove</button>
+    <button id="detach">detach</button>
+
+    <div id="del-result"></div>
+
+    <script>
+        //이벤트 걸기
+        $('#del-div').click(function(){
+            alert('클릭됨ㅋㅋ');
+        });
+    </script>
+
+    <script>
+        const delDiv = $('#del-div');
+
+        $('#empty').click(function(){
+            rv = delDiv.empty();    //선택한 요소 리턴
+            $('#del-result').append(rv);
+        });
+
+        $('#remove').click(function(){
+            rv = delDiv.remove();
+            $('#del-result').append(rv);
+        });
+
+        $('#detach').click(function(){
+            rv = delDiv.detach();
+            $('#del-result').append(rv);
+        });
+
+        //잘라내기 한거 붙여넣기
+        //$('#del-result').append(???);
     </script>
 
 
