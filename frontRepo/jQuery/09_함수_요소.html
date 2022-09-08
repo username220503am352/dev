@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수_요소</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>함수_요소</h1>
+
+    <h2>요소 생성</h2>
+    <button id="btn1">만들기~!</button>
+    <div id="r1"></div>
+
+    <script>
+        $(function(){
+
+            $('#btn1').click(function(){
+                // 동적으로 요소 만들기
+
+                //1. 문자열 : innerHTML / html()
+
+                //2. js 방식 : createElement
+                const elem1 = document.createElement('span');
+                const text1 = document.createTextNode('배고프다');
+                elem1.appendChild(text1);
+                // document.querySelector('#r1').appendChild(elem1);
+
+                //3. jQuery : $()
+                const $elem1 = $('<h1></h1>').text('zzzhello');
+                $('#r1').append(elem1 , $elem1);//여러개 추가 가능
+            });
+
+        });
+    </script>
+
+    <hr>
+
+    <h2>요소 삽입</h2>
+
+    <pre>
+        $(A).append(B)
+        A 요소 내부의 뒷부분에 B 추가 (자손)
+
+        $(A).prepend(B)
+        A 요소 내부의 앞부분에 B 추가 (자손)
+
+        $(A).after(B)
+        A 요소 뒷부분에 B 추가 (형제)
+
+        $(A).before(B)
+        A 요소 앞부분에 B 추가 (형제)
+
+        -----------------------------------------
+
+        $(B).appendTo(A)
+        A 요소 내부의 뒷부분에 B 추가 (자손)
+
+        $(B).prependTo(A)
+        A 요소 내부의 앞부분에 B 추가 (자손)
+
+        $(B).insertAfter(A)
+        A 요소 뒷부분에 B 추가 (형제)
+
+        $(B).insertBefore(A)
+        A 요소 앞부분에 B 추가 (형제)
+
+    </pre>
+
+    <!-- (h1#test$>span{스팸})*4 -->
+    <h1 id="t1"><span>스팸</span></h1>
+    <h1 id="t2"><span>스팸</span></h1>
+    <h1 id="t3"><span>스팸</span></h1>
+    <h1 id="t4"><span>스팸</span></h1>
+
+    <script>
+        $(function(){
+            // $('#t1').append('어펜드');
+            // $('#t2').prepend('프ㄹ펜드');
+            // $('#t3').after('애프터');
+            // $('#t4').before('비포');
+
+            $('<span>어펜드</span>').appendTo('#t1');
+            $('<span>프ㄹ펜드</span>').prependTo('#t2');
+            $('<span>애프터</span>').insertAfter('#t3');
+            $('<span>비포</span>').insertBefore('#t4');
+
+        })
+    </script>
+
+
+    <hr>
+
+    <h2>요소 복제</h2>
+    <pre>
+        clone([boolean]) // default : false
+        파라미터 : 이벤트까지 복사 할건지
+    </pre>
+
+    <div id="ct">
+        <!-- 복제할 요소 -->
+        <div id="target1">
+            <span>타겟01</span>
+        </div>
+    </div>
+
+    <button id="clone-btn">복제~!</button>
+    <div id="clone-result"></div>
+
+    <script>
+        $(function(){
+            //복제하기전, 타겟1 에 이벤트 걸기
+            $('#target1').hover(function(){
+                $(this).addClass('red');
+            }, function(){
+                $(this).removeClass('red');
+            });
+
+            //복제 버튼 클릭 시 , 복제 ㄱㄱ //복제한 결과물은 clone-result에 넣기
+            $('#clone-btn').click(function(){
+                //복제
+                const copy1 = $('#target1').clone(true);
+                console.log(copy1);
+                console.log($('#target1'));
+
+                //result 에 넣기
+                $('#clone-result').append(copy1);
+            });
+
+
+
+        })
+    </script>
+
+    <hr>
+
+    <!-- 복제 복습 -->
+    <div id="temp" class="red">템프</div>
+
+    <script>
+        //이벤트 붙여놓기
+        $('#temp').click(function(){
+            alert('클릭됨ㅋㅋ');
+        });
+
+        //복제 해서 화면에 추가
+        const x = $('#temp').clone(true);
+        $('#temp').after(x);
+
+        
+
+        
+        
+    </script>
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

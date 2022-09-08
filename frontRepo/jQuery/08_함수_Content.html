@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content 영역</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Content 영역</h1>
+
+    <hr>
+
+    <h2>text</h2>
+    <pre>
+        글자 그대로 넣어줌
+        js : innerText
+        jQuery : text()
+    </pre>
+    <div id="r1">기본글자</div>
+    <script>
+        //JS방식
+        //const r1 = document.querySelector('#r1');
+
+        //r1.innerText = '바꾼글씨ㅋㅋ'; //글자 바꾸기
+
+        //const str = r1.innerText;   //글자 가져오기
+        //console.log(str);
+
+
+        //jQuery 방식
+        //$('#r1').text('바꾼글씨ㅋㅋ');  //글자 바꾸기
+
+        const str = $('#r1').text();  //글자 가져오기
+        console.log(str);
+
+    </script>
+
+    <h2>html</h2>
+    <pre>
+        태그를 인식해서 넣어줌
+        js : innerHTML
+        jQuery : html()
+    </pre>
+    <div id="r2"><span>안녕하세요</span></div>
+
+    <script>
+
+        //JS 방식
+        //const r2 = document.querySelector('#r2');
+
+        //content 영역의 html 바꾸기
+        //r2.innerHTML = '<strong>사실은 복습하는날 ㅎㅎ</strong>';   //태그 인식 O
+
+        //content 영역의 html 가져오기
+        //const str2 = r2.innerHTML;
+        //console.log(str2);
+
+        //jQuery 방식
+        const r2 = $('#r2');
+
+        //content 영역의 html 바꾸기
+        //r2.html('<strong>추석ㅎㅎㅎ</strong>');
+
+        //content 영역의 html 가져오기
+        const str2 = r2.html();
+        console.log(str2);
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
