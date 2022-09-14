@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수_기타</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>함수_기타</h1>
+
+    <div id="t">zzz</div>
+
+    <script>
+
+        const arr = ['a','b','c','1',2,3];
+
+        // each (제이쿼리)
+        $.each(arr, function(idx,elem){
+            console.log("인덱스 : " + idx);
+            console.log("요소 : " + elem);
+        });
+
+        $(arr).each(function(idx,elem){
+            console.log("인덱스 : " + idx);
+            console.log("요소 : " + elem);
+        });
+
+        // is
+        const result = $('#t').is('#t3');
+        console.log(result);
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이드바</title>
+    <style>
+        html , body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar{
+            background-color: green;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            width: 200px;
+            margin-left: -200px;
+            transition: margin-left 500ms;
+        }
+
+        .sidebar.active{
+            margin-left: 0px;
+            transition: margin-left 500ms;
+        }
+
+        .sidebar.active + .container {
+            margin-left: 200px;
+            transition: margin-left 500ms;
+        }
+
+        .container{
+            background-color: yellow;
+            position: absolute;
+            transition: margin-left 500ms;
+        }
+
+    </style>
+
+    <script>
+        function toggleSidebar(){
+            document.querySelector('.sidebar').classList.toggle('active');
+        }
+    </script>
+
+</head>
+<body>
+
+    <main>
+        <aside class="sidebar">사이드바</aside>
+        <section class="container">
+            <button onclick="toggleSidebar();">&#8801;</button>
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>젤리</title>
+    <style>
+        .circle{
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 50%;
+        }
+
+        .circle:hover{
+            animation: jelly;
+            animation-duration: 500ms;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes jelly{
+            0% {
+                transform: scale (1, 1);
+            }
+            25% {
+                transform: scale(0.9, 1.1);
+            }
+            50% {
+                transform: scale(1.2, 0.8);
+            }
+            75% {
+                transform: scale(0.95, 1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>젤리</h1>
+
+    <div class="circle">얖</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>실습</h1>
+
+    <table border="1">
+        <!-- (tr>td{$번째 셀}*3)*5 -->
+        <thead>
+            <tr>
+                <td>글 번호</td>
+                <td>제목</td>
+                <td>내용</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>1</td>
+            <td>ㅋㅋㅋㅋ</td>
+            <td>ㅎㅎㅎ</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>ㅋㅋㅋㅋ</td>
+            <td>ㅎㅎㅎ</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>ㅋㅋㅋㅋ</td>
+            <td>ㅎㅎㅎ</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>ㅋㅋㅋㅋ</td>
+            <td>ㅎㅎㅎ</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>ㅋㅋㅋㅋ</td>
+            <td>ㅎㅎㅎ</td>
+        </tr>
+    </table>
+
+    <script>
+
+        //테이블의 행 클릭 시,
+        //글 번호 출력
+
+        $('table tbody tr').click(function(){
+            console.log(this.children[0].innerText);
+        });
+
+    </script>
+
+</body>
+</html>

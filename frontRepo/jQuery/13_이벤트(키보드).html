@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트(키보드)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>이벤트(키보드)</h1>
+
+    <input type="text" id="t">
+
+    <script>
+
+        // keydown 
+        // $('#t').keydown(function(){
+        //     console.log("키다운 ~~~");
+        // });
+
+        // keypress (한글 X , 펑션 기능 X)
+        // $('#t').keypress(function(){
+        //     console.log("키 프레스 ~~~");
+        // });
+
+        // keyup
+        $('#t').keyup(function(){
+            console.log("키업 ~~~");
+        });
+
+        //실습
+        // 입력된 글자 수가 4글자 이상이면
+        // 콘솔창에 ok 띄우기
+
+
+        //js
+        document.querySelector('#t').addEventListener('keyup' , function(){
+            if(this.value.length >= 4){
+                console.log("ok (JS)");
+            }
+        });
+
+        //js
+        document.querySelector('#t').addEventListener('keyup' , function(e){
+            if(e.currentTarget.value.length >= 4){
+                console.log("ok (JS , 이벤트 객체)");
+            }
+        });
+
+        //jQuery
+        $('#t').keyup(function(){
+            if($(this).val().length >= 4){
+                console.log("ok (jQuery)");
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>

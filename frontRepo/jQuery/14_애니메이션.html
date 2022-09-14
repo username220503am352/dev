@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        div{
+            border: 1px solid blue;
+            background-color: purple;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>  
+    <h1>애니메이션</h1>
+
+    
+    <!-- button#btn1-${클릭}*3 -->
+    <button id="btn1-1">hide</button>
+    <button id="btn1-2">show</button>
+    <button id="btn1-3">toggle</button>
+    
+    <div id="t1">얖</div>
+
+    <script>
+        $('#btn1-1').click(function(){
+            $('#t1').hide(2000);
+        });
+
+        $('#btn1-2').click(function(){
+            $('#t1').show(2000);
+        });
+
+        $('#btn1-3').click(function(){
+            $('#t1').toggle(2000);
+        });
+
+    </script>
+
+    <hr>
+
+    <button id="btn2-1">fadeIn</button>
+    <button id="btn2-2">fadeOut</button>
+    <button id="btn2-3">fadeToggle</button>
+    
+    <div id="t2">얖</div>
+
+    <script>
+        $('#btn2-1').click(function(){
+            $('#t2').fadeIn(2000);
+        });
+
+        $('#btn2-2').click(function(){
+            $('#t2').fadeOut(2000);
+        });
+
+        $('#btn2-3').click(function(){
+            $('#t2').fadeToggle(2000);
+        });
+    </script>
+
+    <hr>
+
+    <button id="btn3-1">slideDown</button>
+    <button id="btn3-2">slideUp</button>
+    <button id="btn3-3">slideToggle</button>
+    
+    <div id="t3">얖</div>
+
+    <script>
+        $('#btn3-1').click(function(){
+            $('#t3').slideDown(1500);
+        });
+
+        $('#btn3-2').click(function(){
+            $('#t3').slideUp(1500);
+        });
+
+        $('#btn3-3').click(function(){
+            $('#t3').slideToggle(1500);
+        });
+    </script>
+
+
+
+</body>
+</html>

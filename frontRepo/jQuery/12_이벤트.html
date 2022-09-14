@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>이벤트</h1>
+
+    <div id="t">얖</div>
+
+    <script>
+
+        //이벤트 걸기
+        $('#t').dblclick(function(){
+            console.log('더블클릭이벤트 발생');
+        });
+
+        //이벤트 걸기 (on 방식)
+        $('#t').on('click' , function(){
+            console.log('클릭이벤트 발생');
+        });
+
+        //이벤트 걸기 (on 방식) //이벤트 중첩 가능
+        $('#t').on('click' , function(){
+            console.log('클릭이벤트 발생222222');
+        });
+
+        //이벤트 여러개 걸기 (on)
+        $('#t').on({
+            mouseenter : function(){
+                console.log('마우스 엔터 ~~~');
+            } ,
+            mouseout : function(){
+                console.log('마우스 아웃 ~~~');
+            }
+        });
+
+        //이벤트 제거
+        $('#t').off('click');
+
+        //일회용 이벤트 걸기
+        $('#t').one('click' , function(){
+            console.log('일회용 이벤트 발생 ~~~');
+        });
+
+        
+
+
+    </script>
+
+
+
+</body>
+</html>
