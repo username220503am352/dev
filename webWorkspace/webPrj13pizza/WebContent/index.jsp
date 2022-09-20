@@ -9,7 +9,7 @@
 <body>
 	<h1>피자 주문하기</h1>
 	
-	<form action="/app13/orderResultTemp.jsp" method="post">
+	<form action="/app13/pizza" method="post">
 	
 		주소 : <input type="text" name="addr">
 		<br>

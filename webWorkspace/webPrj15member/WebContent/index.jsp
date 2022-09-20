@@ -7,22 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h1>주문 내역</h1>
+	<h1>인덱스</h1>
 	
-	<!-- 사용자가 입력한 데이터들 쭉 보여주기 -->
+	<a href="/app15/member/join">회원가입</a>
+	<a href="/app15/member/login">로그인</a>
 	
-	<table>
-		
-	</table>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
