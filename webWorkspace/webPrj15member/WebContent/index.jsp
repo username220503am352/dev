@@ -9,8 +9,23 @@
 <body>
 	<h1>인덱스</h1>
 	
-	<a href="/app15/member/join">회원가입</a>
-	<a href="/app15/member/login">로그인</a>
+	<%if(request.getAttribute("nick") != null){%>
+		<h3><%= request.getAttribute("nick") %> 님 환영합니다.</h3>
+	<%}else{%>
+		<a href="/app15/member/join">회원가입</a>
+		<a href="/app15/member/login">로그인</a>
+	<% } %>
+	
 	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

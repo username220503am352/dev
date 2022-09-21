@@ -24,10 +24,27 @@ public class MemberJoinServlet extends HttpServlet {
 		String memberPwd = req.getParameter("memberPwd");
 		String memberNick = req.getParameter("memberNick");
 		
+		//디비에 저장
+		//int result = insert 쿼리 실행
+		int result = 1;
+		
 		//데이터 출력
 		System.out.println(memberId);
 		System.out.println(memberPwd);
 		System.out.println(memberNick);
+		
+		//결과화면 보여주기
+		if(result == 1) {
+			//성공
+			req.getRequestDispatcher("/member/joinOkResult.jsp").forward(req, resp);
+		}else {
+			//실패
+			req.getRequestDispatcher("/member/joinFailResult.jsp").forward(req, resp);
+		}
+		
+		
+		
+		
 	
 	}
 	
