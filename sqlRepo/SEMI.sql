@@ -22,4 +22,7 @@ VALUES
     , 'nick01'
 )
 ;
+rollback;
+
+select * from member;
 

@@ -61,6 +61,7 @@ public class MemberJoinServlet extends HttpServlet {
 			String username = "C##SEMI";
 			String password = "SEMI";
 			conn = DriverManager.getConnection(url , username, password);
+			conn.setAutoCommit(false);
 			
 			//SQL 준비
 			String sql = "INSERT INTO MEMBER ( MEMBER_ID , MEMBER_PWD , MEMBER_NICK ) VALUES ( ? , ? , ? )";

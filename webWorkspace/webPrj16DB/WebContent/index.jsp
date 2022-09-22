@@ -1,3 +1,4 @@
+<%@page import="com.kh.app16.member.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,11 +10,18 @@
 <body>
 	<h1>디비</h1>
 	
-	<hr>
+	<%
+		MemberVo x = (MemberVo)session.getAttribute("data");
+	%>
 	
-	<a href="/app16/member/join">회원가입</a>
-	<br>
-	<a href="/app16/member/login">로그인</a>
+	<%if(x != null){%>
+		<h2><%= x.getMemberId() %>님 환영합니다 ~ ^^</h2>
+		<a href="/app16/member/logout">로그아웃</a>
+	<%}else{%>
+		<a href="/app16/member/join">회원가입</a>
+		<br>
+		<a href="/app16/member/login">로그인</a>
+	<%}%>
 	
 </body>
 </html>

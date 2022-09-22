@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = "/member/login")
 public class MemberLoginServlet extends HttpServlet {
@@ -98,6 +99,13 @@ public class MemberLoginServlet extends HttpServlet {
 			//성공
 			System.out.println("로그인 성공 !!!");
 			System.out.println(loginMember);
+			
+			//화면에 보여줄 데이터 담기
+			//req.setAttribute("data", loginMember);			//데이터 담기 (리퀘스트)
+			HttpSession s = req.getSession();
+			s.setAttribute("data", loginMember); 				//데이터 담기 (세션)
+			
+			//리다이렉트
 			resp.sendRedirect("/app16");
 		}else {
 			//실패
