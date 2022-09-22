@@ -1,3 +1,4 @@
+-- MEMBER 테이블
 DROP TABLE MEMBER;
 CREATE TABLE MEMBER
 (
@@ -7,22 +8,12 @@ CREATE TABLE MEMBER
     , ENROLL_DATE   TIMESTAMP DEFAULT SYSDATE
 );
 
--- 이해 내용은 삭제할 것
-
-INSERT INTO MEMBER
-(
+-- 이하 내용은 삭제할 것
+SELECT 
     MEMBER_ID
     , MEMBER_PWD
     , MEMBER_NICK
-)
-VALUES
-(
-    'user01'
-    , '1234'
-    , 'nick01'
-)
+FROM MEMBER
+WHERE MEMBER_ID = ?
+AND MEMBER_PWD = ?
 ;
-rollback;
-
-select * from member;
-
