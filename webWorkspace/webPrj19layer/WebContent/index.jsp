@@ -8,5 +8,10 @@
 </head>
 <body>
 	<h1>레이어 구분 (인덱스)</h1>
+	
+	<a href="/app19/board/write">게시글 작성</a>
+	<br>
+	<a href="/app19/board/list">게시글 목록</a>
+	
 </body>
 </html>
