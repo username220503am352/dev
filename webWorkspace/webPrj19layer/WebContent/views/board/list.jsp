@@ -20,8 +20,6 @@
 			<th>제목</th>
 			<th>내용</th>
 		</tr>
-		
-		
 			
 		<%for(int i = 0 ; i < x.size(); ++i){%>
 				<tr>
@@ -29,10 +27,6 @@
 					<td><%= x.get(i).getContent() %></td>
 				</tr>
 		<%}%>
-		
-		
-		
-		
 		
 	</table>
 	
