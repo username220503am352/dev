@@ -1,23 +1,30 @@
--- MEMBER 테이블
-DROP TABLE MEMBER;
-CREATE TABLE MEMBER
-(
-    MEMBER_ID       VARCHAR2(50)
-    , MEMBER_PWD    VARCHAR2(100)
-    , MEMBER_NICK   VARCHAR2(50)
-    , ENROLL_DATE   TIMESTAMP DEFAULT SYSDATE
+-- 세미 프로젝트
+
+-------------------------------
+-- 테이블 삭제
+-------------------------------
+
+
+-------------------------------
+-- MEMBER 테이블 생성
+-------------------------------
+DROP TABLE MEMBER CASCADE CONSTRAINTS;
+CREATE TABLE MEMBER(
+    NO              NUMBER          PRIMARY KEY
+    , ID            VARCHAR2(100)   NOT NULL UNIQUE
+    , PWD           VARCHAR2(100)   NOT NULL
+    , NICK          VARCHAR2(100)   NOT NULL UNIQUE
+    , ADDR          VARCHAR2(100)   
+    , HOBBY         VARCHAR2(100)
+    , ENROLL_DATE   TIMESTAMP       DEFAULT SYSDATE
+    , MODIFY_DATE   TIMESTAMP       DEFAULT SYSDATE
+    , STATUS        CHAR(1)         DEFAULT 'O' CHECK(STATUS IN ('O','X'))
 );
 
--- BOARD 테이블
-DROP TABLE BOARD;
-CREATE TABLE BOARD(
-    TITLE       VARCHAR2(20)
-    , CONTENT   VARCHAR2(4000)
-);
-
-SELECT * FROM BOARD;
+DROP SEQUENCE SEQ_MEMBER_NO;
+CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE NOCYCLE;
 
 
 
 
--- 이하 내용은 삭제할 것
+
