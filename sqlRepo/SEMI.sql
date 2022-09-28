@@ -25,6 +25,44 @@ DROP SEQUENCE SEQ_MEMBER_NO;
 CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE NOCYCLE;
 
 
+---------------------------------------------------------------------------
+----------------테스트용 쿼리 (삭제할 것)-------------------------------------
+INSERT INTO MEMBER
+(
+    NO
+    ,ID
+    ,PWD
+    ,NICK
+    ,ADDR
+    ,HOBBY
+    ,ENROLL_DATE
+    ,MODIFY_DATE
+    ,STATUS
+)
+VALUES
+(
+
+)
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
