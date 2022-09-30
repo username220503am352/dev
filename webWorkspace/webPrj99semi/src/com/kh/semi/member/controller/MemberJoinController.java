@@ -29,7 +29,7 @@ public class MemberJoinController extends HttpServlet {
 		
 		// 데이터 꺼내기
 		String memberId = req.getParameter("memberId");
-		String memberPwd = req.getParameter("memberPwd");
+		String memberPwd = req.getParameter("memberPwd1");
 		String memberNick = req.getParameter("memberNick");
 		String addr = req.getParameter("addr");
 		String[] hobby = req.getParameterValues("hobby");

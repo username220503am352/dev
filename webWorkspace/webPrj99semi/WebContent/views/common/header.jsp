@@ -62,7 +62,7 @@
             <div></div>
             <div id="logo-box"><img src="/semi/resources/img/logo.PNG" alt="로고이미지" width="80%" height="60%"></div>
             <div id="member-box">
-                <form action="">
+                <form action="/semi/member/login" method="post">
                     <table>
                         <tr>
                             <td>아이디</td>

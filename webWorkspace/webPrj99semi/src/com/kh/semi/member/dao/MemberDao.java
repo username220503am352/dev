@@ -2,6 +2,7 @@ package com.kh.semi.member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.kh.semi.common.JDBCTemplate;
@@ -34,5 +35,76 @@ public class MemberDao {
 		
 		return result;
 	}//method
+
+	public MemberVo selectOne(Connection conn, MemberVo vo) {
+		//SQL
+		
+		String sql = "SELECT NO ,ID ,PWD ,NICK ,ADDR ,HOBBY ,ENROLL_DATE ,MODIFY_DATE ,STATUS FROM MEMBER WHERE ID = ? AND PWD = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVo loginMember = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPwd());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String id = rs.getString("ID");
+				String pwd = rs.getString("PWD");
+				String no = rs.getString("NO");
+				String nick = rs.getString("NICK");
+				String addr = rs.getString("ADDR");
+				String hobby = rs.getString("HOBBY");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String modifyDate = rs.getString("MODIFY_DATE");
+				String status = rs.getString("STATUS");
+				
+				loginMember = new MemberVo();
+				loginMember.setNo(no);
+				loginMember.setId(id);
+				loginMember.setPwd(pwd);
+				loginMember.setNick(nick);
+				loginMember.setAddr(addr);
+				loginMember.setHobby(hobby);
+				loginMember.setEnrollDate(enrollDate);
+				loginMember.setModifyDate(modifyDate);
+				loginMember.setStatus(status);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return loginMember;
+	}
 	
-}
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

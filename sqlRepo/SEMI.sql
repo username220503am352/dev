@@ -35,15 +35,18 @@ INSERT INTO MEMBER
     ,NICK
     ,ADDR
     ,HOBBY
-    ,ENROLL_DATE
-    ,MODIFY_DATE
-    ,STATUS
 )
 VALUES
 (
-
+    SEQ_MEMBER_NO.NEXTVAL
+    , ?
+    , ?
+    , ?
+    , ?
+    , ?
 )
 ;
+ROLLBACK;
 
 
 

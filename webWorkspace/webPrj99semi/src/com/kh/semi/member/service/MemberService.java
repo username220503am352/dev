@@ -30,6 +30,17 @@ public class MemberService {
 		return result;
 	}
 
+	public MemberVo login(MemberVo vo) {
+		//커넥션 준비
+		//SQL
+		//트랜잭션 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		MemberVo loginMember = new MemberDao().selectOne(conn, vo);
+		JDBCTemplate.close(conn);
+		return loginMember;
+	}
+
 }//class
 
 

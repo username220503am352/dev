@@ -43,7 +43,7 @@
 				<div>아이디</div>
 				<div><input type="text" name="memberId"></div>
 				<div>비밀번호</div>
-				<div><input type="password" name="memberPwd"></div>
+				<div><input type="password" name="memberPwd1"></div>
 				<div>비밀번호 확인</div>
 				<div><input type="password" name="memberPwd2"></div>
 				<div>닉네임</div>
@@ -69,7 +69,34 @@
 		</form>
 
 	</div>
+	
+	<script>
+	
+		const pwd1 = document.querySelector("input[name=memberPwd1]");
+		const pwd2 = document.querySelector("input[name=memberPwd2]");
+		
+		pwd2.addEventListener("blur" , function(){
+			if(pwd1.value == pwd2.value){
+				alert("일치");
+			}else{
+				alert("불일치");
+			}
+		});
+		
+	</script>
 
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
