@@ -39,7 +39,7 @@ public class MemberDao {
 	public MemberVo selectOne(Connection conn, MemberVo vo) {
 		//SQL
 		
-		String sql = "SELECT NO ,ID ,PWD ,NICK ,ADDR ,HOBBY ,ENROLL_DATE ,MODIFY_DATE ,STATUS FROM MEMBER WHERE ID = ? AND PWD = ?";
+		String sql = "SELECT NO ,ID ,PWD ,NICK ,ADDR ,HOBBY ,ENROLL_DATE ,MODIFY_DATE ,STATUS FROM MEMBER WHERE ID = ? AND PWD = ? AND STATUS = 'O'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -85,6 +85,58 @@ public class MemberDao {
 		}
 		
 		return loginMember;
+	}
+
+	public int updateOneByNo(Connection conn, MemberVo vo) {
+		//SQL
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = "UPDATE MEMBER SET PWD = ? , NICK = ? , ADDR = ? , HOBBY = ? WHERE NO = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getPwd());
+			pstmt.setString(2, vo.getNick());
+			pstmt.setString(3, vo.getAddr());
+			pstmt.setString(4, vo.getHobby());
+			pstmt.setString(5, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	//회원탈퇴
+	public int quit(Connection conn, String no) {
+		//SQL
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = "UPDATE MEMBER SET STATUS = 'X' WHERE NO = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 	
 }//class

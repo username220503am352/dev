@@ -71,18 +71,20 @@
 	</div>
 	
 	<script>
-	
+		// 비밀번호 일치여부 체크
 		const pwd1 = document.querySelector("input[name=memberPwd1]");
 		const pwd2 = document.querySelector("input[name=memberPwd2]");
-		
-		pwd2.addEventListener("blur" , function(){
-			if(pwd1.value == pwd2.value){
-				alert("일치");
+	
+		function check(){
+			
+			if(pwd1.value.length > 0 && pwd1.value == pwd2.value){
+				return true;
 			}else{
-				alert("불일치");
+				alert('패스워드가 일치하지 않습니다');
+				return false;
 			}
-		});
-		
+			
+		}
 	</script>
 
 

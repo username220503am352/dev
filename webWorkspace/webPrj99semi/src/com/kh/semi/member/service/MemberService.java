@@ -41,6 +41,51 @@ public class MemberService {
 		return loginMember;
 	}
 
+	//회원 정보 수정
+	public MemberVo edit(MemberVo vo) {
+		
+		//커넥션준비
+		//SQL(update , select)
+		//트랜잭션처리 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().updateOneByNo(conn , vo);
+		
+		MemberVo updatedMember = null;
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+			updatedMember = new MemberDao().selectOne(conn, vo);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		return updatedMember;
+		
+	}
+
+	//회원탈퇴
+	public int quit(String no) {
+		//커넥션 준비
+		//SQL
+		//트랜잭션처리 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().quit(conn , no);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }//class
 
 

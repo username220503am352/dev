@@ -38,8 +38,8 @@
 	<div id="main">
 		<h1 align="center">마이페이지</h1>
 
-		<form action="/semi/member/mypage" method="post">
-
+		<form action="/semi/member/mypage" method="post" onsubmit="return check();">
+			<input type="hidden" name="no" value="<%= loginMember.getNo() %>">
 			<div id="join-area">
 				<div>아이디</div>
 				<div><input type="text" name="memberId" value="<%=loginMember.getId()%>"></div>
@@ -63,8 +63,8 @@
 						<input type="checkbox" name="hobby" value="workout">
 					</label>
 				</div>
-				<div>마이페이지</div>
-				<div><input type="submit" value="마이페이지"></div>
+				<div><a href="/semi/member/quit">회원탈퇴</a></div>
+				<div><input type="submit" value="정보수정"></div>
 			</div>
 
 		</form>
@@ -72,18 +72,22 @@
 	</div>
 	
 	<script>
-		//비밀번호 일치 여부
+		// 비밀번호 일치여부 체크
 		const pwd1 = document.querySelector("input[name=memberPwd1]");
 		const pwd2 = document.querySelector("input[name=memberPwd2]");
-		
-		pwd2.addEventListener("blur" , function(){
-			if(pwd1.value == pwd2.value){
-				alert("일치");
+	
+		function check(){
+			
+			if(pwd1.value.length > 0 && pwd1.value == pwd2.value){
+				return true;
 			}else{
-				alert("불일치");
+				alert('패스워드가 일치하지 않습니다');
+				return false;
 			}
-		});
+			
+		}
 	</script>
+	
 	
 	<script>
 		//마이페이지 취미 체크
