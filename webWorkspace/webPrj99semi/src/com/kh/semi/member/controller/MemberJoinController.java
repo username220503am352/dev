@@ -48,6 +48,7 @@ public class MemberJoinController extends HttpServlet {
 		// 화면 선택
 		if(result == 1) {
 			//회원가입 성공
+			req.getSession().setAttribute("alertMsg", "회원가입 성공!");
 			resp.sendRedirect("/semi");
 		}else {
 			//회원가입 실패

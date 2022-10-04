@@ -4,7 +4,15 @@
     
 <%
 	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	session.removeAttribute("alertMsg");
 %>
+
+<script>
+	<%if(alertMsg != null){%>
+			alert('<%= alertMsg %>');
+	<%}%>
+</script>
 
 <style>
     /* 공통 */
@@ -112,3 +120,10 @@
         </div>
 
     </div>
+
+    
+    
+    
+    
+
+    
