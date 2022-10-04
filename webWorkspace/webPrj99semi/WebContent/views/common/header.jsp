@@ -45,6 +45,9 @@
         justify-content: center;
         align-items: center;
     }
+    #member-box{
+    	flex-direction: column;
+    }
     #navi{
         width: 100%;
         height: 100%;
@@ -57,7 +60,8 @@
     #navi > div{
         width: 10vw;
         height: 100%;
-        border: 1px solid gray;
+        display: flex;
+        justify-content: center;
     }
     
 </style>
@@ -88,7 +92,11 @@
             	<%}else{%>
             		<!-- 로그인 된 상태 -->
             		<span><%= loginMember.getNick() %> 님 환영합니다</span>
-            		<a href="/semi/member/logout">로그아웃</a>
+            		<div>
+	            		<a href="/semi/member/logout">로그아웃</a>
+	            		&nbsp;
+	            		<a href="/semi/member/mypage">마이페이지</a>
+            		</div>
             	<%}%>
                 
             </div>
