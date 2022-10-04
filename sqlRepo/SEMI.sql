@@ -27,26 +27,20 @@ CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE NOCYCLE;
 
 ---------------------------------------------------------------------------
 ----------------테스트용 쿼리 (삭제할 것)-------------------------------------
-INSERT INTO MEMBER
-(
+SELECT 
     NO
     ,ID
     ,PWD
     ,NICK
     ,ADDR
     ,HOBBY
-)
-VALUES
-(
-    SEQ_MEMBER_NO.NEXTVAL
-    , ?
-    , ?
-    , ?
-    , ?
-    , ?
-)
+    ,ENROLL_DATE
+    ,MODIFY_DATE
+    ,STATUS
+FROM MEMBER
+WHERE ID = ?
+AND PWD = ?
 ;
-ROLLBACK;
 
 
 

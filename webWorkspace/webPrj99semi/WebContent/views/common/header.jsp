@@ -1,5 +1,10 @@
+<%@page import="com.kh.semi.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+%>
 
 <style>
     /* 공통 */
@@ -45,13 +50,13 @@
         height: 100%;
         background-color: black;
         color: white;
-        font-size: 2rem;
+        font-size: 1.5rem;
         display: grid;
         grid-template-columns: repeat(4 , 1fr);
     }
     #navi > div{
         width: 10vw;
-        height: 20%;
+        height: 100%;
         border: 1px solid gray;
     }
     
@@ -62,22 +67,30 @@
             <div></div>
             <div id="logo-box"><img src="/semi/resources/img/logo.PNG" alt="로고이미지" width="80%" height="60%"></div>
             <div id="member-box">
-                <form action="/semi/member/login" method="post">
-                    <table>
-                        <tr>
-                            <td>아이디</td>
-                            <td><input type="text" name="memberId"></td>
-                        </tr>
-                        <tr>
-                            <td>비밀번호</td>
-                            <td><input type="password" name="memberPwd"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="로그인"></td>
-                            <td><input type="button" value="회원가입" onclick="location.href='/semi/member/join'"></td>
-                        </tr>
-                    </table>
-                </form>
+            	<%if(loginMember == null){%>
+            		<!-- 로그인 X -->
+            		<form action="/semi/member/login" method="post">
+	                    <table>
+	                        <tr>
+	                            <td>아이디</td>
+	                            <td><input type="text" name="memberId"></td>
+	                        </tr>
+	                        <tr>
+	                            <td>비밀번호</td>
+	                            <td><input type="password" name="memberPwd"></td>
+	                        </tr>
+	                        <tr>
+	                            <td><input type="submit" value="로그인"></td>
+	                            <td><input type="button" value="회원가입" onclick="location.href='/semi/member/join'"></td>
+	                        </tr>
+	                    </table>
+	                </form>
+            	<%}else{%>
+            		<!-- 로그인 된 상태 -->
+            		<span><%= loginMember.getNick() %> 님 환영합니다</span>
+            		<a href="/semi/member/logout">로그아웃</a>
+            	<%}%>
+                
             </div>
         </div>
 
