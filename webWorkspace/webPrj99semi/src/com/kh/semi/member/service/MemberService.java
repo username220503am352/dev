@@ -62,7 +62,6 @@ public class MemberService {
 		
 		JDBCTemplate.close(conn);
 		return updatedMember;
-		
 	}
 
 	//회원탈퇴

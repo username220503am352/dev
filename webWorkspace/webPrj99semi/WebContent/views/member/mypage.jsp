@@ -39,7 +39,6 @@
 		<h1 align="center">마이페이지</h1>
 
 		<form action="/semi/member/mypage" method="post" onsubmit="return check();">
-			<input type="hidden" name="no" value="<%= loginMember.getNo() %>">
 			<div id="join-area">
 				<div>아이디</div>
 				<div><input type="text" name="memberId" value="<%=loginMember.getId()%>"></div>

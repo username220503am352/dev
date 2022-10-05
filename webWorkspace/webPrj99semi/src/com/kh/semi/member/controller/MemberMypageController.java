@@ -20,7 +20,15 @@ public class MemberMypageController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//화면
 		//resp.sendRedirect("/semi/views/member/mypage.jsp");
-		req.getRequestDispatcher("/views/member/mypage.jsp").forward(req, resp);
+		HttpSession s = req.getSession();
+		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		if(loginMember != null) {
+			req.getRequestDispatcher("/views/member/mypage.jsp").forward(req, resp);
+		}else {
+			//에러페이지
+			req.setAttribute("msg", "로그인 후 이용해주세요");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+		}
 	}
 	
 	// 마이페이지 (정보수정)
@@ -56,6 +64,7 @@ public class MemberMypageController extends HttpServlet {
 		//화면선택
 		if(updatedMember != null) {
 			// ㅇㅋ
+			req.getSession().setAttribute("alertMsg", "회원 정보 수정 성공 !");
 			req.getSession().setAttribute("loginMember", updatedMember);
 			resp.sendRedirect("/semi");
 		}else {

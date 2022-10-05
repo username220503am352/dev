@@ -77,7 +77,11 @@
     <div id="header">
         <div id="header-top">
             <div></div>
-            <div id="logo-box"><img src="/semi/resources/img/logo.PNG" alt="로고이미지" width="80%" height="60%"></div>
+            <div id="logo-box">
+            	<a href="/semi">
+	            	<img src="/semi/resources/img/logo.PNG" alt="로고이미지" width="80%" height="60%">
+            	</a>
+            </div>
             <div id="member-box">
             	<%if(loginMember == null){%>
             		<!-- 로그인 X -->
@@ -112,7 +116,7 @@
 
         <div id="header-bot">
             <div id="navi">
-                <div>HOME</div>
+                <div><a href="/semi">HOME</a></div>
                 <div>공지사항</div>
                 <div>일반게시판</div>
                 <div>사진게시판</div>
