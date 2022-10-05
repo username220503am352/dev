@@ -25,22 +25,31 @@ DROP SEQUENCE SEQ_MEMBER_NO;
 CREATE SEQUENCE SEQ_MEMBER_NO NOCACHE NOCYCLE;
 
 
+-------------------------------
+-- NOTICE 테이블 생성
+-------------------------------
+DROP TABLE NOTICE CASCADE CONSTRAINTS;
+CREATE TABLE NOTICE(
+    NO              NUMBER          PRIMARY KEY
+    , TITLE         VARCHAR2(100)   NOT NULL 
+    , CONTENT       VARCHAR2(4000)  NOT NULL
+    , WRITER        NUMBER          NOT NULL
+    , HIT           NUMBER          
+    , ENROLL_DATE   TIMESTAMP       DEFAULT SYSDATE
+    , MODIFY_DATE   TIMESTAMP       DEFAULT SYSDATE
+    , STATUS        CHAR(1)         DEFAULT 'O' CHECK(STATUS IN ('O' , 'X'))
+    , CONSTRAINT FK_NOTICE_MEMBER FOREIGN KEY(WRITER) REFERENCES MEMBER(NO)
+);
+
+CREATE SEQUENCE SEQ_NOTICE_NO NOCACHE NOCYCLE;
+
+
+
+
+
 ---------------------------------------------------------------------------
 ----------------테스트용 쿼리 (삭제할 것)-------------------------------------
-SELECT 
-    NO
-    ,ID
-    ,PWD
-    ,NICK
-    ,ADDR
-    ,HOBBY
-    ,ENROLL_DATE
-    ,MODIFY_DATE
-    ,STATUS
-FROM MEMBER
-WHERE ID = ?
-AND PWD = ?
-;
+
 
 
 
