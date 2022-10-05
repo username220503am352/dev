@@ -117,7 +117,7 @@
         <div id="header-bot">
             <div id="navi">
                 <div><a href="/semi">HOME</a></div>
-                <div>공지사항</div>
+                <div><a href="/semi/notice/list">공지사항</a></div>
                 <div>일반게시판</div>
                 <div>사진게시판</div>
             </div>
