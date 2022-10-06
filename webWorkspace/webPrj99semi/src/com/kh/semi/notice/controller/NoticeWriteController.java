@@ -19,7 +19,19 @@ public class NoticeWriteController extends HttpServlet {
 	//공지사항 작성 (화면)
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/notice/write.jsp").forward(req, resp);
+		HttpSession s = req.getSession();
+		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		boolean isAdmin = loginMember != null && loginMember.getId().equals("admin");
+		
+		if(isAdmin) {
+			//관리자 일 때, 포워딩
+			req.getRequestDispatcher("/views/notice/write.jsp").forward(req, resp);
+		}else {
+			//관리자 아님 => 에러페이지
+			req.setAttribute("msg", "권한이 없습니다.");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+		}
+		
 	}
 	
 	//공지사항 작성

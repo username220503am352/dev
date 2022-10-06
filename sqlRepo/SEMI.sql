@@ -52,8 +52,21 @@ CREATE SEQUENCE SEQ_NOTICE_NO NOCACHE NOCYCLE;
 ----------------테스트용 쿼리 (삭제할 것)-------------------------------------
 
 
-
-
+SELECT 
+      N.NO
+    , N.TITLE
+    , N.CONTENT
+    , N.WRITER
+    , N.HIT
+    , N.ENROLL_DATE
+    , N.MODIFY_DATE
+    , N.STATUS
+    , M.NICK
+FROM NOTICE N
+JOIN MEMBER M 
+ON N.WRITER = M.NO
+WHERE N.NO = 3 
+AND N.STATUS = 'O'
 
 
 

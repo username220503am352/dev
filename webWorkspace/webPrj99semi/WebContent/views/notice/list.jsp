@@ -1,5 +1,12 @@
+<%@page import="com.kh.semi.notice.vo.NoticeVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	List<NoticeVo> voList = (List<NoticeVo>)request.getAttribute("voList");
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,9 +47,12 @@
 
     <h1 align="center">공지사항</h1>
 
-    <div id="main-top">
-        <a href="/semi/notice/write">글쓰기</a>
-    </div>
+	<%if(loginMember != null && loginMember.getId().equals("admin")){%>
+		<div id="main-top">
+	        <a href="/semi/notice/write">글쓰기</a>
+	    </div>
+	<%}%>
+    
 
     <div id="main">
 
@@ -51,55 +61,12 @@
         <div>작성자</div>
         <div>조회수</div>
 
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>관리자</div>
-        <div>100</div>
+        <%for(int i = 0 ; i < voList.size(); ++i){%>
+            <div><%= voList.get(i).getNo() %></div>
+            <div><a href="/semi/notice/detail?no=<%= voList.get(i).getNo() %>"><%= voList.get(i).getTitle() %></a></div>
+            <div><%= voList.get(i).getWriter() %></div>
+            <div><%= voList.get(i).getHit() %></div>
+        <%}%>
 
     </div>
 
