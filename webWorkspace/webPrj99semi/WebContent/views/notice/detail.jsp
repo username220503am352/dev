@@ -30,6 +30,12 @@
 		grid-column: span 4;
 		padding: 20px;
 	}
+	
+	#main-bot{
+		width : 60vw;
+		margin : 0 auto;
+		text-align : center;
+	}
 
 </style>
 </head>
@@ -49,9 +55,18 @@
 
 		<div><%= vo.getHit() %></div>
 
-		<div id="notice-content">내용 ~~~ </div>
+		<div id="notice-content"><%= vo.getContent() %></div>
 
 	</div>
+	
+	
+	<%if(loginMember != null && loginMember.getId().equals("admin")){%>
+		<div id="main-bot">
+			<a href="/semi/notice/edit?no=<%= vo.getNo() %>">수정하기</a>
+			<a href="/semi/notice/delete?no=<%= vo.getNo() %>">삭제하기</a>
+		</div>
+	<%}%>
+	
 	
 </body>
 </html>
