@@ -9,7 +9,7 @@ import com.kh.semi.notice.vo.NoticeVo;
 
 public class NoticeService {
 	
-	private final NoticeDao dao = dao;
+	private final NoticeDao dao = new NoticeDao();
 
 	// 공지사항 작성
 	public int write(NoticeVo vo) {
