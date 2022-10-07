@@ -31,6 +31,40 @@ public class NoticeEditController extends HttpServlet {
 		req.getRequestDispatcher("/views/notice/edit.jsp").forward(req, resp);
 		
 	}
+	
+	//공지사항 수정하기
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//인코딩
+		req.setCharacterEncoding("UTF-8");
+		
+		// 데이터 꺼내기
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String no = req.getParameter("no");
+		
+		// 데이터 뭉치기
+		NoticeVo vo = new NoticeVo();
+		vo.setTitle(title);
+		vo.setContent(content);
+		vo.setNo(no);
+		
+		// 디비 다녀오기
+		int result = new NoticeService().edit(vo);
+		
+		// 화면선택
+		if(result == 1) {
+			//성공 => 공지사항 상세조회 //성공 알람
+			req.getSession().setAttribute("alertMsg", "공지사항 수정 성공!");
+			resp.sendRedirect("/semi/notice/detail?no=" + no);
+		}else {
+			//실패 => 에러페이지
+			req.setAttribute("msg", "공지사항 수정 실패 ...");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+		}
+		
+	}
 
 }//class
 

@@ -43,7 +43,7 @@ public class NoticeDao {
 	public List<NoticeVo> selectNoticeList(Connection conn) {
 		//SQL
 		
-		String sql = "SELECT * FROM NOTICE WHERE STATUS = 'O'";
+		String sql = "SELECT * FROM NOTICE WHERE STATUS = 'O' ORDER BY NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -155,6 +155,59 @@ public class NoticeDao {
 		
 		return result;
 		
+	}
+
+	//공지사항 수정하기
+	public int updateOneByNo(Connection conn, NoticeVo vo) {
+		// SQL (준비, 완성, 실행)
+		
+		String sql = "UPDATE NOTICE SET TITLE = ? , CONTENT = ? , MODIFY_DATE = SYSDATE WHERE NO = ?";
+
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	//공지사항 삭제
+	public int delete(Connection conn, String no) {
+		//SQL (준비 , 완성 , 실행)
+		
+		String sql = "DELETE NOTICE WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 	
 	

@@ -69,6 +69,49 @@ public class NoticeService {
 		return vo;
 		
 	}
+
+	//공지사항 수정하기
+	public int edit(NoticeVo vo) {
+		// 커넥션 준비
+		// SQL
+		// 트랜잭션 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new NoticeDao().updateOneByNo(conn , vo);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	//공지사항 삭제
+	public int delete(String no) {
+		
+		// 커넥션 준비
+		// SQL
+		// 트랜잭션 처리 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new NoticeDao().delete(conn , no);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 	
 	
 
