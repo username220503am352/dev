@@ -3,11 +3,13 @@ package com.kh.semi.notice.service;
 import java.sql.Connection;
 import java.util.List;
 
-import com.kh.semi.common.JDBCTemplate;
+import static com.kh.semi.common.JDBCTemplate.*;
 import com.kh.semi.notice.dao.NoticeDao;
 import com.kh.semi.notice.vo.NoticeVo;
 
 public class NoticeService {
+	
+	private final NoticeDao dao = dao;
 
 	// 공지사항 작성
 	public int write(NoticeVo vo) {
@@ -16,17 +18,17 @@ public class NoticeService {
 		//SQL
 		//트랜잭션 , 자원반납
 		
-		Connection conn = JDBCTemplate.getConnection();
+		Connection conn = getConnection();
 		
-		int result = new NoticeDao().insertNotice(conn , vo);
+		int result = dao.insertNotice(conn , vo);
 		
 		if(result == 1) {
-			JDBCTemplate.commit(conn);
+			commit(conn);
 		}else {
-			JDBCTemplate.rollback(conn);
+			rollback(conn);
 		}
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		return result;
 	}
@@ -37,11 +39,11 @@ public class NoticeService {
 		// SQL
 		// 트랜잭션 처리 , 자원반납
 		
-		Connection conn = JDBCTemplate.getConnection();
+		Connection conn = getConnection();
 		
-		List<NoticeVo> voList = new NoticeDao().selectNoticeList(conn);
+		List<NoticeVo> voList = dao.selectNoticeList(conn);
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		
 		return voList;
@@ -55,16 +57,16 @@ public class NoticeService {
 		//SQL (조회수증가 , 상세조회)
 		//트랜잭션 처리 , 자원반납
 		
-		Connection conn = JDBCTemplate.getConnection();
+		Connection conn = getConnection();
 		NoticeVo vo = null;
 		
-		int result = new NoticeDao().increaseHit(conn, no);
+		int result = dao.increaseHit(conn, no);
 		if(result == 1) {
-			JDBCTemplate.commit(conn);
-			vo = new NoticeDao().selectNoticeOne(conn , no);
+			commit(conn);
+			vo = dao.selectNoticeOne(conn , no);
 		}
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		return vo;
 		
@@ -76,17 +78,17 @@ public class NoticeService {
 		// SQL
 		// 트랜잭션 , 자원반납
 		
-		Connection conn = JDBCTemplate.getConnection();
+		Connection conn = getConnection();
 		
-		int result = new NoticeDao().updateOneByNo(conn , vo);
+		int result = dao.updateOneByNo(conn , vo);
 		
 		if(result == 1) {
-			JDBCTemplate.commit(conn);
+			commit(conn);
 		}else {
-			JDBCTemplate.rollback(conn);
+			rollback(conn);
 		}
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		return result;
 	}
@@ -98,17 +100,17 @@ public class NoticeService {
 		// SQL
 		// 트랜잭션 처리 , 자원반납
 		
-		Connection conn = JDBCTemplate.getConnection();
+		Connection conn = getConnection();
 		
-		int result = new NoticeDao().delete(conn , no);
+		int result = dao.delete(conn , no);
 		
 		if(result == 1) {
-			JDBCTemplate.commit(conn);
+			commit(conn);
 		}else {
-			JDBCTemplate.rollback(conn);
+			rollback(conn);
 		}
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		return result;
 	}
