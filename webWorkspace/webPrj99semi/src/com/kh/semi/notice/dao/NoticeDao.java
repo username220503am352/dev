@@ -189,7 +189,8 @@ public class NoticeDao {
 	public int delete(Connection conn, String no) {
 		//SQL (준비 , 완성 , 실행)
 		
-		String sql = "DELETE NOTICE WHERE NO = ?";
+		//String sql = "DELETE NOTICE WHERE NO = ?";
+		String sql = "UPDATE NOTICE SET STATUS = 'X' WHERE NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
