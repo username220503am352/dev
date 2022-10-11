@@ -109,7 +109,24 @@ CREATE SEQUENCE SEQ_ATTACHMENT_NO NOCYCLE NOCACHE;
 
 ---------------------------------------------------------------------------
 ----------------테스트용 쿼리 (삭제할 것)-------------------------------------
-
+INSERT INTO BOARD
+(
+    NO
+    ,TYPE
+    ,CATEGORY
+    ,TITLE
+    ,CONTENT
+    ,WRITER
+    ,HIT
+    ,ENROLL_DATE
+    ,MODIFY_DATE
+    ,STATUS
+)
+VALUES
+(
+~~~
+)
+;
 
 
 

@@ -1,5 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="com.kh.semi.board.vo.CategoryVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<% 
+	List<CategoryVo> cateList = (List<CategoryVo>)request.getAttribute("cateList");
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,13 +50,9 @@
                     <td width="500px">
                         <select name="category">
                             <!-- CTEGORY 테이블로부터 조회해오기 -->
-                            <option value="10">공통</option>
-                            <option value="10">공통</option>
-                            <option value="10">공통</option>
-                            <option value="10">공통</option>
-                            <option value="10">공통</option>
-                            <option value="10">공통</option>
-                            <option value="10">공통</option>
+                            <%for(int i = 0 ; i < cateList.size(); ++i){%>
+		                    	<option value="<%= cateList.get(i).getNo() %>"><%= cateList.get(i).getName() %></option>
+                            <%}%>
                         </select>
                     </td>
                 </tr>
