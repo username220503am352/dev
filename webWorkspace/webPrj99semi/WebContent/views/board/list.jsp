@@ -23,8 +23,11 @@
         border-bottom: 1px dashed black;
     }
 
-    #page-area{
+    #main > #page-area{
         grid-column: span 5;
+        text-align: center;
+        margin-top: 20px;
+        border-bottom: none;
     }
 
 </style>
@@ -103,7 +106,13 @@
         <div>2022-10-11</div>
         <div>100</div>
 
-        <div id="page-area">1 2 3 4 5</div>
+        <div id="page-area">
+            <a href="/semi/views/board/list?p=1" class="btn btn-primary btn-sm">1</a>
+            <a href="/semi/views/board/list?p=2" class="btn btn-primary btn-sm">2</a>
+            <a href="/semi/views/board/list?p=3" class="btn btn-primary btn-sm">3</a>
+            <a href="/semi/views/board/list?p=4" class="btn btn-primary btn-sm">4</a>
+            <a href="/semi/views/board/list?p=5" class="btn btn-primary btn-sm">5</a>
+        </div>
 
 
     </div>
