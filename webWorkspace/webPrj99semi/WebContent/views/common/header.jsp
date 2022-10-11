@@ -118,7 +118,7 @@
             <div id="navi">
                 <div><a href="/semi">HOME</a></div>
                 <div><a href="/semi/notice/list">공지사항</a></div>
-                <div>일반게시판</div>
+                <div><a href="/semi/board/list">일반게시판</a></div>
                 <div>사진게시판</div>
             </div>
         </div>
