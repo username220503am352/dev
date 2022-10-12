@@ -7,6 +7,7 @@ import com.kh.semi.board.dao.BoardDao;
 import com.kh.semi.board.vo.BoardVo;
 import com.kh.semi.board.vo.CategoryVo;
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.PageVo;
 
 public class BoardService {
 	
@@ -42,6 +43,37 @@ public class BoardService {
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	//게시글 목록 조회
+	public List<BoardVo> selectList(PageVo pv) {
+		//커넥션 준비
+		//SQL
+		//트랜잭션 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<BoardVo> x = dao.selectList(conn , pv);
+		
+		JDBCTemplate.close(conn);
+		
+		return x;
+	}
+
+	//게시글 갯수 조회
+	public int selectCount() {
+		
+		//커넥션준비
+		//SQL
+		//트랜잭션 , 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.selectCount(conn);
 		
 		JDBCTemplate.close(conn);
 		

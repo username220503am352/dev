@@ -10,6 +10,7 @@ import java.util.List;
 import com.kh.semi.board.vo.BoardVo;
 import com.kh.semi.board.vo.CategoryVo;
 import com.kh.semi.common.JDBCTemplate;
+import com.kh.semi.common.PageVo;
 
 public class BoardDao {
 
@@ -71,6 +72,93 @@ public class BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	//게시글 목록 조회
+	public List<BoardVo> selectList(Connection conn, PageVo pv) {
+		//SQL
+		
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM ( SELECT B.NO ,B.TYPE ,B.CATEGORY ,B.TITLE ,B.CONTENT ,B.HIT ,B.ENROLL_DATE ,B.MODIFY_DATE ,B.STATUS ,M.NICK AS WRITER FROM BOARD B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.STATUS = 'O' ORDER BY B.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardVo> voList = new ArrayList<BoardVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String no = rs.getString("NO");
+				String type = rs.getString("TYPE");
+				String category = rs.getString("CATEGORY");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				String writer = rs.getString("WRITER");
+				String hit = rs.getString("HIT");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String modifyDate = rs.getString("MODIFY_DATE");
+				String status = rs.getString("STATUS");
+				
+				BoardVo vo = new BoardVo();
+				vo.setNo(no);
+				vo.setType(type);
+				vo.setCategory(category);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setWriter(writer);
+				vo.setHit(hit);
+				vo.setEnrollDate(enrollDate);
+				vo.setModifyDate(modifyDate);
+				vo.setStatus(status);
+				
+				voList.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return voList;
+	}
+
+	//게시글 갯수 조회
+	public int selectCount(Connection conn) {
+		//SQL
+		
+		String sql = "SELECT COUNT(*) AS CNT FROM BOARD WHERE STATUS = 'O'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 		}
 		

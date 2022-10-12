@@ -1,3 +1,4 @@
+<%@page import="com.kh.semi.common.PageVo"%>
 <%@page import="com.kh.semi.board.vo.BoardVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
     
 <%
 	List<BoardVo> voList = (List<BoardVo>)request.getAttribute("voList");
+	PageVo pv = (PageVo)request.getAttribute("pv");
 %>
     
 <!DOCTYPE html>
@@ -73,15 +75,49 @@
 		<%}%>
 
         <div id="page-area">
-            <a href="/semi/board/list?p=1" class="btn btn-primary btn-sm">1</a>
-            <a href="/semi/board/list?p=2" class="btn btn-primary btn-sm">2</a>
-            <a href="/semi/board/list?p=3" class="btn btn-primary btn-sm">3</a>
-            <a href="/semi/board/list?p=4" class="btn btn-primary btn-sm">4</a>
-            <a href="/semi/board/list?p=5" class="btn btn-primary btn-sm">5</a>
+        
+	        <%if(pv.getStartPage() != 1){%>
+	        	<a href="/semi/board/list?pno=<%=pv.getStartPage()-1%>" class="btn btn-primary btn-sm">이전</a>
+	       	<%}%>
+        
+        
+	        <%for(int i = pv.getStartPage() ; i <= pv.getEndPage(); ++i){%>
+	        	<a href="/semi/board/list?pno=<%=i%>" class="btn btn-primary btn-sm"><%=i%></a>
+	        <%}%>
+	        
+	        <%if(pv.getEndPage() != pv.getMaxPage()){%>
+		        <a href="/semi/board/list?pno=<%=pv.getEndPage()+1%>" class="btn btn-primary btn-sm">다음</a>
+	        <%}%>
+        
         </div>
-
 
     </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
