@@ -1,5 +1,12 @@
+<%@page import="com.kh.semi.board.vo.BoardVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	List<BoardVo> voList = (List<BoardVo>)request.getAttribute("voList");
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,65 +64,13 @@
         <div>작성일시</div>
         <div>조회수</div>
 
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
-
-        <div>1</div>
-        <div>안녕하세요</div>
-        <div>홍길동</div>
-        <div>2022-10-11</div>
-        <div>100</div>
+		<%for(int i = 0; i < voList.size(); ++i){%>
+			<div><%= voList.get(i).getNo() %></div>
+	        <div><%= voList.get(i).getTitle() %></div>
+	        <div><%= voList.get(i).getWriter() %></div>
+	        <div><%= voList.get(i).getEnrollDate() %></div>
+	        <div><%= voList.get(i).getHit()%></div>
+		<%}%>
 
         <div id="page-area">
             <a href="/semi/board/list?p=1" class="btn btn-primary btn-sm">1</a>
