@@ -28,6 +28,7 @@ public class BoardWriteController extends HttpServlet {
 		if(req.getSession().getAttribute("loginMember") == null) {
 			req.setAttribute("msg", "로그인 후 이용해주세요");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+			return;
 		}
 		
 		//데이터 꺼내기
