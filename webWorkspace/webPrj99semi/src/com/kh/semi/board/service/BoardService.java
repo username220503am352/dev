@@ -79,6 +79,21 @@ public class BoardService {
 		
 		return result;
 	}
+
+	//게시글 상세조회
+	public BoardVo selectOne(String bno) {
+		// 커넥션 준비
+		// SQL
+		// 트랜잭션 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		BoardVo vo = dao.selectOne(conn , bno);
+		
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
 	
 	
 

@@ -165,6 +165,61 @@ public class BoardDao {
 		return result;
 	}
 
+	//게시글 상세조회
+	public BoardVo selectOne(Connection conn, String bno) {
+		//SQL
+		
+		String sql = "SELECT * FROM BOARD WHERE NO = ? AND STATUS = 'O'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		BoardVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String no = rs.getString("NO");
+				String type = rs.getString("TYPE");
+				String category = rs.getString("CATEGORY");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				String writer = rs.getString("WRITER");
+				String hit = rs.getString("HIT");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String modifyDate = rs.getString("MODIFY_DATE");
+				String status = rs.getString("STATUS");
+				
+				vo = new BoardVo();
+				vo.setNo(no);
+				vo.setType(type);
+				vo.setCategory(category);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setWriter(writer);
+				vo.setHit(hit);
+				vo.setEnrollDate(enrollDate);
+				vo.setModifyDate(modifyDate);
+				vo.setStatus(status);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return vo;
+	}
+
 }//class
 
 

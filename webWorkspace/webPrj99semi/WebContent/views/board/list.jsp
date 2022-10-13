@@ -72,7 +72,7 @@
 
 		<%for(int i = 0; i < voList.size(); ++i){%>
 			<div><%= voList.get(i).getNo() %></div>
-	        <div><%= voList.get(i).getTitle() %></div>
+	        <div><a href="<%= root %>/board/detail?bno=<%= voList.get(i).getNo() %>"><%= voList.get(i).getTitle() %></a></div>
 	        <div><%= voList.get(i).getWriter() %></div>
 	        <div><%= voList.get(i).getEnrollDate() %></div>
 	        <div><%= voList.get(i).getHit()%></div>
