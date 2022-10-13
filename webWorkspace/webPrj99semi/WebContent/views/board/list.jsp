@@ -56,9 +56,13 @@
 
     <div id="main">
 
-        <div id="main-top">
-            <a href="/semi/board/write" class="btn btn-primary">글쓰기</a>
-        </div>
+		<%if(loginMember != null){%>
+			<div id="main-top">
+	            <a href="/semi/board/write" class="btn btn-primary">글쓰기</a>
+	        </div>
+		<%}%>
+		
+        
 
         <div>번호</div>
         <div>제목</div>
