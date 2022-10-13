@@ -109,32 +109,24 @@ CREATE SEQUENCE SEQ_ATTACHMENT_NO NOCYCLE NOCACHE;
 
 ---------------------------------------------------------------------------
 ----------------테스트용 쿼리 (삭제할 것)-------------------------------------
-SELECT *
-FROM
-(
-    SELECT ROWNUM AS RNUM , T.*
-    FROM 
-    (
-        SELECT 
-            B.NO 
-            ,B.TYPE 
-            ,B.CATEGORY 
-            ,B.TITLE 
-            ,B.CONTENT 
-            ,B.HIT 
-            ,B.ENROLL_DATE 
-            ,B.MODIFY_DATE 
-            ,B.STATUS 
-            ,M.NICK AS WRITER 
-        FROM BOARD B 
-        JOIN MEMBER M 
-        ON B.WRITER = M.NO 
-        WHERE B.STATUS = 'O'
-        ORDER BY B.NO DESC
-    ) T
-)
-WHERE RNUM BETWEEN 11 AND 20
-;
+SELECT 
+    B.NO
+    ,B.TYPE
+    ,B.TITLE
+    ,B.CONTENT
+    ,B.HIT
+    ,B.ENROLL_DATE
+    ,B.MODIFY_DATE
+    ,B.STATUS 
+    ,M.NICK AS WRITER
+    ,C.NAME AS CATEGORY
+FROM BOARD B
+JOIN MEMBER M
+ON B.WRITER = M.NO
+JOIN CATEGORY C
+ON B.CATEGORY = C.NO
+WHERE B.NO = 3 
+AND B.STATUS = 'O';
 
 
 
