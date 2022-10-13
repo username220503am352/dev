@@ -69,7 +69,7 @@ public class BoardWriteController extends HttpServlet {
 		if(result == 1) {
 			//게시글 작성 성공 => 알람 , 게시글 목록
 			s.setAttribute("alertMsg", "게시글 작성 성공!");
-			resp.sendRedirect("/semi/board/list");
+			resp.sendRedirect("/semi/board/list?pno=1");
 		}else {
 			//게시글 작성 실패 => 메세지 , 에러페이지
 			req.setAttribute("msg", "게시글 작성 실패 ...");
