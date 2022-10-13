@@ -169,7 +169,7 @@ public class BoardDao {
 	public BoardVo selectOne(Connection conn, String bno) {
 		//SQL
 		
-		String sql = "SELECT * FROM BOARD WHERE NO = ? AND STATUS = 'O'";
+		String sql = "SELECT B.NO ,B.TYPE ,B.TITLE ,B.CONTENT ,B.HIT ,B.ENROLL_DATE ,B.MODIFY_DATE ,B.STATUS ,M.NICK AS WRITER ,C.NAME AS CATEGORY FROM BOARD B JOIN MEMBER M ON B.WRITER = M.NO JOIN CATEGORY C ON B.CATEGORY = C.NO WHERE B.NO = ? AND B.STATUS = 'O'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
