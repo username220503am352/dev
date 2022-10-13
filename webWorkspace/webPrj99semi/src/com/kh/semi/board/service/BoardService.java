@@ -88,7 +88,13 @@ public class BoardService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		BoardVo vo = dao.selectOne(conn , bno);
+		int result = dao.increaseHit(conn , bno);
+		
+		BoardVo vo = null;
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+			vo = dao.selectOne(conn , bno);
+		}
 		
 		JDBCTemplate.close(conn);
 		
