@@ -6,6 +6,7 @@
 	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	session.removeAttribute("alertMsg");
+	String root = request.getContextPath();
 %>
 
 <script>
@@ -84,14 +85,14 @@
         <div id="header-top">
             <div></div>
             <div id="logo-box">
-            	<a href="/semi">
-	            	<img src="/semi/resources/img/logo.PNG" alt="로고이미지" width="80%" height="60%">
+            	<a href="<%=root%>">
+	            	<img src="<%=root%>/resources/img/logo.PNG" alt="로고이미지" width="80%" height="60%">
             	</a>
             </div>
             <div id="member-box">
             	<%if(loginMember == null){%>
             		<!-- 로그인 X -->
-            		<form action="/semi/member/login" method="post">
+            		<form action="<%=root%>/member/login" method="post">
 	                    <table>
 	                        <tr>
 	                            <td>아이디</td>
@@ -103,7 +104,7 @@
 	                        </tr>
 	                        <tr>
 	                            <td><input type="submit" value="로그인"></td>
-	                            <td><input type="button" value="회원가입" onclick="location.href='/semi/member/join'"></td>
+	                            <td><input type="button" value="회원가입" onclick="location.href='<%=root%>/member/join'"></td>
 	                        </tr>
 	                    </table>
 	                </form>
@@ -111,9 +112,9 @@
             		<!-- 로그인 된 상태 -->
             		<span><%= loginMember.getNick() %> 님 환영합니다</span>
             		<div>
-	            		<a href="/semi/member/logout">로그아웃</a>
+	            		<a href="<%=root%>/member/logout">로그아웃</a>
 	            		&nbsp;
-	            		<a href="/semi/member/mypage">마이페이지</a>
+	            		<a href="<%=root%>/member/mypage">마이페이지</a>
             		</div>
             	<%}%>
                 
