@@ -65,8 +65,6 @@ public class BoardDao {
 			pstmt.setString(3, vo.getContent());
 			pstmt.setString(4, vo.getWriter());
 			
-			System.out.println(pstmt.toString());
-			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

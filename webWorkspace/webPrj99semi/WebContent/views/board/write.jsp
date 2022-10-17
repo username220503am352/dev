@@ -41,7 +41,7 @@
         <h2 align="center">일반게시판 작성하기</h2>
         <br>
 
-        <form id="enroll-form" action="" method="post">
+        <form id="enroll-form" action="" method="post" enctype="multipart/form-data">
 
             <!-- 카테고리, 제목, 내용, 첨부파일 한개 -->
             <table>

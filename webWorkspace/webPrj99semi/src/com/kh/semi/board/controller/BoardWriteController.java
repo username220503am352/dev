@@ -1,14 +1,19 @@
 package com.kh.semi.board.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.kh.semi.board.service.BoardService;
 import com.kh.semi.board.vo.BoardVo;
@@ -16,6 +21,12 @@ import com.kh.semi.board.vo.CategoryVo;
 import com.kh.semi.member.vo.MemberVo;
 
 @WebServlet(urlPatterns = "/board/write")
+@MultipartConfig(
+			//location = "/khtmp" ,
+			fileSizeThreshold = 1024 * 1024 ,
+			maxFileSize = 1024 * 1024 * 50 ,
+			maxRequestSize = 1024 * 1024 * 50 * 5
+		)
 public class BoardWriteController extends HttpServlet {
 	
 	private final BoardService bs = new BoardService();
@@ -45,7 +56,7 @@ public class BoardWriteController extends HttpServlet {
 		
 	}
 	
-	//게시글 작성하기
+	//게시글 작성하기 + 파일
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//세션 가져오기
@@ -61,6 +72,28 @@ public class BoardWriteController extends HttpServlet {
 		String category = req.getParameter("category");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		Part f = req.getPart("f");
+		
+		// --------------파일업로드 start -------------------------
+		
+		// 1. 파일 객체 준비 (경로+파일명)
+		String path = req.getServletContext().getRealPath("/upload/img/"); //최상단경로
+		String fileName = "temp01.png";
+		File target = new File(path + fileName);
+		
+		// 2. 데이터 넣기 (클라파일 -> 자바 -> 타겟파일)
+		
+		 InputStream fis = f.getInputStream();
+		 
+		 FileOutputStream fos = new FileOutputStream(target);
+		 
+		 while(true) {
+			 int data = fis.read();
+			 if(data == -1) break;
+			 fos.write(data);
+		 }
+		
+		//--------------파일업로드 end -------------------------
 		
 		//데이터 뭉치기
 		BoardVo vo = new BoardVo();
