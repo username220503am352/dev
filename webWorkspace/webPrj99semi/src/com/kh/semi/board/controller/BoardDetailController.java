@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.semi.board.service.BoardService;
+import com.kh.semi.board.vo.AttachmentVo;
 import com.kh.semi.board.vo.BoardVo;
 
 @WebServlet(urlPatterns = "/board/detail")
@@ -25,9 +26,11 @@ public class BoardDetailController extends HttpServlet {
 		
 		//디비 다녀오기
 		BoardVo vo = new BoardService().selectOne(bno);
+		AttachmentVo attachmentVo = new BoardService().selectAttachment(bno);
 		
 		//화면선택
 		req.setAttribute("vo", vo);
+		req.setAttribute("attachmentVo", attachmentVo);
 		req.getRequestDispatcher("/views/board/detail.jsp").forward(req, resp);
 		
 	}

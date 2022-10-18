@@ -269,6 +269,54 @@ public class BoardDao {
 		return result;
 	}
 
+	//첨부파일 조회
+	public AttachmentVo selectAttachment(Connection conn, String bno) {
+		// SQL (준비 , 완성 , 실행)
+		
+		String sql = "SELECT * FROM ATTACHMENT WHERE STATUS = 'O' AND BOARD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		AttachmentVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String no = rs.getString("NO");
+				String board_no = rs.getString("BOARD_NO");
+				String originName = rs.getString("ORIGIN_NAME");
+				String changeName = rs.getString("CHANGE_NAME");
+				String filePath = rs.getString("FILE_PATH");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String thumbYn = rs.getString("THUMB_YN");
+				String status = rs.getString("STATUS");
+				
+				vo = new AttachmentVo();
+				vo.setNo(no);
+				vo.setBoardNo(board_no);
+				vo.setOriginName(originName);
+				vo.setChangeName(changeName);
+				vo.setFilePath(filePath);
+				vo.setEnrollDate(enrollDate);
+				vo.setThumbYn(thumbYn);
+				vo.setStatus(status);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return vo;
+	}
+
 }//class
 
 

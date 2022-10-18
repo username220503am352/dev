@@ -108,6 +108,21 @@ public class BoardService {
 		
 		return vo;
 	}
+
+	//첨부파일 조회
+	public AttachmentVo selectAttachment(String bno) {
+		//커넥션 준비
+		//SQL
+		//트랜잭션 자원반납
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		AttachmentVo vo = dao.selectAttachment(conn , bno);
+		
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
 	
 	
 
