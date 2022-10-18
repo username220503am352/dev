@@ -22,6 +22,7 @@ import com.kh.semi.board.service.BoardService;
 import com.kh.semi.board.vo.AttachmentVo;
 import com.kh.semi.board.vo.BoardVo;
 import com.kh.semi.board.vo.CategoryVo;
+import com.kh.semi.common.FileUploader;
 import com.kh.semi.member.vo.MemberVo;
 
 @WebServlet(urlPatterns = "/board/write")
@@ -78,49 +79,17 @@ public class BoardWriteController extends HttpServlet {
 		String content = req.getParameter("content");
 		Part f = req.getPart("f");
 		
-		// --------------파일업로드 start -------------------------
-		
-		// 0. 준비
-		String originName = f.getSubmittedFileName();
-		String ext = originName.substring(originName.lastIndexOf("."), originName.length());
-		String changeName = System.currentTimeMillis() + "_" + (Math.random()*99999 + 1) + ext;
-		
-		// 1. 파일 객체 준비 (경로+파일명)
-		String filePath = "upload/img";
-		String path = req.getServletContext().getRealPath("/" + filePath +"/"); //최상단경로
-		File target = new File(path + changeName);
-		
-		// 2. 데이터 넣기 (클라파일 -> 자바 -> 타겟파일)
-		
-//		 InputStream fis = f.getInputStream();
-//		 FileOutputStream fos = new FileOutputStream(target);
-		
-		BufferedInputStream bis = new BufferedInputStream(f.getInputStream());
-		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(target));
-		
-		byte[] buf = new byte[1024];
-		 
-		int size = 0;
-		while( (size = bis.read(buf)) != -1) {
-			bos.write(buf , 0 , size );
-		}
-		
-		bos.flush();
-		bis.close();
-		bos.close();
-		
-		//--------------파일업로드 end -------------------------
-		
 		AttachmentVo attachmentVo = null;
+		// --------------파일업로드 start -------------------------
 		
 		//파일정보 디비에 저장 (파일이 있을 때)
 		if(f.getSubmittedFileName().length() > 0) {
-			attachmentVo= new AttachmentVo();
-			//attachmentVo.setBoardNo(게시글번호);	//게시글이 먼저 등록되어야 값을 알 수 있음
-			attachmentVo.setChangeName(changeName);
-			attachmentVo.setOriginName(originName);
-			attachmentVo.setFilePath(filePath);
+			attachmentVo = FileUploader.uploadFile(f , req.getServletContext().getRealPath("/"));
 		}
+		
+		// --------------파일업로드 end -------------------------
+		
+		
 		
 		//데이터 뭉치기
 		BoardVo vo = new BoardVo();
