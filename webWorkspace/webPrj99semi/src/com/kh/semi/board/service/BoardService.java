@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.kh.semi.board.dao.BoardDao;
+import com.kh.semi.board.vo.AttachmentVo;
 import com.kh.semi.board.vo.BoardVo;
 import com.kh.semi.board.vo.CategoryVo;
 import com.kh.semi.common.JDBCTemplate;
@@ -29,16 +30,23 @@ public class BoardService {
 	}
 
 	//게시글 작성
-	public int write(BoardVo vo) {
+	public int write(BoardVo vo, AttachmentVo attachmentVo) {
 		//커넥션 준비
 		//SQL
 		//트랜잭션 , 자원반납
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
+		//게시글 insert
 		int result = dao.insertBoard(conn , vo);
 		
-		if(result == 1) {
+		//첨부파일 insert
+		int result2 = 1;
+		if(attachmentVo != null) {
+			result2 = dao.insertAttachment(conn , attachmentVo);
+		}
+		
+		if(result * result2 == 1) {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);
@@ -46,7 +54,7 @@ public class BoardService {
 		
 		JDBCTemplate.close(conn);
 		
-		return result;
+		return result * result2;
 	}
 
 	//게시글 목록 조회

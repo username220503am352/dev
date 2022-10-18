@@ -1,10 +1,13 @@
 package com.kh.semi.board.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.kh.semi.board.service.BoardService;
+import com.kh.semi.board.vo.AttachmentVo;
 import com.kh.semi.board.vo.BoardVo;
 import com.kh.semi.board.vo.CategoryVo;
 import com.kh.semi.member.vo.MemberVo;
@@ -76,24 +80,47 @@ public class BoardWriteController extends HttpServlet {
 		
 		// --------------파일업로드 start -------------------------
 		
+		// 0. 준비
+		String originName = f.getSubmittedFileName();
+		String ext = originName.substring(originName.lastIndexOf("."), originName.length());
+		String changeName = System.currentTimeMillis() + "_" + (Math.random()*99999 + 1) + ext;
+		
 		// 1. 파일 객체 준비 (경로+파일명)
-		String path = req.getServletContext().getRealPath("/upload/img/"); //최상단경로
-		String fileName = "temp01.png";
-		File target = new File(path + fileName);
+		String filePath = "upload/img";
+		String path = req.getServletContext().getRealPath("/" + filePath +"/"); //최상단경로
+		File target = new File(path + changeName);
 		
 		// 2. 데이터 넣기 (클라파일 -> 자바 -> 타겟파일)
 		
-		 InputStream fis = f.getInputStream();
+//		 InputStream fis = f.getInputStream();
+//		 FileOutputStream fos = new FileOutputStream(target);
+		
+		BufferedInputStream bis = new BufferedInputStream(f.getInputStream());
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(target));
+		
+		byte[] buf = new byte[1024];
 		 
-		 FileOutputStream fos = new FileOutputStream(target);
-		 
-		 while(true) {
-			 int data = fis.read();
-			 if(data == -1) break;
-			 fos.write(data);
-		 }
+		int size = 0;
+		while( (size = bis.read(buf)) != -1) {
+			bos.write(buf , 0 , size );
+		}
+		
+		bos.flush();
+		bis.close();
+		bos.close();
 		
 		//--------------파일업로드 end -------------------------
+		
+		AttachmentVo attachmentVo = null;
+		
+		//파일정보 디비에 저장 (파일이 있을 때)
+		if(f.getSubmittedFileName().length() > 0) {
+			attachmentVo= new AttachmentVo();
+			//attachmentVo.setBoardNo(게시글번호);	//게시글이 먼저 등록되어야 값을 알 수 있음
+			attachmentVo.setChangeName(changeName);
+			attachmentVo.setOriginName(originName);
+			attachmentVo.setFilePath(filePath);
+		}
 		
 		//데이터 뭉치기
 		BoardVo vo = new BoardVo();
@@ -103,7 +130,7 @@ public class BoardWriteController extends HttpServlet {
 		vo.setWriter(loginMember.getNo());
 		
 		//디비 다녀오기
-		int result = bs.write(vo);
+		int result = bs.write(vo , attachmentVo);
 		
 		//화면선택
 		if(result == 1) {

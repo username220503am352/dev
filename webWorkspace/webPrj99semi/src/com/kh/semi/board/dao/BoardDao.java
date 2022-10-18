@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.semi.board.vo.AttachmentVo;
 import com.kh.semi.board.vo.BoardVo;
 import com.kh.semi.board.vo.CategoryVo;
 import com.kh.semi.common.JDBCTemplate;
@@ -231,6 +232,32 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, bno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	//첨부파일 insert
+	public int insertAttachment(Connection conn, AttachmentVo attachmentVo) {
+		// SQL (준비 , 완성 , 실행)
+		
+		String sql = "INSERT INTO ATTACHMENT ( NO ,BOARD_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_ATTACHMENT_NO.NEXTVAL , SEQ_BOARD_NO.CURRVAL , ? , ? , ? )";
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, attachmentVo.getOriginName());
+			pstmt.setString(2, attachmentVo.getChangeName());
+			pstmt.setString(3, attachmentVo.getFilePath());
 			
 			result = pstmt.executeUpdate();
 			
