@@ -83,8 +83,9 @@ public class BoardWriteController extends HttpServlet {
 		// --------------파일업로드 start -------------------------
 		
 		//파일정보 디비에 저장 (파일이 있을 때)
+		String rootPath = req.getServletContext().getRealPath("/");
 		if(f.getSubmittedFileName().length() > 0) {
-			attachmentVo = FileUploader.uploadFile(f , req.getServletContext().getRealPath("/"));
+			attachmentVo = FileUploader.uploadFile(f , rootPath);
 		}
 		
 		// --------------파일업로드 end -------------------------
@@ -107,7 +108,9 @@ public class BoardWriteController extends HttpServlet {
 			s.setAttribute("alertMsg", "게시글 작성 성공!");
 			resp.sendRedirect("/semi/board/list?pno=1");
 		}else {
-			//게시글 작성 실패 => 메세지 , 에러페이지
+			//게시글 작성 실패 => 업로드된파일삭제 , 메세지 , 에러페이지
+			String savePath = rootPath + attachmentVo.getFilePath() + "/" + attachmentVo.getChangeName();
+			new File(savePath).delete();
 			req.setAttribute("msg", "게시글 작성 실패 ...");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
