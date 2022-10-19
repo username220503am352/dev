@@ -71,7 +71,7 @@ public class BoardWriteController extends HttpServlet {
 		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
 		
 		//인코딩
-		req.setCharacterEncoding("UTF-8");
+		//req.setCharacterEncoding("UTF-8");
 		
 		//데이터 꺼내기
 		String category = req.getParameter("category");
@@ -109,8 +109,10 @@ public class BoardWriteController extends HttpServlet {
 			resp.sendRedirect("/semi/board/list?pno=1");
 		}else {
 			//게시글 작성 실패 => 업로드된파일삭제 , 메세지 , 에러페이지
-			String savePath = rootPath + attachmentVo.getFilePath() + "/" + attachmentVo.getChangeName();
-			new File(savePath).delete();
+			if(attachmentVo != null) {
+				String savePath = rootPath + attachmentVo.getFilePath() + "/" + attachmentVo.getChangeName();
+				new File(savePath).delete();
+			}
 			req.setAttribute("msg", "게시글 작성 실패 ...");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}

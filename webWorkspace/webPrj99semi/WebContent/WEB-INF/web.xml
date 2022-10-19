@@ -9,4 +9,56 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- 
+  <servlet-mapping>
+  	<servlet-name>abc</servlet-name>
+  	<url-pattern>/member/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>abc</servlet-name>
+  	<servlet-class>com.kh.semi.member.controller.MemberLoginController</servlet-class>
+  </servlet> 
+  -->
+  
+  
+  <!-- 
+  <filter-mapping>
+  	<filter-name>zzzzzz</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>zzzzzz</filter-name>
+  	<filter-class>com.kh.semi.filter.MyFilter</filter-class>
+  </filter> 
+  -->
+  
+  
+  
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

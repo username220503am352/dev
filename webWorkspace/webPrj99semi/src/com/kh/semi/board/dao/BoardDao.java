@@ -273,7 +273,7 @@ public class BoardDao {
 	public AttachmentVo selectAttachment(Connection conn, String bno) {
 		// SQL (준비 , 완성 , 실행)
 		
-		String sql = "SELECT * FROM ATTACHMENT WHERE STATUS = 'O' AND BOARD_NO = ?";
+		String sql = "zzzzzzzSELECT * FROM ATTACHMENT WHERE STATUS = 'O' AND BOARD_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
