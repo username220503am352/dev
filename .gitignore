@@ -5,3 +5,8 @@ frontRepo/resources/imgs/zzz.PNG
 webWorkspace/webPrj99semi/WebContent/upload/
 webWorkspace/webPrj20el/.settings/
 webWorkspace/webPrj20el/WebContent/WEB-INF/.gitignore
+*.classpath
+*.project
+webWorkspace/**/.settings/
+/**/classes/
+**/META-INF/
