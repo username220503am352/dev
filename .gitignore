@@ -10,3 +10,4 @@ webWorkspace/webPrj20el/WebContent/WEB-INF/.gitignore
 webWorkspace/**/.settings/
 /**/classes/
 **/META-INF/
+webWorkspace/Servers/
