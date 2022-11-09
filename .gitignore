@@ -11,3 +11,5 @@ webWorkspace/**/.settings/
 /**/classes/
 **/META-INF/
 webWorkspace/Servers/
+mybatisWorkspace/reviewPrj/.settings/
+mybatisWorkspace/Servers/
