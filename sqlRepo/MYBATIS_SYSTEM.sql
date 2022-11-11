@@ -1,0 +1,5 @@
+CREATE USER C##MYBATIS IDENTIFIED BY MYBATIS;
+
+GRANT RESOURCE , CONNECT TO C##MYBATIS;
+
+alter user C##MYBATIS default tablespace USERS quota unlimited on USERS;
