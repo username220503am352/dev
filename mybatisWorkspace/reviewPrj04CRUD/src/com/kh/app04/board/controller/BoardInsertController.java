@@ -22,16 +22,17 @@ public class BoardInsertController extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8;");
 		
 		//(게시글 작성 화면) 문자열 내보내기
+		// 직접 하지말고 ,,, JSP한테 맡기자 ,,,(바톤터치)
+		req.getRequestDispatcher("/WEB-INF/views/boardInsertView.jsp").forward(req, resp);
 		
-		PrintWriter out = resp.getWriter();
-		
-		out.write("<form action=\"board/insert\" method=\"get\">");
-		out.write("<input type=\"text\" name=\"title\">");
-		out.write("<br>");
-		out.write("<input type=\"text\" name=\"content\">");
-		out.write("<br>");
-		out.write("<input type=\"submit\">");
-		out.write("</form>");
+//		PrintWriter out = resp.getWriter();
+//		out.write("<form action=\"board/insert\" method=\"get\">");
+//		out.write("<input type=\"text\" name=\"title\">");
+//		out.write("<br>");
+//		out.write("<input type=\"text\" name=\"content\">");
+//		out.write("<br>");
+//		out.write("<input type=\"submit\">");
+//		out.write("</form>");
 		
 	}
 
