@@ -13,3 +13,8 @@ webWorkspace/**/.settings/
 webWorkspace/Servers/
 mybatisWorkspace/reviewPrj/.settings/
 mybatisWorkspace/Servers/
+mybatisWorkspace/algo/.settings/
+mybatisWorkspace/reviewPrj02JSP/.settings/
+mybatisWorkspace/reviewPrj03JSTL/.settings/
+mybatisWorkspace/reviewPrj04CRUD/.settings/
+*.jar
