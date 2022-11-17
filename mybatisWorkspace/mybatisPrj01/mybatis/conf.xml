@@ -11,7 +11,7 @@
 	
 	<!-- 클래스 별칭 -->
 	<typeAliases>
-	
+		<typeAlias type="com.kh.app.member.vo.MemberVo" alias="MemberVo"/>
 	</typeAliases>
 	
 	<environments default="kh01">
@@ -28,7 +28,7 @@
 	
 	<!-- mapper 작성하는 공간 . mapper : SQL 작성하는 공간 -->
 	<mappers>
-		
+		<mapper resource="/mapper/member-mapper.xml"/>
 	</mappers>
   
 </configuration>

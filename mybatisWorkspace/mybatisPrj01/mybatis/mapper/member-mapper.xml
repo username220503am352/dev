@@ -5,7 +5,51 @@
 <mapper namespace="memberMapper">
   
   	<insert id="join">
-  		INSERT INTO MEMBER(ID, PWD) VALUES(#{memberId},#{memberPwd})
+  		INSERT INTO 
+  			MEMBER
+  			(
+  				ID
+  			, 	PWD
+  			) 
+  		VALUES
+  			(
+  				#{memberId}
+  			,	#{memberPwd}
+  			)
   	</insert>
+  	
+  	<select id="selectAll" resultMap="abc">
+  		SELECT 
+  				ID 	
+  			, 	PWD 
+  		FROM MEMBER
+  	</select>
+  	
+  	<resultMap type="MemberVo" id="abc">
+  		<result column="ID" property="memberId"/>
+  		<result column="PWD" property="memberPwd"/>
+  	</resultMap>
+  	
+  	
   
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

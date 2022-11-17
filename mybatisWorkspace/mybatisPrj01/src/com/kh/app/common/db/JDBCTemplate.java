@@ -20,7 +20,7 @@ public class JDBCTemplate {
 		SqlSession ss = null;
 		
 		try {
-			String resource = "/mybatis/conf.xml";
+			String resource = "/conf.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			ss = sqlSessionFactory.openSession(false);
