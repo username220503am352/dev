@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  
+<configuration>
+
+	<environments default="e00">
+		
+		<environment id="e00">
+			<!-- 트랜잭션 처리 어떻게 할건지 ? 직접 : JDBC , 맡기겠다 : MANAGED -->
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+				<property name="username" value="C##MYBATIS"/>
+				<property name="password" value="MYBATIS"/>	
+			</dataSource>
+		</environment>
+		
+	</environments>
+	
+	<mappers>
+	
+	</mappers>
+	
+</configuration>
+  
