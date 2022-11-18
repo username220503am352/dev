@@ -10,7 +10,7 @@ public class BoardService {
 	//게시글 작성하기 (찐)
 	public int write(BoardVo vo) {
 		
-		// 커넥션준비
+		// 커넥션준비 (conn -> sqlSession)
 		// SQL 실행
 		// 자원반납 || 트랜잭션
 		// 결과 리턴
@@ -18,8 +18,31 @@ public class BoardService {
 		SqlSession ss = JDBCTemplate.getSqlSession();
 		
 		
+		
+		
 	}
 	
 	
 
-}
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
