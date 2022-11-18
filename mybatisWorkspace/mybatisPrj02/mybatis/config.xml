@@ -6,6 +6,15 @@
   
 <configuration>
 
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.kh.app.board.vo.BoardVo" alias="BoardVo"/>
+	</typeAliases>
+	
 	<environments default="e00">
 		
 		<environment id="e00">
@@ -22,8 +31,28 @@
 	</environments>
 	
 	<mappers>
-	
+		<mapper resource="/sql/board-mapper.xml"/>
 	</mappers>
 	
 </configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   

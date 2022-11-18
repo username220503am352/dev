@@ -27,6 +27,9 @@ public class BoardInsertController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		//인코딩
+		req.setCharacterEncoding("UTF-8");
+		
 		//데이터 꺼내기
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
@@ -44,8 +47,11 @@ public class BoardInsertController extends HttpServlet {
 		if(result == 1) {
 			//성공
 			//resp.getWriter().write("게시글 목록 보여주기 <script>alert('성공');</script>");
+			//req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
+			resp.sendRedirect("/mb02/board/list");
 		}else {
 			//실패
+			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
 		}
 		
 	}
