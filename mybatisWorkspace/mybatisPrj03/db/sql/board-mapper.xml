@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+  
+  <insert id="write">
+  	INSERT INTO BOARD
+  	(
+  		  TITLE
+  		, CONTENT
+  		, ENROLL_DATE
+  	)
+  	VALUES
+  	(
+  		  #{title}
+  		, #{content}
+  		, SYSDATE
+  	)
+  </insert>
+  
+  <select id="selectBoardList" resultType="BoardVo">
+  	SELECT 
+  		TITLE
+  		, CONTENT
+  		, ENROLL_DATE
+  	FROM BOARD
+  	<if test=" keyword != null and keyword != '' ">
+  		WHERE ${category} LIKE '%${keyword}%'
+  	</if>
+  </select>
+  
+  <select id="selectCnt" resultType="int">
+  	SELECT COUNT(*)
+  	FROM BOARD
+  </select>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
