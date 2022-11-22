@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.kh.app.board.dao.BoardDao;
 import com.kh.app.board.vo.BoardVo;
 import com.kh.app.common.db.JDBCTemplate;
+import com.kh.app.common.page.PageVo;
 
 public class BoardService {
 	
@@ -36,13 +37,13 @@ public class BoardService {
 	}
 
 	// 게시글 목록 조회
-	public List<BoardVo> selectBoardList(Map<String, String> map) {
+	public List<BoardVo> selectBoardList(Map<String, String> map, PageVo pv) {
 		//디비 연결
 		SqlSession ss = JDBCTemplate.getSqlSession();
 		
 		//SQL 실행
 		BoardDao dao = new BoardDao();
-		List<BoardVo> list = dao.selectBoardList(ss , map);
+		List<BoardVo> list = dao.selectBoardList(ss , map , pv);
 		
 		//트랜잭션 || 자원반납
 		ss.close();

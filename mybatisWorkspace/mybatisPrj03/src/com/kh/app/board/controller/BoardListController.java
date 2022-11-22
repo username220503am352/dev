@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.app.board.service.BoardService;
 import com.kh.app.board.vo.BoardVo;
 import com.kh.app.common.page.PageVo;
+import com.kh.app.common.page.Pagination;
 
 @WebServlet("/board/list")
 public class BoardListController extends HttpServlet {
@@ -29,26 +30,12 @@ public class BoardListController extends HttpServlet {
 		String keyword = req.getParameter("keyword");
 		String p = req.getParameter("p");
 		
-		// PageVo 객체 만들기
-		int boardLimit = 10;
+		// PageVo 객체 만들기 (boardLimit , pageLimit, currentPage , listCount)
+		int listCount = bs.selectCount();
+		int currentPage = Integer.parseInt(p);
+		int boardLimit = 5;
 		int pageLimit = 5;
-		PageVo pv = new PageVo();
-		pv.setBoardLimit(boardLimit);
-		pv.setPageLimit(pageLimit);
-		pv.setCurrentPage(Integer.parseInt(p));
-		int cnt = bs.selectCount();
-		pv.setListCount(cnt);
-		
-		int maxPage = (int)Math.ceil((double)cnt / boardLimit);
-		int startPage = (Integer.parseInt(p) - 1) / pageLimit * pageLimit + 1;
-		int endPage = startPage + pageLimit - 1;
-		if(maxPage < endPage) {
-			endPage = maxPage;
-		}
-		
-		pv.setMaxPage(maxPage);
-		pv.setStartPage(startPage);
-		pv.setEndPage(endPage);
+		PageVo pv = Pagination.getPageVo(listCount, currentPage, pageLimit, boardLimit);
 		
 		//데이터 뭉치기
 		Map<String , String> map = new HashMap<>();
@@ -56,8 +43,7 @@ public class BoardListController extends HttpServlet {
 		map.put("keyword", keyword);
 		
 		//디비 다녀오기
-		
-		List<BoardVo> list = bs.selectBoardList(map);
+		List<BoardVo> list = bs.selectBoardList(map , pv);
 		
 		//문자열 내보내기
 		req.setAttribute("list", list);

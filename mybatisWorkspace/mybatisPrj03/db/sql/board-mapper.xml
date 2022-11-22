@@ -28,6 +28,7 @@
   	<if test=" keyword != null and keyword != '' ">
   		WHERE ${category} LIKE '%${keyword}%'
   	</if>
+  	ORDER BY ENROLL_DATE DESC
   </select>
   
   <select id="selectCnt" resultType="int">
