@@ -4,9 +4,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.app.common.db.JDBCTemplate;
 import com.kh.app.member.dao.MemberDao;
+import com.kh.app.member.dao.MemberDao2;
+import com.kh.app.member.dao.MemberDaoImpl;
+import com.kh.app.member.dao.MemberDaoInterface;
 import com.kh.app.member.vo.MemberVo;
 
 public class MemberService {
+	
+	private MemberDaoInterface dao = new MemberDao();
 	
 	//회원가입 (찐)
 	public int join(MemberVo vo) {
@@ -15,7 +20,6 @@ public class MemberService {
 		SqlSession ss = JDBCTemplate.getSqlSession();
 		
 		// SQL 실행
-		MemberDao dao = new MemberDao();
 		int result = dao.join(ss, vo);
 		
 		// 트랜잭션 , 자원반납
@@ -38,7 +42,6 @@ public class MemberService {
 		SqlSession ss = JDBCTemplate.getSqlSession();
 		
 		//SQL 실행
-		MemberDao dao = new MemberDao();
 		MemberVo loginMember = dao.login(ss , vo);
 		
 		//트랜잭션 , 자원반납

@@ -13,7 +13,38 @@
 	<br>
 	<a href="/mb04/member/login">로그인</a>
 	
+	<hr>
 	
+	<a href="/mb04/board/write">게시글 작성</a>
+	<br>
+	<a href="/mb04/board/list">게시글 목록</a>
 	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

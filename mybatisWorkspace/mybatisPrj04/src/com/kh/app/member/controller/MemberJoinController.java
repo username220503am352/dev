@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.app.member.dao.MemberDao;
+import com.kh.app.member.dao.MemberDaoImpl;
 import com.kh.app.member.service.MemberService;
 import com.kh.app.member.vo.MemberVo;
 
