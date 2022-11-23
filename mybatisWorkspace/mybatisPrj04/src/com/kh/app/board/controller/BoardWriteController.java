@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.app.board.service.BoardService;
+import com.kh.app.board.service.BoardServiceImpl;
 import com.kh.app.board.vo.BoardVo;
 
 @WebServlet("/board/write")
@@ -35,9 +37,19 @@ public class BoardWriteController extends HttpServlet {
 		vo.setContent(content);
 		
 		//디비 다녀오기
-		
+		BoardService bs = new BoardServiceImpl();
+		int result = bs.insertBoard(vo);
 		
 		//문자열 내보내기
+		if(result == 1) {
+			//성공
+			req.setAttribute("msg", "게시글 작성 성공");
+			req.getRequestDispatcher("/WEB-INF/views/common/success.jsp").forward(req, resp);
+		}else {
+			//실패
+			req.setAttribute("msg", "게시글 작성 실패");
+			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+		}
 		
 	}
 

@@ -25,5 +25,25 @@ public interface BoardService {
 	
 	// 게시글 삭제하기
 	public int deleteBoard(int boardNo);
+
+	// 게시글 갯수 조회
+	public int selectCnt();
 	
-}
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

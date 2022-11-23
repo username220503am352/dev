@@ -2,6 +2,7 @@ package com.kh.app.board.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.app.board.vo.BoardVo;
@@ -11,8 +12,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int insertBoard(SqlSession ss, BoardVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ss.insert("boardMapper.insertBoard" , vo);
 	}
 
 	@Override
@@ -23,8 +23,10 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<BoardVo> selectBoardList(SqlSession ss, PageVo pv) {
-		// TODO Auto-generated method stub
-		return null;
+		int offset = (pv.getCurrentPage()-1) * pv.getBoardLimit();
+		int limit = pv.getBoardLimit();
+		RowBounds rb = new RowBounds(offset , limit);
+		return ss.selectList("boardMapper.selectBoardList", null, rb);
 	}
 
 	@Override
@@ -45,4 +47,30 @@ public class BoardDaoImpl implements BoardDao {
 		return 0;
 	}
 
-}
+	@Override
+	public int selectCnt(SqlSession ss) {
+		return ss.selectOne("boardMapper.selectCount");
+	}
+
+}//class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

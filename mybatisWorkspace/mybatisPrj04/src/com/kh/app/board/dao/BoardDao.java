@@ -27,6 +27,9 @@ public interface BoardDao {
 	// increaseHit
 	public int increaseHit(SqlSession ss , int boardNo);
 
+	// selectCount
+	public int selectCnt(SqlSession ss);
+
 }//class
 
 
