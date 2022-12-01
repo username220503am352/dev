@@ -14,11 +14,44 @@ CREATE TABLE BOARD(
 );
 
 
+--JOIN
+INSERT INTO MEMBER
+(
+     MEMBER_ID 
+    , MEMBER_PWD 
+    , MEMBER_NICK 
+    , ENROLL_DATE 
+)
+VALUES
+(
+    'USER01'
+    , '1234'
+    , 'NICK01'
+    , SYSDATE
+);
 
-select * from board;
-
-
+-- LOGIN
 SELECT *
-FROM BOARD
+FROM MEMBER
+WHERE MEMBER_ID = 'USER01'
+AND MEMBER_PWD = '1234'
 ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
