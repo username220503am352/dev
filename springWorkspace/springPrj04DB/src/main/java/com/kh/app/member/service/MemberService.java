@@ -19,14 +19,12 @@ public class MemberService {
 	
 	// 회원가입 
 	public int join(MemberVo vo) {
-		
-		// SQL
-		dao.join(sst , vo);
-		
-		// 트랜잭션 , 자원반납
-		// 결과리턴
-		System.out.println("service called ~~~");
-		return 1;
+		return dao.join(sst , vo);
+	}
+
+	// 로그인
+	public MemberVo login(MemberVo vo) {
+		return dao.login(sst , vo); 
 	}
 
 }//class

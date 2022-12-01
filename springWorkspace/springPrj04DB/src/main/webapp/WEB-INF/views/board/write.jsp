@@ -8,18 +8,19 @@
 </head>
 <body>
 
-	<h1>로그인</h1>
+	<h1>게시글 작성</h1>
 	
-	<form action="/app/member/login" method="POST">
-		아이디 : <input type="text" name="memberId">
+	<form action="/app/board/write" method="post">
+		제목 : <input type="text" name="title">
 		<br>
-		패스워드 : <input type="password" name="memberPwd">
+		내용 : <textarea name="content"></textarea>
 		<br>
-		<input type="submit" value="로그인">
+		<input type="submit" value="작성하기">
 	</form>
 
 </body>
 </html>
+
 
 
 
