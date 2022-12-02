@@ -41,7 +41,7 @@ AND MEMBER_PWD = '1234'
 
 
 
-
+select * from board;
 
 
 
