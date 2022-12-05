@@ -13,35 +13,21 @@ CREATE TABLE BOARD(
     , ENROLL_DATE TIMESTAMP
 );
 
-
---JOIN
-INSERT INTO MEMBER
-(
-     MEMBER_ID 
-    , MEMBER_PWD 
-    , MEMBER_NICK 
-    , ENROLL_DATE 
-)
-VALUES
-(
-    'USER01'
-    , '1234'
-    , 'NICK01'
-    , SYSDATE
+DROP TABLE BOARD_CNT;
+CREATE TABLE BOARD_CNT(
+    CNT NUMBER
 );
 
--- LOGIN
-SELECT *
-FROM MEMBER
-WHERE MEMBER_ID = 'USER01'
-AND MEMBER_PWD = '1234'
+INSERT INTO BOARD_CNT
+(CNT)
+VALUES
+(0)
 ;
-
-
-
-
+COMMIT;
 
 select * from board;
+select * from board_cnt;
+
 
 
 
