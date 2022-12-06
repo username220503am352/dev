@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bankMapper">
+
+	<update id="minus">
+		UPDATE BANK
+			SET
+				MONEY = MONEY - #{money}
+			WHERE 
+				NAME = #{sender}
+	</update>
+	
+	<update id="plus">
+		UPDATE BANK
+			SET
+				MONEY = MONEY + #{money}
+			WHERE 
+				NAME = #{receiver}
+				;일부러에러 ㅋㅋ세미콜론ㅋㅋ
+	</update>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

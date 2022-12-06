@@ -28,6 +28,26 @@ COMMIT;
 select * from board;
 select * from board_cnt;
 
+DROP TABLE BANK;
+CREATE TABLE BANK(
+    NAME VARCHAR2(100)
+    , MONEY NUMBER
+);
+
+INSERT INTO BANK
+(
+    NAME 
+    , MONEY
+)
+VALUES
+(
+    'KIMEUL'
+    , 0
+)
+;
+
+SELECT * FROM BANK;
+COMMIT;
 
 
 
