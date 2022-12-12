@@ -61,3 +61,14 @@ COMMIT;
 
 
 
+
+select * from member;
+
+SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID = 'user01'
+		AND MEMBER_PWD = '1234'
+        
+        
+        
+        
