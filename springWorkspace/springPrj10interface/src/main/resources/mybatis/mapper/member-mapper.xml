@@ -25,7 +25,6 @@
 		SELECT *
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
-		AND MEMBER_PWD = #{memberPwd}
 	</select>
   
 </mapper>

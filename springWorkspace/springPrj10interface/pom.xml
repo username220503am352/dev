@@ -169,6 +169,13 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 				
+		<!-- 암호화 -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>5.8.0</version>
+		</dependency>
+		
 		
 		    
 	</dependencies>
