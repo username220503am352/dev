@@ -48,25 +48,19 @@ public class MemberContoller {
 	public String login(MemberVo vo , String save , HttpSession session , HttpServletResponse resp) {
 		MemberVo loginMember = ms.login(vo);
 		
-		if(loginMember != null) {
-			session.setAttribute("loginMember", loginMember);
-			if(save != null) {
-				//쿠키 구워주기(저장된아이디)
-				Cookie c = new Cookie("saveId", loginMember.getMemberId());
-				c.setPath("/app");
-				resp.addCookie(c);
-			}else {
-				//쿠키 없애기
-				Cookie c = new Cookie("saveId", "~~~");
-				c.setMaxAge(0);
-				c.setPath("/app");
-				resp.addCookie(c);
-			}
-			return "redirect:/main";
-		}else {
-			return "실패페이지~~~";
-		}
-	}
+		if(loginMember == null) {return "실패페이지~~~";}
+		
+		session.setAttribute("loginMember", loginMember);
+		
+		Cookie c = new Cookie("saveId", loginMember.getMemberId());
+		c.setPath("/app");
+		
+		if(save == null) { c.setMaxAge(0); }
+		
+		resp.addCookie(c);
+		
+		return "redirect:/main";
+	}//method
 	
 	@GetMapping("logout")
 	public String logout(HttpSession s) {
