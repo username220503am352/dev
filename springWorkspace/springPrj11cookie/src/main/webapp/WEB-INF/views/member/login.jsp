@@ -15,7 +15,7 @@
             <tbody>
                 <tr>
                     <td><label>아이디</label> </td>
-                    <td><input type="text" name="memberId"></td>
+                    <td><input type="text" name="memberId" value="${ cookie.saveId.value }"></td>
                 </tr>
                 <tr>
                     <td><label>비밀번호</label></td>

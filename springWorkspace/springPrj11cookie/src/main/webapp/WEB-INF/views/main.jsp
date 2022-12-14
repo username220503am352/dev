@@ -18,8 +18,8 @@
 	<a href="/app/member/join">회원가입</a>
 	<br>
 	<a href="/app/member/login">로그인</a>
+	<br>
+	<a href="/app/member/logout">로그아웃</a>
 	
-	
-
 </body>
 </html>

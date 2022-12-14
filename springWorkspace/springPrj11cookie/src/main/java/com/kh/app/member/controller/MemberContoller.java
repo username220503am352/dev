@@ -1,5 +1,7 @@
 package com.kh.app.member.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +45,33 @@ public class MemberContoller {
 	}
 	
 	@PostMapping("login")
-	public String login(MemberVo vo , HttpSession session) {
-		
+	public String login(MemberVo vo , String save , HttpSession session , HttpServletResponse resp) {
 		MemberVo loginMember = ms.login(vo);
 		
 		if(loginMember != null) {
 			session.setAttribute("loginMember", loginMember);
-			return "main";
+			if(save != null) {
+				//쿠키 구워주기(저장된아이디)
+				Cookie c = new Cookie("saveId", loginMember.getMemberId());
+				c.setPath("/app");
+				resp.addCookie(c);
+			}else {
+				//쿠키 없애기
+				Cookie c = new Cookie("saveId", "~~~");
+				c.setMaxAge(0);
+				c.setPath("/app");
+				resp.addCookie(c);
+			}
+			return "redirect:/main";
 		}else {
 			return "실패페이지~~~";
 		}
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpSession s) {
+		s.invalidate();
+		return "redirect:/main";
 	}
 	
 	
