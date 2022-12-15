@@ -10,7 +10,7 @@
 
 	<h1>회원가입</h1>
 
-	<form action="/app/member/join" method="post">
+	<form action="/app/member/join" method="post" enctype="multipart/form-data">
         <table>
             <tbody>
                 <tr>
@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td><label>사진</label> </td>
-                    <td><input type="file" name="profile"></td>
+                    <td><input multiple="multiple" type="file" name="profile"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input style="width: 100%;" type="submit" value="회원가입"></td>
