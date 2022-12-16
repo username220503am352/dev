@@ -25,5 +25,7 @@ springWorkspace/Servers/
 springWorkspace/springPrj02/.settings/
 springWorkspace/**/.settings/
 springWorkspace/testPrj/
-springWorkspace/springPrj12upload/src/main/webapp/resources/upload/profile_18922645156800.png
 springWorkspace/springPrj12upload/
+**/target/
+upload/
+img/
