@@ -1,9 +1,11 @@
 package com.kh.app.member.contoller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.app.member.vo.MemberVo;
 
@@ -17,11 +19,17 @@ public class MemberController {
 	}
 	
 	@PostMapping("join")
-	public String join(MemberVo vo) {
+	public ModelAndView join(MemberVo vo , ModelAndView mv) {
 		
-		System.out.println(vo);
+		//model.addAttribute("msg", "로그인 성공!");
 		
-		return "member/join";
+		mv
+		.addObject("msg", "로그인 성공 ~~~")
+		.addObject("name", "swy")
+		.addObject("age", "20")
+		.setViewName("main");
+		
+		return mv;
 	}
 	
 	
