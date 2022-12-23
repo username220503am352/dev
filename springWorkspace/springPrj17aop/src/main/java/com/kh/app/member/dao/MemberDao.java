@@ -16,12 +16,7 @@ public class MemberDao {
 	}
 
 	public MemberVo selectOne(SqlSessionTemplate sst, MemberVo vo) {
-		long start = System.currentTimeMillis();
-		MemberVo loginMember = sst.selectOne("memberMapper.selectOne" , vo);
-		long end = System.currentTimeMillis();
-		long time = end - start;
-		log.info("쿼리문 실행에 걸린 시간 (ms) : " + time);
-		return loginMember;
+		return sst.selectOne("memberMapper.selectOne" , vo);
 	}
 
 }//class
