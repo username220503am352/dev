@@ -1,14 +1,14 @@
 import './App.css';
-import Bell from './component/Bell';
+import Student from './component/Student';
 
 function App() {
 
   return (
     <div className="App">
 
-      <h1>제야의 종</h1>
-
-      <Bell />
+      <Student name="심원용" score="100" />
+      <Student name="홍길동" score="200" />
+      <Student name="김철수" score="300" />
 
     </div>
   );
