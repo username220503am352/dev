@@ -12,7 +12,7 @@ export default function Header(){
         </div>
 
         <Routes>
-            <Route path="notice" element={<Notice />} />
+            <Route path="notice/*" element={<Notice />} />
         </Routes>
 
     </>

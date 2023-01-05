@@ -1,0 +1,44 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<h1>안녕</h1>
+
+<script>
+  /*
+  $.ajax({
+    url : "http://127.0.0.1:8888/app/board/list" ,
+    method : "get" ,
+    success : function(data){ 
+	alert("성공");
+	const obj = JSON.parse(data);
+	console.log(obj);
+    } ,
+    error : function(){ alert("실패"); } ,
+  });
+  */
+
+  fetch( "http://127.0.0.1:8888/app/board/list" , {
+	method : "GET" ,
+	headers : { 
+		"Content-Type" : "application/json"	
+	} ,
+  } )
+     .then( (resp) => { return resp.json();} )
+     .then( result => console.log(result) )
+;
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
