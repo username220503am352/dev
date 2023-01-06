@@ -12,6 +12,7 @@ function App() {
 
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<Header />} />
           <Route path='/main/*' element={<Header />} />
         </Routes>
       </BrowserRouter>

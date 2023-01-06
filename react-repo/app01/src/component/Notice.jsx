@@ -12,6 +12,7 @@ export default function Notice(){
         
         <Routes>
             <Route path={"list"} element={<NoticeList />}/>
+            <Route path={"list/:page"} element={<NoticeList />}/>
             <Route path={"write"} element={<NoticeWrite />}/>
         </Routes>
         
